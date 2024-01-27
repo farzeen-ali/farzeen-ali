@@ -24,7 +24,7 @@
   <a href="https://www.linkedin.com/in/farzeen-ali-533479204" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
   </a>
-  <a href="https://github.com/farzeen-ali" target="_blank">
+  <a href="https://farzeen.netlify.app/" target="_blank">
      <img src="https://img.shields.io/badge/Portfolio-F3B95F?style=for-the-badge&logo=google&logoColor=white" target="_blank" />
   </a>
 </div>
