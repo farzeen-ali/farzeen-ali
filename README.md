@@ -16,13 +16,13 @@
  
 <div align="center"> 
   <a href="mailto:farzeenaliarif786@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-7D0A0A?style=for-the-badge&logo=gmail&logoColor=red" />
+    <img src="https://img.shields.io/badge/Gmail-D04848?style=for-the-badge&logo=gmail&logoColor=red" />
   </a>
   <a href="https://www.linkedin.com/in/farzeen-ali-533479204" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
   </a>
   <a href="https://github.com/farzeen-ali" target="_blank">
-     <img src="https://img.shields.io/badge/Portfolio-0B60B0?style=for-the-badge&logo=todoist&logoColor=white" target="_blank" />
+     <img src="https://img.shields.io/badge/Google-1640D6?style=for-the-badge&logo=todoist&logoColor=white" target="_blank" />
   </a>
 </div>
 
