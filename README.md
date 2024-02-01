@@ -41,6 +41,5 @@
 <br/>
 <hr/>
 
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=farzeen-ali)](https://github.com/farzeen-ali/github-readme-stats)
-
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali)](https://github.com/farzeen-ali/github-readme-stats)
 
