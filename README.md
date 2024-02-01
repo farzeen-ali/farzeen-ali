@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+👋;+I'm+Farzeen+Ali!;" />
+    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=15F7F5&random=falsesize=35&center=true&vCenter=true&width=500&height=70&duration=2000&lines=Hi+There!+👋;+I'm+Farzeen+Ali+👨🏻‍💻;" />
 </h1>
 
 <h3 align="center">A Passionate FullStack Developer & YouTuber From Pakistan</h3>
@@ -19,19 +19,19 @@
     <img src="https://img.shields.io/badge/Gmail-6C22A6?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
     <a href="https://www.youtube.com/@TheTechzeen" target="_blank">
-     <img src="https://img.shields.io/badge/YouTube-D71313?style=for-the-badge&logo=youtube&logoColor=white" target="_blank" />
+     <img src="https://img.shields.io/badge/YouTube-D71313?style=for-the-badge&logo=youtube&logoColor=white" />
   </a>
   <a href="https://www.linkedin.com/in/farzeen-ali-533479204" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
   <a href="https://farzeen.netlify.app/" target="_blank">
-     <img src="https://img.shields.io/badge/Portfolio-F3B95F?style=for-the-badge&logo=google&logoColor=white" target="_blank" />
+     <img src="https://img.shields.io/badge/Portfolio-F3B95F?style=for-the-badge&logo=google&logoColor=white" />
   </a>
 </div>
 
  <hr/>
  
-<h2 align="center">⚒️ Languages-Frameworks-Tools ⚒️</h2>
+<h2 align="center">⚒🚀💥 Languages-Frameworks-Tools 💥🚀</h2>
 <br/>
 <div align="center">
     <img src="https://skillicons.dev/icons?i=react,javascript,express,nodejs,vscode,github,tailwind,git" />
