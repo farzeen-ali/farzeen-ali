@@ -21,17 +21,17 @@
     <a href="https://www.youtube.com/@TheTechzeen" target="_blank">
      <img src="https://img.shields.io/badge/YouTube-D71313?style=for-the-badge&logo=youtube&logoColor=white" />
   </a>
-  <a href="https://www.linkedin.com/in/farzeen-ali-533479204" target="_blank">
+  <a href="https://www.linkedin.com/in/farzeen-ali-533479204" >
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
-  <a href="https://farzeen.netlify.app/">
+  <a href="https://farzeen.netlify.app/" target="_blank">
      <img src="https://img.shields.io/badge/Portfolio-F3B95F?style=for-the-badge&logo=google&logoColor=white" />
   </a>
 </div>
 
  <hr/>
  
-<h2 align="center">🚀💥 Languages-Frameworks-Tools 💥🚀</h2>
+<h2 align="center">🚀Languages💥Frameworks💥Tools🚀</h2>
 <br/>
 <div align="center">
     <img src="https://skillicons.dev/icons?i=react,javascript,express,nodejs,vscode,github,tailwind,git" />
