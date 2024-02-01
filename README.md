@@ -41,4 +41,4 @@
 <br/>
 <hr/>
 
-<img src="https://github-readme-stats.vercel.app/api?username=farzeen-ali" alt="My Stats">
+<img src="https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true icons=true&theme=radical" alt="My Stats">
