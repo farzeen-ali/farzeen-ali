@@ -41,5 +41,4 @@
 <br/>
 <hr/>
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali)](https://github.com/farzeen-ali/github-readme-stats)
 
