@@ -42,7 +42,7 @@
 <hr/>
 
 
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true)](https://github.com/farzeen-ali/github-readme-stats)
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=radical)](https://github.com/farzeen-ali/github-readme-stats)
 
 
 
