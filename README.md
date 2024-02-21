@@ -8,7 +8,7 @@
 
 <div align="center">
  
- 🌱 I'm a passionate software developer, crafting sleek Web and Mobile Apps with expertise in React JS, React Native, Firebase, MongoDb and more.
+ 🌱 I'm Farzeen Ali, a passionate software developer, crafting sleek Web and Mobile Apps with expertise in React JS, React Native, Firebase, MongoDb and more.
 
 ⚡  As the creator of The Techzeen, my YouTube channel offers concise programming tutorials in Urdu/Hindi. Check My Youtube Channel [here](https://www.youtube.com/@TheTechzeen)
 
