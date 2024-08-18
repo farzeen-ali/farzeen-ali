@@ -2,7 +2,7 @@
     <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=15F7F5&random=falsesize=35&center=true&vCenter=true&width=500&height=70&duration=2000&lines=Hi+There!+👋;+I'm+Farzeen+Ali+👨🏻‍💻;" />
 </h1>
 
-<h3 align="center">A Passionate FullStack Developer & YouTuber From Pakistan</h3>
+<h3 align="center">A Passionate Full Stack Developer & YouTuber From Pakistan</h3>
 
 <br/>
 
