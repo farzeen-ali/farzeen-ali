@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=15F7F5&random=falsesize=35&center=true&vCenter=true&width=500&height=70&duration=2000&lines=Hi+There!+👋;+I'm+Farzeen+Ali+👨🏻‍💻;" />
+    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=7e15f7&random=falsesize=35&center=true&vCenter=true&width=500&height=70&duration=2000&lines=Hi+There!+👋;+I'm+Farzeen+Ali+👨🏻‍💻;" />
 </h1>
 
 <h3 align="center">A Passionate Full Stack Developer & YouTuber From Pakistan</h3>
@@ -8,7 +8,7 @@
 
 <div align="center">
  
- 🌱 I'm Farzeen Ali, a passionate software developer, crafting sleek Web and Mobile Apps with expertise in React JS, React Native, Firebase, MongoDb and more.
+ 🌱 I'm Farzeen Ali, a passionate software developer, crafting sleek Web and Mobile Apps with expertise in React JS, React Native, Next JS 14, Firebase, Node JS, Express JS, MongoDb and more.
 
 ⚡  As the creator of The Techzeen, my YouTube channel offers concise programming tutorials in Urdu/Hindi. Check My Youtube Channel [here](https://www.youtube.com/@TheTechzeen)
 
@@ -24,9 +24,6 @@
   <a href="https://www.linkedin.com/in/farzeen-ali-533479204" >
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
-<!--   <a href="https://farzeen.netlify.app/" target="_blank">
-     <img src="https://img.shields.io/badge/Portfolio-F3B95F?style=for-the-badge&logo=google&logoColor=white" />
-  </a> -->
 </div>
 
  <hr/>
