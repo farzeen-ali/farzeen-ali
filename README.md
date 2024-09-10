@@ -34,9 +34,10 @@
     <img src="https://skillicons.dev/icons?i=react,javascript,express,nodejs,vscode,github,tailwind,git" />
     <img src="https://skillicons.dev/icons?i=css,bootstrap,html,firebase,mongodb,nextjs,mysql,php,laravel" /><br>
 </div>
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&" alt="farzeen-ali" /></p>
+
 <br/>
 <hr/>
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&" alt="farzeen-ali" /></p>
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=midnight-purple)
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=midnight-purple)
