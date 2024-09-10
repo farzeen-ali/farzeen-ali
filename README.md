@@ -34,7 +34,7 @@
     <img src="https://skillicons.dev/icons?i=react,javascript,express,nodejs,vscode,github,tailwind,git" />
     <img src="https://skillicons.dev/icons?i=css,bootstrap,html,firebase,mongodb,nextjs,mysql,php,laravel" /><br>
 </div>
-
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&" alt="farzeen-ali" /></p>
 <br/>
 <hr/>
 
