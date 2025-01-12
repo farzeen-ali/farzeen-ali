@@ -8,7 +8,7 @@
 
 <div align="center">
  
- 🌱 I'm Farzeen Ali, a passionate software developer, crafting sleek Web and Mobile Apps with expertise in React JS, React Native, Next JS 14, Firebase, Node JS, Express JS, MongoDb and more.
+ 🌱 I'm Farzeen Ali, a passionate software developer, crafting sleek Web and Mobile Apps with expertise in React JS, React Native, Next JS 15, Firebase, Node JS, Express JS, MongoDb and more.
 
 ⚡  As the creator of The Techzeen, my YouTube channel offers concise programming tutorials in Urdu/Hindi. Check My Youtube Channel [here](https://www.youtube.com/@TheTechzeen)
 
@@ -28,15 +28,16 @@
 
  <hr/>
  
-<h2 align="center">🚀Languages💥Frameworks💥Tools🚀</h2>
+<h2 align="center">🚀💥 Tools & Technologies 💥🚀</h2>
 <br/>
 <div align="center">
-    <img src="https://skillicons.dev/icons?i=react,angular,javascript,express,nodejs,vscode,github,tailwind,git,linux,docker,kubernetes" />
-    <img src="https://skillicons.dev/icons?i=css,bootstrap,supabase,html,firebase,mongodb,nextjs,mysql,php,laravel,jenkins,terraform,aws,gitlab" /><br>
+    <img src="https://skillicons.dev/icons?i=react,angular,javascript,express,nodejs,vscode,github,tailwind,git,linux,docker,kubernetes,gitlab" />
+    <img src="https://skillicons.dev/icons?i=css,bootstrap,supabase,html,firebase,mongodb,nextjs,mysql,php,laravel,jenkins,terraform,aws" /><br>
 </div>
 
 <br/>
 <hr/>
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=midnight-purple)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&hide_progress=true&theme=midnight-purple)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=midnight-purple)
+<!-- ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=midnight-purple) -->
 
