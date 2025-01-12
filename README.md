@@ -39,5 +39,5 @@
 <hr/>
 <!-- ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&hide_progress=true&theme=midnight-purple) -->
 <!-- ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=midnight-purple) -->
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=midnight-purple)
+<!-- ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=midnight-purple) -->
 
