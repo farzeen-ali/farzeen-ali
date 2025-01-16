@@ -4,8 +4,6 @@
 
 <h3 align="center">A Passionate Software Engineer & YouTuber From Pakistan💻🎥</h3>
 
-<br/>
-
 <div align="center">
  
  🌱 I'm Farzeen Ali – An innovative Software Engineer, specializing in Full Stack Web & Mobile Application Development and DevOps Engineering. 🚀
