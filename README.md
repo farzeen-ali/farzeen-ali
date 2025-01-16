@@ -2,15 +2,19 @@
     <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=7e15f7&random=falsesize=35&center=true&vCenter=true&width=500&height=70&duration=2000&lines=Hi+There!+👋;+I'm+Farzeen+Ali+👨🏻‍💻;" />
 </h1>
 
-<h3 align="center">A Passionate Full Stack Developer & YouTuber From Pakistan</h3>
+<h3 align="center">A Passionate Software Engineer & YouTuber From Pakistan💻🎥</h3>
 
 <br/>
 
 <div align="center">
  
- 🌱 I'm Farzeen Ali, a passionate software developer, crafting sleek Web and Mobile Apps with expertise in React JS, React Native, Next JS 15, Firebase, Node JS, Express JS, MongoDb and more.
+ 🌱 I'm Farzeen Ali – An innovative Software Engineer, specializing in Full Stack Web & Mobile Application Development and DevOps Engineering. 🚀
 
-⚡  As the creator of The Techzeen, my YouTube channel offers concise programming tutorials in Urdu/Hindi. Check My Youtube Channel [here](https://www.youtube.com/@TheTechzeen)
+With expertise in cutting-edge technologies like React.js, React Native, Next.js 15, Firebase, Node.js, Express.js, MongoDB, and more, I craft sleek, high-performing web and mobile applications tailored to user needs.
+
+🎥 I'm also the creator of <a href="https://www.youtube.com/@TheTechzeen">The Techzeen</a> – a YouTube channel offering concise, beginner-friendly programming tutorials in Urdu/Hindi. Whether you're a student, professional, or tech enthusiast, my content empowers you to level up your coding skills with ease.
+
+⚡  
 
  </div>
  
