@@ -10,11 +10,9 @@
  
  🌱 I'm Farzeen Ali – An innovative Software Engineer, specializing in Full Stack Web & Mobile Application Development and DevOps Engineering. 🚀
 
-With expertise in cutting-edge technologies like React.js, React Native, Next.js 15, Firebase, Node.js, Express.js, MongoDB, and more, I craft sleek, high-performing web and mobile applications tailored to user needs.
+With expertise in cutting-edge technologies like React.js, React Native, Next.js 15, Angular 19, Firebase, Node.js, Express.js, MongoDB, and more, I craft sleek, high-performing web and mobile applications tailored to user needs.
 
-🎥 I'm also the creator of <a href="https://www.youtube.com/@TheTechzeen">The Techzeen</a> – a YouTube channel offering concise, beginner-friendly programming tutorials in Urdu/Hindi. Whether you're a student, professional, or tech enthusiast, my content empowers you to level up your coding skills with ease.
-
-⚡  
+🎥 I'm also the creator of <a href="https://www.youtube.com/@TheTechzeen">The Techzeen</a> – a YouTube channel offering concise, beginner-friendly programming tutorials in Urdu/Hindi. Whether you're a student, professional, or tech enthusiast, my content empowers you to level up your coding skills with ease.⚡  
 
  </div>
  
