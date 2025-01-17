@@ -2,12 +2,12 @@
     <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=7e15f7&random=falsesize=35&center=true&vCenter=true&width=500&height=70&duration=2000&lines=Hi+There!+👋;+I'm+Farzeen+Ali+👨🏻‍💻;" />
 </h1>
 
-<h2 align="center">A Passionate Software Engineer & YouTuber From Pakistan💻🎥</h2>
+<h2 align="center">A Passionate Software Engineer & YouTuber From Pakistan💻🎥
 
-<br />
+</h2>
 
-<div align="center">
- 
+
+<div align="center"> 
  🌱 I'm Farzeen Ali – An innovative Software Engineer, specializing in Full Stack Web & Mobile Application Development and DevOps Engineering. 🚀
 
 With expertise in cutting-edge technologies like React.js, React Native, Next.js 15, Angular 19, Firebase, Node.js, Express.js, MongoDB, and more, I craft sleek, high-performing web and mobile applications tailored to user needs.
