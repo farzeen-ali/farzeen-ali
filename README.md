@@ -6,7 +6,6 @@
 
 </h2>
 
-
 <div align="center"> 
  🌱 I'm Farzeen Ali – An innovative Software Engineer, specializing in Full Stack Web & Mobile Application Development and DevOps Engineering. 🚀
 
