@@ -43,8 +43,8 @@ In DevOps, I utilize tools like Git 🐙, Docker 🐳, and Kubernetes ☸️, al
 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=midnight-purple)](https://github.com/anuraghazra/github-readme-stats)
 
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=farzeen-ali&repo=github-readme-stats)](https://github.com/anuraghazra/github-readme-stats)
 
-
-
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=donut-vertical&theme=midnight-purple)](https://github.com/anuraghazra/github-readme-stats)
 
 
