@@ -9,7 +9,7 @@
 <div align="center"> 
  🌱 I'm Farzeen Ali – An innovative Software Engineer, specializing in Full Stack Web & Mobile Application Development and DevOps Engineering. 🚀
 
-With expertise in cutting-edge technologies like React.js, React Native, Next.js 15, Angular 19, Firebase, Node.js, Express.js, MongoDB, and more, I craft sleek, high-performing web and mobile applications tailored to user needs.
+With expertise in cutting-edge technologies like React.js, React Native CLI, React Native Expo, Next.js 15, Angular 19, NestJS, Firebase, Node.js, Express.js, MongoDB, PostgreSQL, and more, I craft sleek, high-performing web and mobile applications tailored to user needs.
 
 In DevOps, I utilize tools like Git 🐙, Docker 🐳, and Kubernetes ☸️, along with cloud platforms such as AWS ☁️ and Azure 🔵 to streamline development processes and enhance deployment efficiency.
 
