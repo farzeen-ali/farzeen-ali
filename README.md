@@ -41,15 +41,19 @@ In DevOps, I utilize tools like Git 🐙, Docker 🐳, and Kubernetes ☸️, al
 <br/>
 <hr/>
 
-<div align="center" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img src="https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=midnight-purple" alt="Farzeen's GitHub Stats" height="200px" />
-  </a>
+<p align="center">
+  <table>
+    <tr>
+      <td>
+        <img src="https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=midnight-purple" alt="Farzeen's GitHub Stats" height="200px" />
+      </td>
+      <td>
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=midnight-purple" alt="Farzeen's Top Languages" height="200px" />
+      </td>
+    </tr>
+  </table>
+</p>
 
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=midnight-purple" alt="Farzeen's Top Languages" height="200px" />
-  </a>
-</div>
 
 
 
