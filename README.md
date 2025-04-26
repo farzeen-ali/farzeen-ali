@@ -12,7 +12,7 @@ With expertise in cutting-edge technologies like React.js, React Native CLI, Rea
 
 In DevOps, I utilize tools like Git 🐙, Docker 🐳, and Kubernetes ☸️, along with cloud platforms such as AWS ☁️ and Azure 🔵 to streamline development processes and enhance deployment efficiency.
 
-🎥 I'm also the creator of <a href="https://www.youtube.com/@TheTechzeen">The Techzeen</a> – a YouTube channel offering concise, beginner-friendly programming tutorials in Urdu/Hindi. Whether you're a student, professional, or tech enthusiast, my content empowers you to level up your coding skills with ease.⚡  
+🎥 I'm also the creator of <a href="https://www.youtube.com/@TheTechzeen">The Techzeen</a> – a YouTube channel offering concise, beginner-friendly programming tutorials in Urdu/Hindi. Whether you're a student, professional, or tech enthusiast, my content empowers you to level up your coding skills with ease.⚡
 
  </div>
  
@@ -52,8 +52,3 @@ In DevOps, I utilize tools like Git 🐙, Docker 🐳, and Kubernetes ☸️, al
     </tr>
   </table>
 </p>
-
-
-
-
-
