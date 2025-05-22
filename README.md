@@ -39,7 +39,6 @@ In DevOps, I utilize tools like Git 🐙, Docker 🐳, and Kubernetes ☸️, al
 
 <br/>
 <hr/>
-
 <p align="center">
   <table>
     <tr>
