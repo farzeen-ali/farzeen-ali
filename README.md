@@ -26,7 +26,7 @@ In DevOps, I utilize tools like Git 🐙, Docker 🐳, and Kubernetes ☸️, al
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
 </div>
-
+<p align="center"> <img src="https://komarev.com/ghpvc/?username=farzeen-ali&label=PROFILE+VIEWS&color=ff5c5c&style=for-the-badge&abbreviated=true" alt="farzeen ali" /> </p>
  <hr/>
  
 <h2 align="center">🚀💥 Tools & Technologies 💥🚀</h2>
