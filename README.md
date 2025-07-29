@@ -31,7 +31,7 @@ In DevOps, I utilize tools like Git 🐙, Docker 🐳, and Kubernetes ☸️, al
 <br/>
 <div align="center">
     <img src="https://skillicons.dev/icons?i=react,angular,javascript,typescript,express,nodejs,nestjs,github,tailwind,git,linux,docker,kubernetes,gitlab,azure" />
-    <img src="https://skillicons.dev/icons?i=prometheus,postgresql,supabase,prisma,firebase,mongodb,nextjs,mysql,graphql,laravel,jenkins,terraform,aws,ansible,grafana" /><br>
+    <img src="https://skillicons.dev/icons?i=prometheus,postgresql,supabase,prisma,firebase,mongodb,nextjs,nuxt,graphql,laravel,jenkins,terraform,aws,ansible,grafana" /><br>
 </div>
 <br/>
 <hr/>
