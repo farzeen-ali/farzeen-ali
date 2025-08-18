@@ -5,7 +5,7 @@
 <h2 align="center">A Passionate Software Engineer & YouTuber From Pakistan💻🎥
 </h2>
 <div align="center"> 
- 🌱 I'm Farzeen Ali – an innovative YouTuber @ <a href='https://www.youtube.com/@TheTechzeen' target='_blank'>The Techzeen</a> 🎥, Full Stack Web & Cross-Platform Mobile App Engineer 📱, DevOps Engineer ⚙️, and Program Manager & Faculty @ Denning (University of London & University of Greenwich) 📚.
+ 🌱 I'm Farzeen Ali – an innovative YouTuber @ <a href='https://www.youtube.com/@TheTechzeen'>The Techzeen</a> 🎥, Full Stack Web & Cross-Platform Mobile App Engineer 📱, DevOps Engineer ⚙️, and Program Manager & Faculty @ Denning (University of London & University of Greenwich) 📚.
 
 💻 With hands-on expertise in modern technologies like React.js, React Native, Next.js 15, Nuxt.js, Angular 19, Firebase, Node.js, Express.js, NestJS, MongoDB, PostgreSQL, and more, I build scalable, high-performing, and user-centric applications that deliver real business value.
 
@@ -13,7 +13,7 @@
 
 📚 As a Program Manager & Faculty Member @ Denning, I mentor and guide students from the University of London & University of Greenwich, helping them bridge the gap between academia and industry with practical, real-world knowledge.
 
-🎥 Beyond engineering and teaching, I’m the creator of<a href='https://www.youtube.com/@TheTechzeen' target='_blank'> The Techzeen</a> 🎥 – a growing YouTube channel offering beginner-friendly programming tutorials in Urdu/Hindi. My mission is to empower students, professionals, and tech enthusiasts to level up their coding and career skills with ease. 
+🎥 Beyond engineering and teaching, I’m the creator of<a href='https://www.youtube.com/@TheTechzeen'> The Techzeen</a> 🎥 – a growing YouTube channel offering beginner-friendly programming tutorials in Urdu/Hindi. My mission is to empower students, professionals, and tech enthusiasts to level up their coding and career skills with ease. 
 
 </div>
  
