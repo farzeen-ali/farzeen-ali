@@ -5,15 +5,17 @@
 <h2 align="center">A Passionate Software Engineer & YouTuber From Pakistan💻🎥
 </h2>
 <div align="center"> 
- 🌱 I'm Farzeen Ali – An innovative Software Engineer, specializing in Full Stack Web & Mobile Application Development and DevOps Engineering. 🚀
+ 🌱 I'm Farzeen Ali – an innovative YouTuber @<a href='https://www.youtube.com/@TheTechzeen'>The Techzeen</a> 🎥, Full Stack Web & Cross-Platform Mobile App Engineer 📱, DevOps Engineer ⚙️, and Program Manager & Faculty @ Denning (University of London & University of Greenwich) 📚.
 
-With expertise in cutting-edge technologies like React.js, React Native CLI, React Native Expo, Next.js 15, Angular 19, NestJS, Firebase, Node.js, Express.js, MongoDB, PostgreSQL, and more, I craft sleek, high-performing web and mobile applications tailored to user needs.
+💻 With hands-on expertise in modern technologies like React.js, React Native, Next.js 15, Nuxt.js, Angular 19, Firebase, Node.js, Express.js, NestJS, MongoDB, PostgreSQL, and more, I build scalable, high-performing, and user-centric applications that deliver real business value.
 
-In DevOps, I utilize tools like Git 🐙, Docker 🐳, and Kubernetes ☸️, along with cloud platforms such as AWS ☁️ and Azure 🔵 to streamline development processes and enhance deployment efficiency.
+⚙️ On the DevOps side, I specialize in designing and managing robust cloud-native infrastructures. I work with AWS ☁️ and Azure 🔵, along with Terraform, Ansible, and Linux administration for Infrastructure as Code (IaC) and automation. My CI/CD pipelines integrate tools like Jenkins, GitHub Actions, and GitLab CI/CD, ensuring smooth and reliable deployments. I also utilize Docker 🐳 and Kubernetes ☸️ for containerization and orchestration, while monitoring and optimizing performance using Grafana 📊 and Prometheus 📡. This holistic DevOps approach streamlines workflows, increases system reliability, and accelerates product delivery.
 
-🎥 I'm also the creator of <a href="https://www.youtube.com/@TheTechzeen">The Techzeen</a> – a YouTube channel offering concise, beginner-friendly programming tutorials in Urdu/Hindi. Whether you're a student, professional, or tech enthusiast, my content empowers you to level up your coding skills with ease.⚡
+📚 As a Program Manager & Faculty Member @ Denning, I mentor and guide students from the University of London & University of Greenwich, helping them bridge the gap between academia and industry with practical, real-world knowledge.
 
- </div>
+🎥 Beyond engineering and teaching, I’m the creator of <a href='https://www.youtube.com/@TheTechzeen'>The Techzeen</a> 🎥 – a growing YouTube channel offering beginner-friendly programming tutorials in Urdu/Hindi. My mission is to empower students, professionals, and tech enthusiasts to level up their coding and career skills with ease. 
+
+</div>
  
 <div align="center"> 
   <a href="mailto:farzeenaliarif786@gmail.com">
