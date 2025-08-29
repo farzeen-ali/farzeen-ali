@@ -49,5 +49,6 @@
     </tr>
   </table>
 <!--   <img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&layout=compact&theme=midnight-purple" alt="farzeen-ali" /> -->
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=farzeen-ali&theme=react-dark&bg_color=0D1117&color=00D9FF&line=00D9FF&point=FFFFFF&area=true&hide_border=true" width="100%"/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=farzeen-ali&theme=react-dark&bg_color=000000&color=800080&line=800080&point=FFFFFF&area=true&hide_border=true" width="100%"/>
+
 </p>
