@@ -2,19 +2,19 @@
     <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=7e15f7&random=falsesize=35&center=true&vCenter=true&width=500&height=70&duration=2000&lines=Hi+There!+👋;+I'm+Farzeen+Ali+👨🏻‍💻;" />
 </h1>
 
-<h2 align="center">A Passionate Software Engineer & YouTuber From Pakistan💻🎥
+<h2 align="center">Founder of The Techzeen 🎥 | Software Engineer | DevOps & Cyber Security Specialist 🔒⚙️
 </h2>
+
 <div align="center"> 
- 🌱 I'm Farzeen Ali – an innovative YouTuber @ <a href='https://www.youtube.com/@TheTechzeen'>The Techzeen</a> 🎥, Full Stack Web & Cross-Platform Mobile App Engineer 📱, DevOps Engineer ⚙️, and Program Manager & Faculty @ Denning (University of London & University of Greenwich) 📚.
-
-💻 With hands-on expertise in modern technologies like React.js, React Native, Next.js 15, Nuxt.js, Angular 19, Firebase, Node.js, Express.js, NestJS, MongoDB, PostgreSQL, and more, I build scalable, high-performing, and user-centric applications that deliver real business value.
-
-⚙️ On the DevOps side, I specialize in designing and managing robust cloud-native infrastructures. I work with AWS ☁️ and Azure 🔵, along with Terraform, Ansible, and Linux administration for Infrastructure as Code (IaC) and automation. My CI/CD pipelines integrate tools like Jenkins, GitHub Actions, and GitLab CI/CD, ensuring smooth and reliable deployments. I also utilize Docker 🐳 and Kubernetes ☸️ for containerization and orchestration, while monitoring and optimizing performance using Grafana 📊 and Prometheus 📡. This holistic DevOps approach streamlines workflows, increases system reliability, and accelerates product delivery.
-
-📚 As a Program Manager & Faculty Member @ Denning, I mentor and guide students from the University of London & University of Greenwich, helping them bridge the gap between academia and industry with practical, real-world knowledge.
-
-🎥 Beyond engineering and teaching, I’m the creator of<a href='https://www.youtube.com/@TheTechzeen'> The Techzeen</a> 🎥 – a growing YouTube channel offering beginner-friendly programming tutorials in Urdu/Hindi. My mission is to empower students, professionals, and tech enthusiasts to level up their coding and career skills with ease. 
-
+ I’m <b>Farzeen Ali</b> – Founder & Creator of <a href='https://www.youtube.com/@TheTechzeen'>The Techzeen</a> 🎥, a fast-growing YouTube channel focused on <b>Programming, Cyber Security, DevOps, and Full Stack Development</b>. My mission is to simplify complex concepts with real-world projects and tutorials, empowering learners to grow from absolute beginners to job-ready professionals. 🚀
+ <br><br>
+ 💻 As a <b>Full Stack Web & Cross-Platform Mobile App Engineer</b>, I work with cutting-edge technologies like <b>React.js, React Native, Next.js 15, Nuxt.js, Angular 19, Firebase, Supabase, Prisma, Node.js, Express.js, NestJS, MongoDB, and PostgreSQL</b> to build scalable and high-performing applications.
+ <br><br>
+ ⚙️ As a <b>DevOps Engineer</b>, I design and manage cloud-native infrastructures using <b>AWS ☁️, Azure 🔵, GCP</b>, along with <b>Terraform, Ansible, Jenkins, GitHub Actions, and GitLab CI/CD</b>. I specialize in containerization & orchestration with <b>Docker 🐳 and Kubernetes ☸️</b>, and performance monitoring with <b>Grafana 📊 and Prometheus 📡</b>.
+ <br><br>
+ 🔒 As a <b>Cyber Security Specialist</b>, I perform penetration testing, vulnerability assessment, and enterprise defense using tools such as <b>Kali Linux, Wireshark, Nmap, Burp Suite, Metasploit, Nessus, Hydra, Hashcat, John the Ripper, Splunk, ELK, Wazuh, and QRadar</b>. I also secure <b>Cloud & Container environments</b> with the <b>Zero Trust Model</b>.
+ <br><br>
+ 📚 In addition, I serve as a <b>Program Manager & Faculty Member @ Denning</b>, mentoring students from the <b>University of London & University of Greenwich</b> to bridge the gap between academic knowledge and industry practices.
 </div>
  
 <div align="center"> 
@@ -48,6 +48,5 @@
       </td>
     </tr>
   </table>
-<!--   <img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&layout=compact&theme=midnight-purple" alt="farzeen-ali" /> -->
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=farzeen-ali&theme=react-dark&bg_color=000000&color=7e15f7&line=7e15f7&point=FFFFFF&area=true&hide_border=true" width="100%"/>
 </p>
