@@ -16,7 +16,7 @@
  <br><br>
  📚 In addition, I serve as a <b>Program Manager & Faculty Member @ Denning</b>, mentoring students from the <b>University of London & University of Greenwich</b> to bridge the gap between academic knowledge and industry practices.
 </div>
- 
+ <br />
 <div align="center"> 
   <a href="mailto:farzeenaliarif786@gmail.com">
     <img src="https://img.shields.io/badge/Gmail-6C22A6?style=for-the-badge&logo=gmail&logoColor=white" />
