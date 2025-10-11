@@ -28,7 +28,7 @@
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
 </div>
- 
+
 <h2 align="center">🚀💥 Tools & Technologies 💥🚀</h2>
 <br/>
 <div align="center">
