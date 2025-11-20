@@ -33,7 +33,7 @@
 <br/>
 <div align="center">
     <img src="https://skillicons.dev/icons?i=react,angular,javascript,typescript,express,nodejs,nestjs,github,tailwind,git,linux,docker,kubernetes,gitlab,azure" />
-    <img src="https://skillicons.dev/icons?i=prometheus,postgresql,supabase,prisma,firebase,mongodb,nextjs,nuxt,graphql,laravel,jenkins,terraform,aws,ansible,grafana,solidity" /><br>
+    <img src="https://skillicons.dev/icons?i=prometheus,postgresql,supabase,prisma,firebase,mongodb,nextjs,nuxt,graphql,jenkins,terraform,aws,ansible,grafana,solidity" /><br>
 </div>
 <br/>
 <hr/>
