@@ -90,10 +90,65 @@ I don't just build software — I **design, secure, and automate entire digital 
 
 <br/>
 
-<!-- Activity graph — dark cinematic style -->
+<!-- 🔥 ELITE ENGINEERING COMMAND CENTER -->
+
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=farzeen-ali&theme=react-dark&bg_color=0d0d0d&color=7e15f7&line=7e15f7&point=ffffff&area=true&area_color=7e15f720&hide_border=true&radius=8" width="100%" alt="Contribution Graph"/>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:7e15f7,100:0d1117&height=220&section=header&text=FARZEEN%20ALI&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Founder%20%40%20The%20Techzeen%20%E2%80%A2%20DevSecOps%20Architect%20%E2%80%A2%20Full-Stack%20Engineer&descAlignY=58&descAlign=50"/>
+
 </div>
+
+<br/>
+
+<!-- ⚡ Animated AI Matrix -->
+<div align="center">
+
+<img width="100%" src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=3000&pause=1000&color=7E15F7&center=true&vCenter=true&width=1200&height=80&lines=Building+Secure+%26+Scalable+Digital+Ecosystems+🚀;DevSecOps+%2B+CyberSecurity+%2B+AI+Automation+⚡;Full-Stack+%26+Mobile+Engineering+💻;1000%2B+Days+of+Consistency+🔥"/>
+
+</div>
+
+<br/>
+
+<!-- 💀 Premium Glass Stats -->
+<div align="center">
+
+<img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&theme=midnight-purple&hide_border=true&background=0d1117&stroke=7e15f7&ring=7e15f7&fire=ffffff&currStreakLabel=7e15f7"/>
+
+</div>
+
+<br/>
+
+<!-- 🔥 Neon Divider -->
+<p align="center">
+  <img width="100%" src="https://user-images.githubusercontent.com/74038190/216649449-0b7b5a6a-4b89-4b2b-8e6e-7f3b7b63d7db.gif">
+</p>
+
+<br/>
+
+<!-- ⚔️ CORE DOMAINS -->
+<h2 align="center">⚔️ CORE DOMAINS ⚔️</h2>
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/DevSecOps-7e15f7?style=for-the-badge&logo=docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/Cyber%20Security-111111?style=for-the-badge&logo=hackthebox&logoColor=7e15f7"/>
+<img src="https://img.shields.io/badge/AI%20Engineer-7e15f7?style=for-the-badge&logo=openai&logoColor=white"/>
+<img src="https://img.shields.io/badge/Cloud%20Architect-111111?style=for-the-badge&logo=amazonaws&logoColor=7e15f7"/>
+<img src="https://img.shields.io/badge/FullStack%20Engineer-7e15f7?style=for-the-badge&logo=react&logoColor=white"/>
+<img src="https://img.shields.io/badge/Mobile%20Apps-111111?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+
+</div>
+
+<br/>
+
+<!-- 🌌 Futuristic Visual -->
+<div align="center">
+
+<img width="100%" src="https://github.com/SP-XD/SP-XD/raw/main/images/dev-working_rounded.gif"/>
+
+</div>
+
+<br/>
 
 <br/>
 
