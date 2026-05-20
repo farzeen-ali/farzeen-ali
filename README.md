@@ -24,7 +24,7 @@
 
 > *"Most startups hire 4–5 specialists for what I do in one."*
 
-I'm **Farzeen Ali** — Founder of **[The Techzeen](https://www.youtube.com/@TheTechzeen)**, one of Pakistan's leading advanced tech engineering channels on YouTube. With **1000+ days of zero-miss consistency**, I bridge the gap between academic theory and real-world industry execution.
+I'm **Farzeen Ali** — Founder of **[The Techzeen](https://www.thetechzeen.com/)**, one of Pakistan's leading advanced tech engineering channels on YouTube. With **1000+ days of zero-miss consistency**, I bridge the gap between academic theory and real-world industry execution.
 
 I don't just build software — I **design, secure, and automate entire digital ecosystems** from frontend to cloud to AI, focused on scalability, security, and business impact.
 
