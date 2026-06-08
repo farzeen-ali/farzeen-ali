@@ -89,17 +89,19 @@ I am a **Solutions Architect, DevSecOps Engineer, and Tech Educator** specializi
 </div>
 
 ---
-
 ## ⚡ PERFORMANCE MATRIX & METRICS
 
 <div align="center">
   <img width="100%" src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=24&duration=3000&pause=1000&color=7E15F7&center=true&vCenter=true&width=1000&height=60&lines=System+Status%3A+Fully+Operational+🚀;Securing+Cloud+Infrastructures+⚡;Compiling+Next-Gen+AI+Agents+🤖;1000%2B+Days+Of+Pure+Consistency+🔥"/>
 </div>
 
-<div align="center" style="margin-top: 20px; margin-bottom: 20px;">
-  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&theme=midnight-purple&hide_border=true&background=0d1117&stroke=7e15f7&ring=7e15f7&fire=ffffff&currStreakLabel=7e15f7"/>
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=midnight-purple&hide_border=true&background=0d1117&icon_color=7e15f7&text_color=ffffff&title_color=7e15f7"/>
+<br/>
+
+<div align="center">
+  <img width="85%" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&theme=midnight-purple&hide_border=true&background=0d1117&stroke=7e15f7&ring=7e15f7&fire=ffffff&currStreakLabel=7e15f7"/>
 </div>
+
+<br/>
 
 <div align="center">
 
@@ -131,8 +133,9 @@ If you are a founder, enterprise tech lead, or fast-growing startup looking for 
 * 🤖 **Automate:** Self-correcting AI workflows, bespoke multi-agent architecture, & RAG integrations.
 * 🛡️ **Audit:** Comprehensive offensive pentesting, vulnerability assessments, & red team simulations.
 
-**📡 Core Broadcasts →** [The Techzeen on YouTube](https://www.youtube.com/@TheTechzeen)  
-**📩 Encrypted Comms →** [techzeen10@gmail.com](mailto:techzeen10@gmail.com)
+**📺 YouTube Channel →** [The Techzeen on YouTube](https://www.youtube.com/@TheTechzeen)  
+**🌐 Official Website →** [thetechzeen.com](https://www.thetechzeen.com/)  
+**📧 Business Email →** [techzeen10@gmail.com](mailto:techzeen10@gmail.com)
 
 <br/>
 
