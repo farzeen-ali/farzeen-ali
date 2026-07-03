@@ -6,7 +6,7 @@
   ⚡ FOUNDER & CEO @ THE TECHZEEN &nbsp;•&nbsp; 1000+ DAYS OF CONSISTENCY &nbsp;•&nbsp; ELITE ARCHITECT
 </h3>
 
-<br/>
+<br/> 
 
 <div align="center">
 
