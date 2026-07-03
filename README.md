@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=7e15f7&size=38&center=true&vCenter=true&width=700&height=80&duration=2000&lines=Hey+There!+👋+I'm+Farzeen+Ali;Founder+%40+The+Techzeen+🎥;DevSecOps+%2B+Cyber+Security+🔒;Full-Stack+%2B+Mobile+Architect+💻;AI+Automation+Engineer+🤖" />
 </div>
-
+  
 <h3 align="center">
   ⚡ FOUNDER & CEO @ THE TECHZEEN &nbsp;•&nbsp; 1000+ DAYS OF CONSISTENCY &nbsp;•&nbsp; ELITE ARCHITECT
 </h3>
