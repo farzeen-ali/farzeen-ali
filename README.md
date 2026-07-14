@@ -1,5 +1,4 @@
 <!--
-  SEO / DISCOVERY KEYWORDS (not visible when rendered, helps search indexing of this page):
   Farzeen Ali, The Techzeen, Founder and CEO of The Techzeen, Full Stack Developer Pakistan,
   DevSecOps Engineer, AI Automation Engineer, React Native Developer, Next.js Developer,
   NestJS Developer, Cyber Security Expert Pakistan, Cloud Architect AWS Azure GCP,
@@ -20,7 +19,7 @@
 
 <br/><br/>
 
-<!-- LIVE, REAL-TIME BADGES — genuinely rare on a GitHub profile -->
+<!-- LIVE, REAL-TIME BADGES  -->
 <a href="https://www.youtube.com/@TheTechzeen"><img src="https://img.shields.io/youtube/channel/subscribers/UCl-HgHmS4p2OuluyW6TqkLQ?style=for-the-badge&logo=youtube&color=FF0000&label=LIVE%20SUBSCRIBERS" /></a>
 <a href="https://www.youtube.com/@TheTechzeen"><img src="https://img.shields.io/youtube/channel/views/UCl-HgHmS4p2OuluyW6TqkLQ?style=for-the-badge&logo=youtube&color=FF0000&label=LIVE%20VIEWS" /></a>
 <img src="https://komarev.com/ghpvc/?username=farzeen-ali&style=for-the-badge&color=7e15f7&label=PROFILE+VIEWS"/>
@@ -128,8 +127,8 @@ For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engin
 
 <div align="center">
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&icon_color=b347ff&text_color=c9d1d9&cache_seconds=86400"/>
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&text_color=c9d1d9&cache_seconds=86400"/>
+<!-- <img width="49%" src="https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&icon_color=b347ff&text_color=c9d1d9&cache_seconds=86400"/> -->
+<!-- <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&text_color=c9d1d9&cache_seconds=86400"/> -->
 
 <br/><br/>
 
@@ -141,14 +140,10 @@ For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engin
 
 <br/><br/>
 
-<img width="90%" src="https://github-profile-trophy.vercel.app/?username=farzeen-ali&theme=algolia&no-frame=true&no-bg=true&margin-w=12&row=1&column=6"/>
+<!-- <img width="90%" src="https://github-profile-trophy.vercel.app/?username=farzeen-ali&theme=algolia&no-frame=true&no-bg=true&margin-w=12&row=1&column=6"/> -->
 
 </div>
 
-<!--
-  🐍 CONTRIBUTION SNAKE — one-time GitHub Action setup required (see chat instructions).
-  Safe to leave in now; it just won't show an image until the workflow runs once.
--->
 <div align="center">
   <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/output/github-contribution-grid-snake.svg#gh-dark-mode-only"/>
 </div>
@@ -179,7 +174,7 @@ If you're a founder, enterprise tech lead, or fast-growing startup looking for a
 
 > ***"1,000+ days. Zero days off. One mission — make complex tech actually build things."***
 >
-> **— Farzeen Ali, Founder & CEO of The Techzeen**
+> **— Farzeen Ali (Mr. Consistent), Founder & CEO of The Techzeen**
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:7e15f7,100:0d1117&height=140&section=footer"/>
 
