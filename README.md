@@ -1,149 +1,190 @@
+<!--
+  SEO / DISCOVERY KEYWORDS (not visible when rendered, helps search indexing of this page):
+  Farzeen Ali, The Techzeen, Founder and CEO of The Techzeen, Full Stack Developer Pakistan,
+  DevSecOps Engineer, AI Automation Engineer, React Native Developer, Next.js Developer,
+  NestJS Developer, Cyber Security Expert Pakistan, Cloud Architect AWS Azure GCP,
+  Tech YouTuber Pakistan, Blockchain Solidity Developer, n8n AI Automation Engineer,
+  RAG AI Engineer, Kubernetes Docker Terraform Engineer, Tech Educator Pakistan
+-->
+
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&color=7e15f7&size=38&center=true&vCenter=true&width=700&height=80&duration=2000&lines=Hey+There!+👋+I'm+Farzeen+Ali;Founder+%40+The+Techzeen+🎥;DevSecOps+%2B+Cyber+Security+🔒;Full-Stack+%2B+Mobile+Architect+💻;AI+Automation+Engineer+🤖" />
-</div>
-  
-<h3 align="center">
-  ⚡ FOUNDER & CEO @ THE TECHZEEN &nbsp;•&nbsp; 1000+ DAYS OF CONSISTENCY &nbsp;•&nbsp; ELITE ARCHITECT
-</h3>
 
-<br/> 
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/hero-banner.svg" alt="Farzeen Ali — Founder & CEO of The Techzeen"/>
 
-<div align="center">
+<br/>
 
-  [![YouTube](https://img.shields.io/badge/The%20Techzeen-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@TheTechzeen)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/farzeen-ali-533479204)
-  [![Gmail](https://img.shields.io/badge/Gmail-6C22A6?style=for-the-badge&logo=gmail&logoColor=white)](mailto:techzeen10@gmail.com)
+<a href="https://www.youtube.com/@TheTechzeen"><img src="https://img.shields.io/badge/The%20Techzeen-FF0000?style=for-the-badge&logo=youtube&logoColor=white" /></a>
+<a href="https://www.thetechzeen.com/"><img src="https://img.shields.io/badge/Website-7e15f7?style=for-the-badge&logo=googlechrome&logoColor=white" /></a>
+<a href="https://www.linkedin.com/in/farzeen-ali-533479204"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+<a href="mailto:techzeen10@gmail.com"><img src="https://img.shields.io/badge/Gmail-6C22A6?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+
+<br/><br/>
+
+<!-- LIVE, REAL-TIME BADGES — genuinely rare on a GitHub profile -->
+<a href="https://www.youtube.com/@TheTechzeen"><img src="https://img.shields.io/youtube/channel/subscribers/UCl-HgHmS4p2OuluyW6TqkLQ?style=for-the-badge&logo=youtube&color=FF0000&label=LIVE%20SUBSCRIBERS" /></a>
+<a href="https://www.youtube.com/@TheTechzeen"><img src="https://img.shields.io/youtube/channel/views/UCl-HgHmS4p2OuluyW6TqkLQ?style=for-the-badge&logo=youtube&color=FF0000&label=LIVE%20VIEWS" /></a>
+<img src="https://komarev.com/ghpvc/?username=farzeen-ali&style=for-the-badge&color=7e15f7&label=PROFILE+VIEWS"/>
+<img src="https://img.shields.io/github/followers/farzeen-ali?style=for-the-badge&color=7e15f7&labelColor=0d1117"/>
 
 </div>
 
 <br/>
 
-<!-- 🌌 FUTURISTIC COMMAND CENTER HEADER -->
-<div align="center">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:7e15f7,100:0d1117&height=240&section=header&text=FARZEEN%20ALI&fontSize=65&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Mr.%20Consistent%20•%20DevSecOps%20Architect%20•%20AI%20Full-Stack%20Engineer&descAlignY=58&descAlign=50"/>
-</div>
+<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
 
----
-
-## 👨‍💻 DEPLOYMENT PROFILE: FARZEEN ALI
+## 👨‍💻 Deployment Profile
 
 > **"Most startups hire 4–5 specialists for what I do in one."**
 
-I am a **Solutions Architect, DevSecOps Engineer, and Tech Educator** specializing in elite, security-first digital infrastructure. As the Founder of **[The Techzeen](https://www.thetechzeen.com/)**, I run one of Pakistan's premier advanced tech engineering ecosystems on YouTube—backed by **1000+ days of zero-miss consistency**. 
+I'm **Farzeen Ali**, **Founder & CEO of The Techzeen** — Pakistan's #1 tech YouTube channel — and a Solutions Architect, DevSecOps Engineer & Tech Educator specializing in elite, security-first digital infrastructure.
 
-* **What I Do:** I design, secure, and automate hyper-scalable systems from edge devices to global cloud networks.
-* **Academic Leadership:** Serving as **Program Manager & Faculty @ Denning**, mentoring the next generation of engineers under the curriculum of the **University of London** & **University of Greenwich**.
+For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engineers how to build, secure, and automate production-grade systems — from a single HTML tag to distributed cloud infrastructure.
 
----
+| | |
+|---|---|
+| 🏛️ **Role** | Founder & CEO of **[The Techzeen](https://www.thetechzeen.com/)** |
+| 🏗️ **What I do** | Design, secure, and automate hyper-scalable systems — edge devices to global cloud |
+| 🎓 **Academic role** | Program Manager & Faculty @ **Denning**, mentoring engineers under **University of London** & **University of Greenwich** curricula |
+| 🎥 **Education** | 20+ full production courses taught live to a growing developer community across Pakistan & beyond |
+| 🔥 **Track record** | 1,000+ days of zero-miss, daily technical content — no shortcuts, no reruns |
 
-## ⚔️ CORE DOMAINS
+<br/>
 
-<div align="center" style="margin-top: 15px; margin-bottom: 15px;">
-  <img src="https://img.shields.io/badge/DevSecOps-7e15f7?style=for-the-badge&logo=docker&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Cyber%20Security-111111?style=for-the-badge&logo=hackthebox&logoColor=7e15f7"/>
-  <img src="https://img.shields.io/badge/AI%20Engineer-7e15f7?style=for-the-badge&logo=openai&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Cloud%20Architect-111111?style=for-the-badge&logo=amazonaws&logoColor=7e15f7"/>
-  <img src="https://img.shields.io/badge/FullStack%20Engineer-7e15f7?style=for-the-badge&logo=react&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Mobile%20Apps-111111?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
+
+## 🌌 Core Domains — Live Orbit
+
+<div align="center">
+<img width="60%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/skills-orbit.svg" alt="Farzeen Ali core engineering domains orbiting animation"/>
+</div>
+
+<div align="center">
+
+💻 Full-Stack &nbsp;•&nbsp; ⚙️ DevSecOps &nbsp;•&nbsp; 🔒 Cyber Security &nbsp;•&nbsp; 🤖 AI Automation &nbsp;•&nbsp; ⛓️ Blockchain &nbsp;•&nbsp; 📱 Mobile &nbsp;•&nbsp; ☁️ Cloud &nbsp;•&nbsp; 🎥 Tech Education
+
 </div>
 
 | Capability | Tactical Execution |
 |---|---|
 | 💻 **Full-Stack & Mobile** | High-throughput web & cross-platform ecosystems — Next.js, React Native, NestJS |
 | ⚙️ **DevSecOps & Cloud** | Zero-Trust cloud configurations on AWS, Azure, GCP via declarative IaC & CI/CD |
-| 🔒 **Cybersecurity & Pentesting** | Offensive audits, vulnerability management, SIEM/SOC ops, and hardening |
-| 🤖 **AI Agentic Automation** | Production LLM orchestration, RAG pipelines, and self-healing workflow agents |
+| 🔒 **Cybersecurity & Pentesting** | Offensive audits, vulnerability management, SIEM/SOC ops, and system hardening |
+| 🤖 **AI Agentic Automation** | Production LLM orchestration, RAG pipelines, n8n workflows, self-healing agents |
+| ⛓️ **Blockchain Engineering** | Smart contract development & Solidity-based decentralized systems |
 
----
+<br/>
 
-## 🛠️ TECH STACK COMMAND CENTER
+<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
 
-<div align="left">
+## 💻 Live Terminal Session
 
-### 🌐 Frontend & Mobile Architecture
-![React](https://skillicons.dev/icons?i=react,nextjs,nuxt,angular,typescript,javascript,tailwind,react)  
-`React.js` `Next.js 16` `Nuxt.js` `Angular 19` `React Native (CLI & Expo)` `TypeScript` `Tailwind CSS`
+<div align="center">
+<img width="85%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/terminal-boot.svg" alt="Farzeen Ali animated terminal — Founder and CEO of The Techzeen"/>
+</div>
 
-### 🔧 Backend, APIs & Orchestration
-![Backend](https://skillicons.dev/icons?i=nodejs,express,nestjs,graphql,prisma)  
-`Node.js` `Express` `NestJS` `GraphQL` `REST APIs` `Prisma ORM`
+<br/>
 
-### 🗄️ Database Clusters & BaaS
-![Databases](https://skillicons.dev/icons?i=postgresql,mongodb,mysql,redis,firebase,supabase)  
+<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
+
+## 🛠️ Tech Stack Command Center
+
+**🌐 Frontend & Mobile**
+
+![Frontend and mobile stack](https://skillicons.dev/icons?i=html,css,js,react,nextjs,nuxt,vue,angular,typescript,tailwind,reactnative)
+`HTML` `CSS` `JavaScript` `React.js` `Next.js` `Nuxt.js` `Vue` `Angular` `TypeScript` `Tailwind CSS` `React Native (CLI & Expo)`
+
+**🔧 Backend, APIs & Orchestration**
+
+![Backend and API stack](https://skillicons.dev/icons?i=nodejs,express,nestjs,graphql,prisma,java,cpp)
+`Node.js` `Express` `NestJS` `NestJS Microservices` `GraphQL` `REST APIs` `Prisma ORM` `Java` `C++`
+
+**🗄️ Databases & BaaS**
+
+![Database stack](https://skillicons.dev/icons?i=postgresql,mongodb,mysql,redis,firebase,supabase)
 `PostgreSQL` `MongoDB` `MySQL` `Redis` `Supabase` `Appwrite` `Firebase`
 
-### ☁️ DevSecOps, Infrastructure & Security Pipelines
-![DevOps](https://skillicons.dev/icons?i=aws,azure,gcp,docker,kubernetes,terraform,ansible,jenkins,github,gitlab)  
-`AWS` `Azure` `GCP` `Docker` `Kubernetes` `Terraform` `Ansible` `Jenkins` `GitHub Actions` `GitLab CI/CD`  
+**☁️ DevSecOps, Infrastructure & Security Pipelines**
+
+![DevSecOps and cloud stack](https://skillicons.dev/icons?i=aws,azure,gcp,docker,kubernetes,terraform,ansible,jenkins,github,gitlab)
+`AWS` `Azure` `GCP` `Docker` `Kubernetes` `Terraform` `Ansible` `Jenkins` `GitHub Actions` `GitLab CI/CD`
 `SonarQube` `HashiCorp Vault` `GitLeaks` `Kyverno` `DefectDojo` `Syft` `Grype` `Trivy`
 
-### 🔒 Offensive Cybersecurity & Pentesting Toolkit
-![Security](https://skillicons.dev/icons?i=kali,linux)  
-`Kali Linux` `Parrot OS` `Wireshark` `Nmap` `Metasploit` `Burp Suite` `Nessus` `Nikto` `Hydra` `Hashcat`  
+**🔒 Offensive Cybersecurity & Pentesting Toolkit**
+
+![Cybersecurity toolkit](https://skillicons.dev/icons?i=kali,linux)
+`Kali Linux` `Parrot OS` `Wireshark` `Nmap` `Metasploit` `Burp Suite` `Nessus` `Nikto` `Hydra` `Hashcat`
 `Ghidra` `Autopsy` `Splunk` `Wazuh` `QRadar` `Zero Trust Systems` `SIEM / SOC Operations`
 
-### 🤖 Intelligent Systems & Observability
-![Monitoring](https://skillicons.dev/icons?i=grafana,prometheus)  
-`LLM Integration` `Autonomous AI Agents` `DevOps AI Pipelines` `RAG Systems` `ELK Stack` `Grafana` `Prometheus`
+**🤖 AI, Automation & Observability**
 
-</div>
+![Observability and AI stack](https://skillicons.dev/icons?i=grafana,prometheus,blender)
+`LLM Integration` `Autonomous AI Agents` `n8n Automation` `RAG Systems` `AI Data Engineering` `ELK Stack` `Grafana` `Prometheus`
 
----
-## ⚡ PERFORMANCE MATRIX & METRICS
+**⛓️ Blockchain & CS Fundamentals**
 
-<div align="center">
-  <img width="100%" src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=24&duration=3000&pause=1000&color=7E15F7&center=true&vCenter=true&width=1000&height=60&lines=System+Status%3A+Fully+Operational+🚀;Securing+Cloud+Infrastructures+⚡;Compiling+Next-Gen+AI+Agents+🤖;1000%2B+Days+Of+Pure+Consistency+🔥"/>
-</div>
+`Solidity` `Smart Contracts` `Web3` `OOP` `Data Structures & Algorithms`
 
 <br/>
 
-<div align="center">
-  <img width="85%" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&theme=midnight-purple&hide_border=true&background=0d1117&stroke=7e15f7&ring=7e15f7&fire=ffffff&currStreakLabel=7e15f7"/>
-</div>
+<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
 
-<br/>
+## ⚡ Performance Matrix & Live Metrics
 
 <div align="center">
 
-### 📊 METRIC ACTIVITY STREAM
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&icon_color=b347ff&text_color=c9d1d9"/>
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&text_color=c9d1d9"/>
+
+<br/><br/>
+
+<img width="85%" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&theme=midnight-purple&hide_border=true&background=0d1117&stroke=7e15f7&ring=7e15f7&fire=ffffff&currStreakLabel=7e15f7"/>
+
+<br/><br/>
 
 <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=farzeen-ali&bg_color=0D0221&color=b347ff&line=7e15f7&point=ff6ef7&area=true&hide_border=true&area_color=2d0a5c"/>
 
+<br/><br/>
+
+<img width="90%" src="https://github-profile-trophy.vercel.app/?username=farzeen-ali&theme=algolia&no-frame=true&no-bg=true&margin-w=12&row=1&column=6"/>
+
+</div>
+
+<!--
+  🐍 CONTRIBUTION SNAKE — one-time GitHub Action setup required (see chat instructions).
+  Safe to leave in now; it just won't show an image until the workflow runs once.
+-->
+<div align="center">
+  <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/output/github-contribution-grid-snake.svg#gh-dark-mode-only"/>
 </div>
 
 <br/>
 
-<!-- 🔥 Neon Space Divider -->
-<p align="center">
-  <img width="100%" src="https://user-images.githubusercontent.com/74038190/216649449-0b7b5a6a-4b89-4b2b-8e6e-7f3b7b63d7db.gif">
-</p>
+<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
+
+## 🤝 Strategic Collaborations
+
+If you're a founder, enterprise tech lead, or fast-growing startup looking for a heavy-hitting technical co-pilot to build and secure your roadmap, let's deploy together:
+
+* 🏗️ **Architect** — Production web architectures & native cross-platform engineering
+* 🔐 **Harden** — Enterprise-grade DevSecOps pipelines, automated compliance, cloud hardening
+* 🤖 **Automate** — Self-correcting AI workflows, bespoke multi-agent architecture, RAG integrations
+* 🛡️ **Audit** — Offensive pentesting, vulnerability assessments, red team simulations
+* 🎓 **Train** — Corporate/team upskilling across full-stack, DevSecOps, and AI engineering
 
 <div align="center">
-  <img width="95%" src="https://github.com/SP-XD/SP-XD/raw/main/images/dev-working_rounded.gif" style="border-radius: 12px;"/>
+
+**📺 YouTube →** [The Techzeen](https://www.youtube.com/@TheTechzeen) &nbsp;|&nbsp; **🌐 Website →** [thetechzeen.com](https://www.thetechzeen.com/) &nbsp;|&nbsp; **📧 Business →** [techzeen10@gmail.com](mailto:techzeen10@gmail.com)
+
 </div>
-
----
-
-## 🤝 STRATEGIC COLLABORATIONS
-
-If you are a founder, enterprise tech lead, or fast-growing startup looking for a heavy-hitting technical co-pilot to optimize and secure your roadmap, let's deploy together:
-
-* 🏗️ **Architect:** Production web architectures & native cross-platform engineering.
-* 🔐 **Harden:** Enterprise-grade DevSecOps pipelines, automated compliance, & cloud hardening.
-* 🤖 **Automate:** Self-correcting AI workflows, bespoke multi-agent architecture, & RAG integrations.
-* 🛡️ **Audit:** Comprehensive offensive pentesting, vulnerability assessments, & red team simulations.
-
-**📺 YouTube Channel →** [The Techzeen on YouTube](https://www.youtube.com/@TheTechzeen)  
-**🌐 Official Website →** [thetechzeen.com](https://www.thetechzeen.com/)  
-**📧 Business Email →** [techzeen10@gmail.com](mailto:techzeen10@gmail.com)
 
 <br/>
 
-<!-- ████ ELITE FINAL QUOTE CARD ████ -->
 <div align="center">
 
-> ***"1000+ days. Zero days off. One mission — make complex tech actually build things."***
+> ***"1,000+ days. Zero days off. One mission — make complex tech actually build things."***
 >
-> **— Farzeen Ali, Mr. Consistent**
+> **— Farzeen Ali, Founder & CEO of The Techzeen**
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:7e15f7,100:0d1117&height=140&section=footer"/>
 
 </div>

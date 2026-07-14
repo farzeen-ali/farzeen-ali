@@ -1,0 +1,52 @@
+<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#12081f"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="892" height="372" rx="14" fill="url(#termBg)" stroke="#7e15f7" stroke-width="1.5"/>
+  <path d="M4,32 a14,14 0 0 1 14,-14 h856 a14,14 0 0 1 14,14 v20 h-884 z" fill="#161b22"/>
+  <circle cx="30" cy="18" r="6" fill="#ff5f56"/>
+  <circle cx="52" cy="18" r="6" fill="#ffbd2e"/>
+  <circle cx="74" cy="18" r="6" fill="#27c93f"/>
+  <text x="450" y="23" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">farzeen@techzeen: ~</text>
+
+  <g font-family="'Courier New', monospace" font-size="19">
+    <text x="30" y="80" fill="#e6e6ff">
+      <tspan fill="#b347ff">$ </tspan>whoami
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.02;0.85;0.9;1" dur="14s" begin="0s" repeatCount="indefinite"/>
+    </text>
+    <text x="30" y="112" fill="#ff6ef7">
+      &gt; Farzeen Ali — Founder &amp; CEO @ The Techzeen
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.1;0.85;0.9;1" dur="14s" begin="0s" repeatCount="indefinite"/>
+    </text>
+
+    <text x="30" y="162" fill="#e6e6ff">
+      <tspan fill="#b347ff">$ </tspan>cat mission.txt
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.2;0.85;0.9;1" dur="14s" begin="0s" repeatCount="indefinite"/>
+    </text>
+    <text x="30" y="194" fill="#e6e6ff">
+      &gt; 1,000+ days shipped. Zero skips. Zero excuses.
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.3;0.85;0.9;1" dur="14s" begin="0s" repeatCount="indefinite"/>
+    </text>
+
+    <text x="30" y="244" fill="#e6e6ff">
+      <tspan fill="#b347ff">$ </tspan>./deploy.sh --stack=fullstack,devsecops,ai,security
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.45;0.85;0.9;1" dur="14s" begin="0s" repeatCount="indefinite"/>
+    </text>
+    <text x="30" y="276" fill="#7effa0">
+      &gt; Deploying elite engineering education worldwide... ✅
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.6;0.85;0.9;1" dur="14s" begin="0s" repeatCount="indefinite"/>
+    </text>
+
+    <text x="30" y="320" fill="#e6e6ff">
+      <tspan fill="#b347ff">$ </tspan>
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.75;0.85;0.9;1" dur="14s" begin="0s" repeatCount="indefinite"/>
+    </text>
+    <rect x="46" y="306" width="11" height="20" fill="#b347ff">
+      <animate attributeName="opacity" values="1;1;0;0" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

@@ -1,0 +1,83 @@
+<svg viewBox="0 0 1200 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="45%" stop-color="#180a2e"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#7e15f7" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#7e15f7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b347ff"/>
+      <stop offset="50%" stop-color="#ff6ef7"/>
+      <stop offset="100%" stop-color="#7e15f7"/>
+    </linearGradient>
+    <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur">
+        <animate attributeName="stdDeviation" values="3;8;3" dur="3s" repeatCount="indefinite"/>
+      </feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="340" fill="url(#bgGrad)"/>
+  <rect width="1200" height="340" fill="url(#glowGrad)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- flowing circuit lines -->
+  <g stroke="#7e15f7" stroke-opacity="0.35" fill="none" stroke-width="1.5">
+    <path d="M0,60 H260 L300,100 H520" stroke-dasharray="8 10">
+      <animate attributeName="stroke-dashoffset" from="0" to="-180" dur="6s" repeatCount="indefinite"/>
+    </path>
+    <path d="M1200,280 H900 L860,240 H640" stroke-dasharray="8 10">
+      <animate attributeName="stroke-dashoffset" from="0" to="-180" dur="7s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0,300 H160 L200,260 H420" stroke-dasharray="6 12">
+      <animate attributeName="stroke-dashoffset" from="0" to="-180" dur="5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- floating particles -->
+  <g fill="#b347ff">
+    <circle cx="120" cy="300" r="2.5"><animate attributeName="cy" values="320;0" dur="7s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;0" dur="7s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle cx="300" cy="300" r="2" fill="#ff6ef7"><animate attributeName="cy" values="320;0" dur="9s" begin="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;0" dur="9s" begin="1.5s" repeatCount="indefinite"/></circle>
+    <circle cx="500" cy="300" r="3"><animate attributeName="cy" values="320;0" dur="6s" begin="0.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;0" dur="6s" begin="0.8s" repeatCount="indefinite"/></circle>
+    <circle cx="700" cy="300" r="2" fill="#ff6ef7"><animate attributeName="cy" values="320;0" dur="8s" begin="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;0" dur="8s" begin="2.4s" repeatCount="indefinite"/></circle>
+    <circle cx="900" cy="300" r="2.5"><animate attributeName="cy" values="320;0" dur="7.5s" begin="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;0" dur="7.5s" begin="1s" repeatCount="indefinite"/></circle>
+    <circle cx="1080" cy="300" r="2" fill="#ff6ef7"><animate attributeName="cy" values="320;0" dur="6.5s" begin="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;0" dur="6.5s" begin="3s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <!-- title -->
+  <text x="600" y="150" text-anchor="middle" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="72" font-weight="900" fill="url(#titleGrad)" filter="url(#glowFilter)" letter-spacing="4">FARZEEN ALI</text>
+
+  <!-- crossfading taglines -->
+  <g font-family="'Courier New', monospace" font-size="27" text-anchor="middle" fill="#e6e6ff">
+    <text x="600" y="210">
+      Founder &amp; CEO @ The Techzeen 🎥
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.025;0.225;0.25;1" dur="12s" begin="0s" repeatCount="indefinite"/>
+    </text>
+    <text x="600" y="210" opacity="0">
+      DevSecOps Architect | Cyber Security 🔒
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25;0.275;0.475;0.5;1" dur="12s" begin="0s" repeatCount="indefinite"/>
+    </text>
+    <text x="600" y="210" opacity="0">
+      Full-Stack + Mobile + AI Automation Engineer 💻
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.525;0.725;0.75;1" dur="12s" begin="0s" repeatCount="indefinite"/>
+    </text>
+    <text x="600" y="210" opacity="0">
+      1,000+ Days. Zero Skips. Pure Consistency. 🔥
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.75;0.775;0.975;1" dur="12s" begin="0s" repeatCount="indefinite"/>
+    </text>
+  </g>
+
+  <text x="600" y="270" text-anchor="middle" font-family="Verdana, sans-serif" font-size="15" fill="#9b8bbf" letter-spacing="2">PAKISTAN'S #1 TECH YOUTUBE CHANNEL • 100,000+ DEVELOPERS TAUGHT</text>
+
+  <!-- base line glow -->
+  <rect x="0" y="332" width="1200" height="3" fill="url(#titleGrad)" opacity="0.7"/>
+</svg>
