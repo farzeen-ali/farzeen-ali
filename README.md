@@ -128,8 +128,8 @@ For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engin
 
 <div align="center">
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&icon_color=b347ff&text_color=c9d1d9"/>
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&text_color=c9d1d9"/>
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=farzeen-ali&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&icon_color=b347ff&text_color=c9d1d9&cache_seconds=86400"/>
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=farzeen-ali&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=7e15f7&text_color=c9d1d9&cache_seconds=86400"/>
 
 <br/><br/>
 
