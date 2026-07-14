@@ -1,64 +1,56 @@
-<svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 600 650" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#ff6ef7"/>
       <stop offset="100%" stop-color="#7e15f7"/>
     </radialGradient>
     <filter id="coreGlow" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="6">
-        <animate attributeName="stdDeviation" values="4;10;4" dur="2.5s" repeatCount="indefinite"/>
+      <feGaussianBlur stdDeviation="7">
+        <animate attributeName="stdDeviation" values="5;11;5" dur="2.5s" repeatCount="indefinite"/>
       </feGaussianBlur>
     </filter>
   </defs>
-
-  <!-- static faint rings -->
-  <circle cx="280" cy="280" r="140" fill="none" stroke="#7e15f7" stroke-opacity="0.25" stroke-width="1.5"/>
-  <circle cx="280" cy="280" r="215" fill="none" stroke="#7e15f7" stroke-opacity="0.15" stroke-width="1.5"/>
-
-  <!-- orbit ring 1 (inner, clockwise) -->
+  <circle cx="300" cy="300" r="170" fill="none" stroke="#7e15f7" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="2 8"/>
+  <circle cx="300" cy="300" r="260" fill="none" stroke="#b347ff" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="2 10"/>
   <g>
-    <animateTransform attributeName="transform" type="rotate" from="0 280 280" to="360 280 280" dur="18s" repeatCount="indefinite"/>
-    <g transform="translate(280,140)">
-      <circle r="27" fill="#0d1117" stroke="#7e15f7" stroke-width="2"/>
-      <text x="0" y="9" text-anchor="middle" font-size="24">💻</text>
+    <animateTransform attributeName="transform" type="rotate" from="0 300 300" to="360 300 300" dur="18s" repeatCount="indefinite"/>
+    <g transform="translate(300,130)">
+      <circle r="34" fill="#0d1117" stroke="#7e15f7" stroke-width="3"/>
+      <text x="0" y="11" text-anchor="middle" font-size="30">CODE</text>
     </g>
-    <g transform="translate(420,280)">
-      <circle r="27" fill="#0d1117" stroke="#ff6ef7" stroke-width="2"/>
-      <text x="0" y="9" text-anchor="middle" font-size="24">🔒</text>
+    <g transform="translate(470,300)">
+      <circle r="34" fill="#0d1117" stroke="#ff6ef7" stroke-width="3"/>
+      <text x="0" y="11" text-anchor="middle" font-size="18" fill="#ffffff">SEC</text>
     </g>
-    <g transform="translate(280,420)">
-      <circle r="27" fill="#0d1117" stroke="#7e15f7" stroke-width="2"/>
-      <text x="0" y="9" text-anchor="middle" font-size="24">⚙️</text>
+    <g transform="translate(300,470)">
+      <circle r="34" fill="#0d1117" stroke="#7e15f7" stroke-width="3"/>
+      <text x="0" y="11" text-anchor="middle" font-size="16" fill="#ffffff">OPS</text>
     </g>
-    <g transform="translate(140,280)">
-      <circle r="27" fill="#0d1117" stroke="#ff6ef7" stroke-width="2"/>
-      <text x="0" y="9" text-anchor="middle" font-size="24">🤖</text>
+    <g transform="translate(130,300)">
+      <circle r="34" fill="#0d1117" stroke="#ff6ef7" stroke-width="3"/>
+      <text x="0" y="11" text-anchor="middle" font-size="16" fill="#ffffff">AI</text>
     </g>
   </g>
-
-  <!-- orbit ring 2 (outer, counter-clockwise) -->
   <g>
-    <animateTransform attributeName="transform" type="rotate" from="360 280 280" to="0 280 280" dur="26s" repeatCount="indefinite"/>
-    <g transform="translate(432,127)">
-      <circle r="24" fill="#0d1117" stroke="#b347ff" stroke-width="2"/>
-      <text x="0" y="8" text-anchor="middle" font-size="20">⛓️</text>
+    <animateTransform attributeName="transform" type="rotate" from="360 300 300" to="0 300 300" dur="26s" repeatCount="indefinite"/>
+    <g transform="translate(484,116)">
+      <circle r="30" fill="#0d1117" stroke="#b347ff" stroke-width="3"/>
+      <text x="0" y="6" text-anchor="middle" font-size="14" fill="#ffffff">CHAIN</text>
     </g>
-    <g transform="translate(432,432)">
-      <circle r="24" fill="#0d1117" stroke="#b347ff" stroke-width="2"/>
-      <text x="0" y="8" text-anchor="middle" font-size="20">📱</text>
+    <g transform="translate(484,484)">
+      <circle r="30" fill="#0d1117" stroke="#b347ff" stroke-width="3"/>
+      <text x="0" y="6" text-anchor="middle" font-size="14" fill="#ffffff">MOBILE</text>
     </g>
-    <g transform="translate(127,432)">
-      <circle r="24" fill="#0d1117" stroke="#b347ff" stroke-width="2"/>
-      <text x="0" y="8" text-anchor="middle" font-size="20">☁️</text>
+    <g transform="translate(116,484)">
+      <circle r="30" fill="#0d1117" stroke="#b347ff" stroke-width="3"/>
+      <text x="0" y="6" text-anchor="middle" font-size="14" fill="#ffffff">CLOUD</text>
     </g>
-    <g transform="translate(127,127)">
-      <circle r="24" fill="#0d1117" stroke="#b347ff" stroke-width="2"/>
-      <text x="0" y="8" text-anchor="middle" font-size="20">🎥</text>
+    <g transform="translate(116,116)">
+      <circle r="30" fill="#0d1117" stroke="#b347ff" stroke-width="3"/>
+      <text x="0" y="6" text-anchor="middle" font-size="14" fill="#ffffff">EDU</text>
     </g>
   </g>
-
-  <!-- core -->
-  <circle cx="280" cy="280" r="58" fill="url(#coreGrad)" filter="url(#coreGlow)"/>
-  <text x="280" y="271" text-anchor="middle" font-family="Verdana, sans-serif" font-size="20" font-weight="bold" fill="#0d1117">FARZEEN</text>
-  <text x="280" y="293" text-anchor="middle" font-family="Verdana, sans-serif" font-size="12" fill="#0d1117">CEO • THE TECHZEEN</text>
+  <circle cx="300" cy="300" r="95" fill="url(#coreGrad)" filter="url(#coreGlow)"/>
+  <text x="300" y="315" text-anchor="middle" font-family="Verdana, sans-serif" font-size="52" font-weight="bold" fill="#0d1117">FA</text>
+  <text x="300" y="610" text-anchor="middle" font-family="Verdana, sans-serif" font-size="17" fill="#c9baf0" letter-spacing="1">FARZEEN ALI - FOUNDER AND CEO, THE TECHZEEN</text>
 </svg>

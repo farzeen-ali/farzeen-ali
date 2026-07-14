@@ -1,0 +1,22 @@
+<svg viewBox="0 0 1200 8" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="baseLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="15%" stop-color="#7e15f7"/>
+      <stop offset="50%" stop-color="#b347ff"/>
+      <stop offset="85%" stop-color="#7e15f7"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="comet" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6ef7" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ff6ef7" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="3" width="1200" height="2" fill="url(#baseLine)" opacity="0.55"/>
+
+  <rect x="-160" y="0" width="160" height="8" fill="url(#comet)">
+    <animate attributeName="x" values="-160;1200" dur="3.2s" repeatCount="indefinite"/>
+  </rect>
+</svg>

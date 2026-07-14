@@ -30,7 +30,7 @@
 
 <br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/divider.svg"/>
 
 ## 👨‍💻 Deployment Profile
 
@@ -40,41 +40,37 @@ I'm **Farzeen Ali**, **Founder & CEO of The Techzeen** — Pakistan's #1 tech Yo
 
 For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engineers how to build, secure, and automate production-grade systems — from a single HTML tag to distributed cloud infrastructure.
 
-| | |
-|---|---|
-| 🏛️ **Role** | Founder & CEO of **[The Techzeen](https://www.thetechzeen.com/)** |
-| 🏗️ **What I do** | Design, secure, and automate hyper-scalable systems — edge devices to global cloud |
-| 🎓 **Academic role** | Program Manager & Faculty @ **Denning**, mentoring engineers under **University of London** & **University of Greenwich** curricula |
-| 🎥 **Education** | 20+ full production courses taught live to a growing developer community across Pakistan & beyond |
-| 🔥 **Track record** | 1,000+ days of zero-miss, daily technical content — no shortcuts, no reruns |
+<table>
+<tr><th align="left">Category</th><th align="left">Detail</th></tr>
+<tr><td>🏛️&nbsp;<b>Role</b></td><td>Founder &amp; CEO of <a href="https://www.thetechzeen.com/"><b>The Techzeen</b></a></td></tr>
+<tr><td>🏗️&nbsp;<b>What I do</b></td><td>Design, secure, and automate hyper-scalable systems — edge devices to global cloud</td></tr>
+<tr><td>🎓&nbsp;<b>Academic role</b></td><td>Program Manager &amp; Faculty @ <b>Denning</b>, mentoring engineers under <b>University of London</b> &amp; <b>University of Greenwich</b> curricula</td></tr>
+<tr><td>🎥&nbsp;<b>Education</b></td><td>20+ full production courses taught live to a growing developer community across Pakistan &amp; beyond</td></tr>
+<tr><td>🔥&nbsp;<b>Track record</b></td><td>1,000+ days of zero-miss, daily technical content — no shortcuts, no reruns</td></tr>
+</table>
 
 <br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/divider.svg"/>
 
 ## 🌌 Core Domains — Live Orbit
 
 <div align="center">
-<img width="60%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/skills-orbit.svg" alt="Farzeen Ali core engineering domains orbiting animation"/>
+<img width="48%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/skills-orbit.svg" alt="Farzeen Ali core engineering domains orbiting animation"/>
 </div>
 
-<div align="center">
-
-💻 Full-Stack &nbsp;•&nbsp; ⚙️ DevSecOps &nbsp;•&nbsp; 🔒 Cyber Security &nbsp;•&nbsp; 🤖 AI Automation &nbsp;•&nbsp; ⛓️ Blockchain &nbsp;•&nbsp; 📱 Mobile &nbsp;•&nbsp; ☁️ Cloud &nbsp;•&nbsp; 🎥 Tech Education
-
-</div>
-
-| Capability | Tactical Execution |
-|---|---|
-| 💻 **Full-Stack & Mobile** | High-throughput web & cross-platform ecosystems — Next.js, React Native, NestJS |
-| ⚙️ **DevSecOps & Cloud** | Zero-Trust cloud configurations on AWS, Azure, GCP via declarative IaC & CI/CD |
-| 🔒 **Cybersecurity & Pentesting** | Offensive audits, vulnerability management, SIEM/SOC ops, and system hardening |
-| 🤖 **AI Agentic Automation** | Production LLM orchestration, RAG pipelines, n8n workflows, self-healing agents |
-| ⛓️ **Blockchain Engineering** | Smart contract development & Solidity-based decentralized systems |
+<table>
+<tr><th align="left">Capability</th><th align="left">Tactical Execution</th></tr>
+<tr><td>💻&nbsp;<b>Full-Stack &amp; Mobile</b></td><td>High-throughput web &amp; cross-platform ecosystems — Next.js, React Native, NestJS</td></tr>
+<tr><td>⚙️&nbsp;<b>DevSecOps &amp; Cloud</b></td><td>Zero-Trust cloud configurations on AWS, Azure, GCP via declarative IaC &amp; CI/CD</td></tr>
+<tr><td>🔒&nbsp;<b>Cybersecurity &amp; Pentesting</b></td><td>Offensive audits, vulnerability management, SIEM/SOC ops, and system hardening</td></tr>
+<tr><td>🤖&nbsp;<b>AI Agentic Automation</b></td><td>Production LLM orchestration, RAG pipelines, n8n workflows, self-healing agents</td></tr>
+<tr><td>⛓️&nbsp;<b>Blockchain Engineering</b></td><td>Smart contract development &amp; Solidity-based decentralized systems</td></tr>
+</table>
 
 <br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/divider.svg"/>
 
 ## 💻 Live Terminal Session
 
@@ -84,13 +80,13 @@ For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engin
 
 <br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/divider.svg"/>
 
 ## 🛠️ Tech Stack Command Center
 
 **🌐 Frontend & Mobile**
 
-![Frontend and mobile stack](https://skillicons.dev/icons?i=html,css,js,react,nextjs,nuxt,vue,angular,typescript,tailwind,reactnative)
+![Frontend and mobile stack](https://skillicons.dev/icons?i=html,css,js,react,nextjs,nuxtjs,vue,angular,ts,tailwind)
 `HTML` `CSS` `JavaScript` `React.js` `Next.js` `Nuxt.js` `Vue` `Angular` `TypeScript` `Tailwind CSS` `React Native (CLI & Expo)`
 
 **🔧 Backend, APIs & Orchestration**
@@ -100,7 +96,7 @@ For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engin
 
 **🗄️ Databases & BaaS**
 
-![Database stack](https://skillicons.dev/icons?i=postgresql,mongodb,mysql,redis,firebase,supabase)
+![Database stack](https://skillicons.dev/icons?i=postgres,mongodb,mysql,redis,firebase,supabase)
 `PostgreSQL` `MongoDB` `MySQL` `Redis` `Supabase` `Appwrite` `Firebase`
 
 **☁️ DevSecOps, Infrastructure & Security Pipelines**
@@ -126,7 +122,7 @@ For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engin
 
 <br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/divider.svg"/>
 
 ## ⚡ Performance Matrix & Live Metrics
 
@@ -137,7 +133,7 @@ For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engin
 
 <br/><br/>
 
-<img width="85%" src="https://github-readme-streak-stats.herokuapp.com/?user=farzeen-ali&theme=midnight-purple&hide_border=true&background=0d1117&stroke=7e15f7&ring=7e15f7&fire=ffffff&currStreakLabel=7e15f7"/>
+<img width="85%" src="https://streak-stats.demolab.com/?user=farzeen-ali&theme=midnight-purple&hide_border=true&background=0d1117&stroke=7e15f7&ring=7e15f7&fire=ffffff&currStreakLabel=7e15f7"/>
 
 <br/><br/>
 
@@ -159,7 +155,7 @@ For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engin
 
 <br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/divider.svg"/>
 
 ## 🤝 Strategic Collaborations
 
