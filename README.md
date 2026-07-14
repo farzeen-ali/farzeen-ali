@@ -56,7 +56,7 @@ For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engin
 ## 🌌 Core Domains — Live Orbit
 
 <div align="center">
-<img width="48%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/skills-orbit.svg" alt="Farzeen Ali core engineering domains orbiting animation"/>
+<img width="48%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/skills-orbit.svg?v=3" alt="Farzeen Ali core engineering domains orbiting animation"/>
 </div>
 
 <table>
