@@ -37,7 +37,7 @@
 
 I'm **Farzeen Ali**, **Founder & CEO of The Techzeen** — Pakistan's #1 tech YouTube channel — and a Solutions Architect, DevSecOps Engineer & Tech Educator specializing in elite, security-first digital infrastructure.
 
-For **1,000+ consecutive days (3+ years, zero skips)**, I've been teaching engineers how to build, secure, and automate production-grade systems — from a single HTML tag to distributed cloud infrastructure.
+For **1200+ consecutive days (3+ years, zero skips)**, I've been teaching engineers how to build, secure, and automate production-grade systems — from a single HTML tag to distributed cloud infrastructure.
 
 <table>
 <tr><th align="left">Category</th><th align="left">Detail</th></tr>
@@ -172,7 +172,7 @@ If you're a founder, enterprise tech lead, or fast-growing startup looking for a
 
 <div align="center">
 
-> ***"1,000+ days. Zero days off. One mission — make complex tech actually build things."***
+> ***"1200+ days. Zero days off. One mission — make complex tech actually build things."***
 >
 > **— Farzeen Ali (Mr. Consistent), Founder & CEO of The Techzeen**
 
