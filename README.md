@@ -17,11 +17,7 @@
 <a href="https://www.linkedin.com/in/farzeen-ali-533479204"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 <a href="mailto:techzeen10@gmail.com"><img src="https://img.shields.io/badge/Gmail-6C22A6?style=for-the-badge&logo=gmail&logoColor=white" /></a>
 
-<br/><br/>
-
-<!-- LIVE, REAL-TIME BADGES  -->
-<a href="https://www.youtube.com/@TheTechzeen"><img src="https://img.shields.io/youtube/channel/subscribers/UCl-HgHmS4p2OuluyW6TqkLQ?style=for-the-badge&logo=youtube&color=FF0000&label=LIVE%20SUBSCRIBERS" /></a>
-<a href="https://www.youtube.com/@TheTechzeen"><img src="https://img.shields.io/youtube/channel/views/UCl-HgHmS4p2OuluyW6TqkLQ?style=for-the-badge&logo=youtube&color=FF0000&label=LIVE%20VIEWS" /></a>
+<!-- <br/><br/> -->
 <img src="https://komarev.com/ghpvc/?username=farzeen-ali&style=for-the-badge&color=7e15f7&label=PROFILE+VIEWS"/>
 <img src="https://img.shields.io/github/followers/farzeen-ali?style=for-the-badge&color=7e15f7&labelColor=0d1117"/>
 
