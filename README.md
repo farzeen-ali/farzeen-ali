@@ -39,7 +39,7 @@ For **1200+ consecutive days (3+ years, zero skips)**, I've been teaching engine
 <tr><th align="left">Category</th><th align="left">Detail</th></tr>
 <tr><td>🏛️&nbsp;<b>Role</b></td><td>Founder &amp; CEO of <a href="https://www.thetechzeen.com/"><b>The Techzeen</b></a></td></tr>
 <tr><td>🏗️&nbsp;<b>What I do</b></td><td>Design, secure, and automate hyper-scalable systems — edge devices to global cloud</td></tr>
-<tr><td>🎓&nbsp;<b>Academic role</b></td><td>Faculty @ <b>Denning</b>, mentoring engineers under <b>University of London</b> &amp; <b>University of Greenwich</b> curricula</td></tr>
+<tr><td>🎓&nbsp;<b>Academic role</b></td><td>Program Manager & Faculty @ <b>Denning</b>, mentoring engineers under <b>University of London</b> &amp; <b>University of Greenwich</b> curricula</td></tr>
 <tr><td>🎥&nbsp;<b>Education</b></td><td>20+ full production courses taught live to a growing developer community across Pakistan &amp; beyond</td></tr>
 <tr><td>🔥&nbsp;<b>Track record</b></td><td>1,000+ days of zero-miss, daily technical content — no shortcuts, no reruns</td></tr>
 </table>
