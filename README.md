@@ -17,7 +17,7 @@
 <a href="https://www.youtube.com/@TheTechzeen"><img width="24%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-youtube.svg" alt="YouTube — The Techzeen"/></a>
 <a href="https://www.thetechzeen.com/"><img width="24%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-website.svg" alt="Website — thetechzeen.com"/></a>
 <a href="https://www.linkedin.com/in/farzeen-ali-533479204"><img width="24%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-linkedin.svg" alt="LinkedIn — Farzeen Ali"/></a>
-<a href="mailto:techzeen10@gmail.com"><img width="24%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-email.svg" alt="Email — techzeen10@gmail.com"/></a>
+<a href="mailto:info@thetechzeen.com"><img width="24%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-email.svg" alt="Email — info@thetechzeen.com"/></a>
 
 <br/><br/>
 
@@ -30,7 +30,7 @@
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-01.svg" alt="01 — Identity"/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/identity.svg" alt="Most startups hire 4–5 specialists for what I do in one. Farzeen Ali — Founder & CEO of The Techzeen, Program Manager & Faculty at Denning (University of London & University of Greenwich curricula), 20+ production courses taught live, 1,200+ day daily-content streak."/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/identity.svg" alt="Most startups hire 4–5 specialists for what I do in one. Farzeen Ali — Founder & CEO of The Techzeen, Program Manager & Faculty at Denning (University of London & University of Greenwich curricula), 20+ production courses taught live, 1,000+ day daily-content streak."/>
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/terminal.svg" alt="Animated terminal session — Farzeen Ali"/>
 
@@ -38,7 +38,7 @@
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-02.svg" alt="02 — By the numbers"/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/stats.svg" alt="1,200+ day streak · 20+ courses · 4–5 specialists in one · #1 tech channel in Pakistan"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/stats.svg" alt="1,000+ day streak · 20+ courses · 4–5 specialists in one · #1 tech channel in Pakistan"/>
 
 <br/><br/>
 
@@ -83,10 +83,10 @@
 <br/>
 
 **Founder, enterprise tech lead or fast-growing startup?** Let's build and secure your roadmap together.<br/>
-**📧 [techzeen10@gmail.com](mailto:techzeen10@gmail.com)** &nbsp;·&nbsp; **📺 [@TheTechzeen](https://www.youtube.com/@TheTechzeen)** &nbsp;·&nbsp; **🌐 [thetechzeen.com](https://www.thetechzeen.com/)**
+**📧 [info@thetechzeen.com](mailto:info@thetechzeen.com)** &nbsp;·&nbsp; **📺 [@TheTechzeen](https://www.youtube.com/@TheTechzeen)** &nbsp;·&nbsp; **🌐 [thetechzeen.com](https://www.thetechzeen.com/)**
 
 <br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/footer.svg" alt="1,200+ days. Zero days off. — Farzeen Ali, Mr. Consistent"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/footer.svg" alt="1,000+ days. Zero days off. — Farzeen Ali, Mr. Consistent"/>
 
 </div>
