@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" fill="none">
+<style>.s{font-family:'Segoe UI', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif}.m{font-family:'JetBrains Mono', 'Cascadia Code', 'SF Mono', Consolas, Menlo, 'DejaVu Sans Mono', monospace}@keyframes run{to{stroke-dashoffset:-1000}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}.pulse{animation:pulse 1.6s ease-in-out infinite}.sp{animation:sp 4s ease-in-out infinite}@keyframes sp{0%{stroke-dashoffset:100;opacity:1}55%{stroke-dashoffset:0;opacity:1}85%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}</style>
+<defs><linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22e4ff"/><stop offset=".5" stop-color="#8b3dff"/><stop offset="1" stop-color="#ff3df2"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#140a29"/><stop offset="1" stop-color="#080411"/></linearGradient>
+<linearGradient id="ink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cdb2ff"/></linearGradient>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect x="0.5" y="10.5" width="281" height="259" rx="22" fill="url(#card)" stroke="#2b1a4a"/><rect x="0.5" y="10.5" width="281" height="259" rx="22" pathLength="1000" stroke="url(#brand)" stroke-width="2" stroke-linecap="round" stroke-dasharray="70 930" style="animation:run 9s linear -0.00s infinite"/>
+<g transform="translate(22 32)"><rect width="44" height="44" rx="12" fill="#ffb547" fill-opacity=".1" stroke="#ffb547" stroke-opacity=".4"/><path d="M22 7c4 6 10 9.5 10 17.5a10 10 0 0 1-20 0c0-5 3-7.5 5-10.5 1 3 2 4.5 4 4.5-1-4 0-8.5 1-11.5z" stroke="#ffb547" stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" values="1;.55;1;.8;1" dur="1.2s" repeatCount="indefinite"/></path></g>
+<circle cx="212" cy="54" r="3.5" fill="#ffb547" class="pulse"/>
+<text x="222" y="58" class="m" font-size="10.5" letter-spacing="2.5" fill="#a596c4">LIVE</text>
+<g>
+<text x="24" y="156" class="s" font-size="60" font-weight="800" fill="url(#ink)" letter-spacing="-1">1,000+</text>
+<text x="24" y="188" class="s" font-size="17" font-weight="600" fill="#f5efff">Days Streak</text>
+<text x="24" y="212" class="m" font-size="10" letter-spacing="1.5" fill="#ffb547">ZERO SKIPS · DAILY CONTENT</text></g>
+<polyline points="24.0,244.2 34.2,238.6 44.3,241.1 54.5,236.2 64.7,235.1 74.9,242.8 85.0,242.4 95.2,228.2 105.4,239.1 115.6,238.8 125.7,222.1 135.9,234.0 146.1,225.3 156.3,232.7 166.4,228.8 176.6,236.1 186.8,227.7 197.0,221.4 207.1,228.8 217.3,223.5 227.5,224.5 237.7,233.2 247.8,221.2 258.0,224.4" stroke="#ffb547" stroke-width="1.8" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" class="sp" style="animation-delay:-0.0s" opacity=".9"/><rect x="306.5" y="10.5" width="281" height="259" rx="22" fill="url(#card)" stroke="#2b1a4a"/><rect x="306.5" y="10.5" width="281" height="259" rx="22" pathLength="1000" stroke="url(#brand)" stroke-width="2" stroke-linecap="round" stroke-dasharray="70 930" style="animation:run 9s linear -1.70s infinite"/>
+<g transform="translate(328 32)"><rect width="44" height="44" rx="12" fill="#22e4ff" fill-opacity=".1" stroke="#22e4ff" stroke-opacity=".4"/><rect x="9" y="12" width="26" height="20" rx="5" stroke="#22e4ff" stroke-width="2"/><path d="M19 17.5v9l7.5-4.5z" fill="#22e4ff"/></g>
+<circle cx="518" cy="54" r="3.5" fill="#22e4ff" class="pulse"/>
+<text x="528" y="58" class="m" font-size="10.5" letter-spacing="2.5" fill="#a596c4">LIVE</text>
+<g>
+<text x="330" y="156" class="s" font-size="60" font-weight="800" fill="url(#ink)" letter-spacing="-1">20+</text>
+<text x="330" y="188" class="s" font-size="17" font-weight="600" fill="#f5efff">Production Courses</text>
+<text x="330" y="212" class="m" font-size="10" letter-spacing="1.5" fill="#22e4ff">TAUGHT LIVE · START → SHIP</text></g>
+<polyline points="330.0,243.4 340.2,245.3 350.3,230.5 360.5,238.8 370.7,233.0 380.9,228.4 391.0,231.9 401.2,226.0 411.4,237.1 421.6,228.0 431.7,235.1 441.9,223.2 452.1,224.2 462.3,237.8 472.4,236.9 482.6,235.4 492.8,219.4 503.0,231.0 513.1,226.7 523.3,232.0 533.5,227.9 543.7,229.5 553.8,229.4 564.0,224.6" stroke="#22e4ff" stroke-width="1.8" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" class="sp" style="animation-delay:-0.7s" opacity=".9"/><rect x="612.5" y="10.5" width="281" height="259" rx="22" fill="url(#card)" stroke="#2b1a4a"/><rect x="612.5" y="10.5" width="281" height="259" rx="22" pathLength="1000" stroke="url(#brand)" stroke-width="2" stroke-linecap="round" stroke-dasharray="70 930" style="animation:run 9s linear -3.40s infinite"/>
+<g transform="translate(634 32)"><rect width="44" height="44" rx="12" fill="#8b3dff" fill-opacity=".1" stroke="#8b3dff" stroke-opacity=".4"/><path d="M22 9l13 7-13 7-13-7z" stroke="#8b3dff" stroke-width="2" stroke-linejoin="round"/><path d="M9 22l13 7 13-7M9 28l13 7 13-7" stroke="#ff3df2" stroke-width="2" stroke-linejoin="round"/></g>
+<circle cx="824" cy="54" r="3.5" fill="#8b3dff" class="pulse"/>
+<text x="834" y="58" class="m" font-size="10.5" letter-spacing="2.5" fill="#a596c4">LIVE</text>
+<g>
+<text x="636" y="156" class="s" font-size="60" font-weight="800" fill="url(#ink)" letter-spacing="-1">4–5</text>
+<text x="636" y="188" class="s" font-size="17" font-weight="600" fill="#f5efff">Specialists in One</text>
+<text x="636" y="212" class="m" font-size="10" letter-spacing="1.5" fill="#8b3dff">STACK · SECURITY · CLOUD · AI</text></g>
+<polyline points="636.0,238.4 646.2,230.1 656.3,235.0 666.5,228.2 676.7,229.6 686.9,225.3 697.0,232.9 707.2,240.8 717.4,227.0 727.6,223.6 737.7,224.7 747.9,232.1 758.1,228.3 768.3,236.7 778.4,224.2 788.6,229.6 798.8,234.0 809.0,235.6 819.1,221.2 829.3,216.9 839.5,233.6 849.7,220.8 859.8,228.5 870.0,231.3" stroke="#8b3dff" stroke-width="1.8" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" class="sp" style="animation-delay:-1.4s" opacity=".9"/><rect x="918.5" y="10.5" width="281" height="259" rx="22" fill="url(#card)" stroke="#2b1a4a"/><rect x="918.5" y="10.5" width="281" height="259" rx="22" pathLength="1000" stroke="url(#brand)" stroke-width="2" stroke-linecap="round" stroke-dasharray="70 930" style="animation:run 9s linear -5.10s infinite"/>
+<g transform="translate(940 32)"><rect width="44" height="44" rx="12" fill="#5cffb0" fill-opacity=".1" stroke="#5cffb0" stroke-opacity=".4"/><path d="M9 31l2-16 7 6 4-10 4 10 7-6 2 16z" stroke="#5cffb0" stroke-width="2" stroke-linejoin="round"/><circle cx="22" cy="25" r="2" fill="#5cffb0"/></g>
+<circle cx="1130" cy="54" r="3.5" fill="#5cffb0" class="pulse"/>
+<text x="1140" y="58" class="m" font-size="10.5" letter-spacing="2.5" fill="#a596c4">LIVE</text>
+<g>
+<text x="942" y="156" class="s" font-size="60" font-weight="800" fill="url(#ink)" letter-spacing="-1">#1</text>
+<text x="942" y="188" class="s" font-size="17" font-weight="600" fill="#f5efff">Tech Channel in PK</text>
+<text x="942" y="212" class="m" font-size="10" letter-spacing="1.5" fill="#5cffb0">THE TECHZEEN · YOUTUBE</text></g>
+<polyline points="942.0,243.5 952.2,233.6 962.3,230.3 972.5,244.1 982.7,235.3 992.9,242.9 1003.0,231.8 1013.2,238.7 1023.4,226.5 1033.6,223.2 1043.7,234.0 1053.9,221.4 1064.1,236.0 1074.3,237.9 1084.4,229.7 1094.6,236.9 1104.8,235.1 1115.0,231.5 1125.1,227.0 1135.3,233.7 1145.5,233.9 1155.7,219.1 1165.8,230.0 1176.0,215.4" stroke="#5cffb0" stroke-width="1.8" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" class="sp" style="animation-delay:-2.1s" opacity=".9"/>
+</svg>
