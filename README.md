@@ -54,7 +54,7 @@
 
 <div align="center">
 <br/>
-<img src="https://skillicons.dev/icons?i=ts,react,nextjs,vue,tailwind,nodejs,nestjs,graphql,prisma,postgres,mongodb,redis,supabase,firebase&perline=14" alt="Frontend, backend and data stack"/>
+<img src="https://skillicons.dev/icons?i=ts,react,nextjs,vue,tailwind,nodejs,nestjs,fastapi,graphql,prisma,postgres,mongodb,redis,supabase,firebase&perline=15" alt="Frontend, backend and data stack"/>
 <br/>
 <img src="https://skillicons.dev/icons?i=aws,azure,gcp,docker,kubernetes,terraform,ansible,jenkins,githubactions,gitlab,kali,linux,grafana,prometheus&perline=14" alt="Cloud, DevSecOps and security stack"/>
 </div>
