@@ -247,9 +247,11 @@ def hero():
         f'<text x="600" y="{TY + k * LH}" text-anchor="middle" class="s" font-size="27" letter-spacing="1" fill="{TXT}">{esc(t)}</text>'
         for k, t in enumerate(roles + roles[:1]))
 
-    chips_src = [('FULL-STACK', C), ('DEVSECOPS', V), ('CLOUD', C), ('AI AGENTS', M), ('OFFSEC', G), ('WEB3', A)]
+    chips_src = [('AGENTIC AI', M), ('AI ENGINEERING', C), ('DEVSECOPS', V), ('DEVOPS', C), ('CLOUD', V), ('FULL-STACK', G), ('OFFSEC', A)]
     cw = [measure(t, 'm7', 12, 2) + 50 for t, _ in chips_src]
-    gap = 16
+    gap = 12
+    if sum(cw) + gap * (len(cw) - 1) > 1120:
+        print('  ! overflow in hero chips')
     x = 600 - (sum(cw) + gap * (len(cw) - 1)) / 2
     chips = ''
     for i, ((t, col), w) in enumerate(zip(chips_src, cw)):
@@ -295,7 +297,7 @@ def hero():
 <g clip-path="url(#tickClip)"><g class="tick">{ticker}</g></g>
 {chips}
 <text x="40" y="{H - 36}" class="m" font-size="11" letter-spacing="3" fill="{MUT}">// BUILD · SECURE · AUTOMATE · TEACH</text>
-<text x="{W - 40}" y="{H - 36}" text-anchor="end" class="m" font-size="11" letter-spacing="3" fill="{MUT}">MODE: GOD ▲ {STREAK} DAYS · 0 SKIPS</text>
+<text x="{W - 40}" y="{H - 36}" text-anchor="end" class="m" font-size="11" letter-spacing="3" fill="{MUT}">{STREAK} DAYS · 0 SKIPS</text>
 <rect width="{W}" height="{H}" filter="url(#grain)"/>
 </g>
 <rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="28" stroke="{LINE}" stroke-width="1.5"/>
@@ -443,8 +445,8 @@ def arsenal():
     # A — AI agents: neural net with signal pulses
     body += card(0, 0, 590, 300, 24, 0, 10)
     body += text_block(34, 52, '01 · AI', 'AI Agentic Automation',
-                       ['Production LLM orchestration,', 'RAG pipelines & n8n workflows,', 'self-healing autonomous agents.'], M, 300)
-    body += tags_line(34, 262, 'LLM · RAG · N8N · AGENTS')
+                       ['Agentic AI with LangChain &', 'LangGraph, RAG, FastAPI & n8n —', 'AI engineering & automation.'], M, 300)
+    body += tags_line(34, 262, 'LANGCHAIN · LANGGRAPH · FASTAPI · RAG')
     layers = [[(370, 95), (370, 150), (370, 205)], [(440, 70), (440, 123), (440, 177), (440, 230)], [(505, 105), (505, 195)], [(552, 150)]]
     for la, lb in zip(layers, layers[1:]):
         for p in la:
@@ -464,7 +466,7 @@ def arsenal():
     body += card(610, 0, 590, 300, 24, 3, 10)
     body += text_block(644, 52, '02 · DEVSECOPS', 'DevSecOps & Cloud',
                        ['Zero-Trust cloud on AWS, Azure', '& GCP — declarative IaC with', 'security baked into every CI/CD.'], C, 290)
-    body += tags_line(644, 262, 'K8S · TERRAFORM · VAULT · TRIVY')
+    body += tags_line(644, 262, 'DEVOPS · K8S · TERRAFORM · VAULT')
     inf = lemniscate(1066, 150, 96, 1.6)
     body += (f'<path d="{inf}" stroke="{LINE}" stroke-width="14" stroke-linejoin="round"/>'
              f'<path d="{inf}" stroke="url(#brand)" stroke-width="2.5" opacity=".85"/>'
@@ -555,7 +557,7 @@ def terminal():
         ('cmd', 'sudo deploy --mode=god'),
         ('bar', [('deploying ', MUT, 400), ('[' + '█' * 32 + ']', V, 400), (' 100%', G, 700)]),
         ('out', ok + [('full-stack   ', TXT, 400)] + ok + [('devsecops   ', TXT, 400)] + ok + [('cloud   ', TXT, 400)]
-         + ok + [('ai-agents   ', TXT, 400)] + ok + [('offsec   ', TXT, 400)] + ok + [('web3', TXT, 400)]),
+         + ok + [('agentic-ai   ', TXT, 400)] + ok + [('devops   ', TXT, 400)] + ok + [('offsec   ', TXT, 400)] + ok + [('web3', TXT, 400)]),
         ('out', [('▲ all systems online — shipping to production', C, 700)]),
         ('idle', ''),
     ]
@@ -625,10 +627,10 @@ def terminal():
 # ── 7. TECH STACK MARQUEE ─────────────────────────────────────────────────────
 STACK = [
     ('FRONTEND', C, ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Nuxt.js', 'Vue', 'Angular', 'Tailwind CSS', 'React Native', 'Expo']),
-    ('BACKEND · DATA', V, ['Node.js', 'Express', 'NestJS', 'Microservices', 'GraphQL', 'REST', 'Prisma', 'Java', 'C++', 'PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Supabase', 'Appwrite', 'Firebase']),
-    ('DEVSECOPS · CLOUD', M, ['AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'Terraform', 'Ansible', 'Jenkins', 'GitHub Actions', 'GitLab CI/CD', 'SonarQube', 'Vault', 'GitLeaks', 'Kyverno', 'DefectDojo', 'Syft', 'Grype', 'Trivy']),
+    ('BACKEND · DATA', V, ['Node.js', 'Express', 'NestJS', 'FastAPI', 'Microservices', 'GraphQL', 'REST', 'Prisma', 'Java', 'C++', 'PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Supabase', 'Appwrite', 'Firebase']),
+    ('DEVSECOPS · CLOUD', M, ['DevSecOps', 'DevOps', 'Cloud', 'AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'Terraform', 'Ansible', 'Jenkins', 'GitHub Actions', 'GitLab CI/CD', 'SonarQube', 'Vault', 'GitLeaks', 'Kyverno', 'DefectDojo', 'Syft', 'Grype', 'Trivy']),
     ('OFFENSIVE SEC', G, ['Kali Linux', 'Parrot OS', 'Wireshark', 'Nmap', 'Metasploit', 'Burp Suite', 'Nessus', 'Nikto', 'Hydra', 'Hashcat', 'Ghidra', 'Autopsy', 'Splunk', 'Wazuh', 'QRadar', 'Zero Trust']),
-    ('AI · WEB3', A, ['LLMs', 'AI Agents', 'n8n', 'RAG', 'AI Data Eng', 'ELK Stack', 'Grafana', 'Prometheus', 'Solidity', 'Smart Contracts', 'Web3', 'DSA', 'OOP']),
+    ('AI · WEB3', A, ['Agentic AI', 'AI Engineering', 'AI Automation', 'LangChain', 'LangGraph', 'LLMs', 'AI Agents', 'n8n', 'RAG', 'AI Data Eng', 'ELK Stack', 'Grafana', 'Prometheus', 'Solidity', 'Smart Contracts', 'Web3', 'DSA', 'OOP']),
 ]
 
 
