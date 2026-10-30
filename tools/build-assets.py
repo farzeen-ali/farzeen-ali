@@ -22,12 +22,17 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'assets')
 FONT_DIR = os.path.join(HERE, 'fonts')
 
-STREAK = '1,200+'
+STREAK = '1,000+'
 
 # ── Brand tokens ──────────────────────────────────────────────────────────────
 BODY = '#0a0614'
 LINE, V, M, C, G, A = '#2b1a4a', '#8b3dff', '#ff3df2', '#22e4ff', '#5cffb0', '#ffb547'
-TXT, MUT, DIM = '#f5efff', '#a596c4', '#6c5c8c'
+TXT, MUT, DIM = '#f5efff', '#cfc4ea', '#a493cc'
+
+
+def tc(col):
+    """Text-safe tint: deep violet is too dark for small text on the dark cards."""
+    return '#bf9bff' if col == V else col
 
 FONTS = {  # key: (family, weight, file)
     'd8': ('TZ Display', 800, 'Unbounded-ExtraBold.ttf'),
@@ -289,8 +294,8 @@ def hero():
 <path d="M230 {TY - 10}H320M880 {TY - 10}H970" stroke="url(#beam)" stroke-width="1.5"/>
 <g clip-path="url(#tickClip)"><g class="tick">{ticker}</g></g>
 {chips}
-<text x="40" y="{H - 36}" class="m" font-size="11" letter-spacing="3" fill="{DIM}">// BUILD · SECURE · AUTOMATE · TEACH</text>
-<text x="{W - 40}" y="{H - 36}" text-anchor="end" class="m" font-size="11" letter-spacing="3" fill="{DIM}">MODE: GOD ▲ {STREAK} DAYS · 0 SKIPS</text>
+<text x="40" y="{H - 36}" class="m" font-size="11" letter-spacing="3" fill="{MUT}">// BUILD · SECURE · AUTOMATE · TEACH</text>
+<text x="{W - 40}" y="{H - 36}" text-anchor="end" class="m" font-size="11" letter-spacing="3" fill="{MUT}">MODE: GOD ▲ {STREAK} DAYS · 0 SKIPS</text>
 <rect width="{W}" height="{H}" filter="url(#grain)"/>
 </g>
 <rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="28" stroke="{LINE}" stroke-width="1.5"/>
@@ -360,7 +365,7 @@ def identity():
     for k, ln in enumerate(bio):
         fit(ln, 's4', 17, 0, 650, 'identity bio')
         body += f'<text x="44" y="{276 + k * 27}" class="s" font-size="17" fill="{MUT}">{esc(ln)}</text>'
-    body += f'<text x="44" y="{H - 40}" class="m" font-size="11.5" letter-spacing="3" fill="{DIM}">— FARZEEN ALI · MR. CONSISTENT</text>'
+    body += f'<text x="44" y="{H - 40}" class="m" font-size="11.5" letter-spacing="3" fill="{MUT}">— FARZEEN ALI · MR. CONSISTENT</text>'
     for k in range(7):
         body += f'<rect class="eq" x="{640 + k * 9}" y="{H - 62}" width="5" height="26" rx="2" fill="url(#brand)" style="animation-delay:-{k * .23:.2f}s"/>'
 
@@ -372,7 +377,7 @@ def identity():
         fit(title, 's6', 19, 0, 330, 'identity role')
         fit(sub, 'm4', 10.5, 1.6, 330, 'identity role sub')
         body += (f'<text x="846" y="{y + rh / 2 - 2:.1f}" class="s" font-size="19" font-weight="600" fill="{TXT}">{esc(title)}</text>'
-                 f'<text x="846" y="{y + rh / 2 + 20:.1f}" class="m" font-size="10.5" letter-spacing="1.6" fill="{col}">{esc(sub)}</text>'
+                 f'<text x="846" y="{y + rh / 2 + 20:.1f}" class="m" font-size="10.5" letter-spacing="1.6" fill="{tc(col)}">{esc(sub)}</text>'
                  f'<text x="1176" y="{y + 28:.1f}" text-anchor="end" class="m" font-size="10" fill="{DIM}">0{k + 1}</text>')
     return doc(W, H, body, css)
 
@@ -401,7 +406,7 @@ def stats():
 <text x="{x + w - 60}" y="{y + 48}" class="m" font-size="10.5" letter-spacing="2.5" fill="{MUT}">LIVE</text>
 <text x="{x + 24}" y="{y + 144}" class="d" font-size="50" font-weight="800" fill="url(#ink)">{esc(num)}</text>
 <text x="{x + 24}" y="{y + 178}" class="s" font-size="18" font-weight="600" fill="{TXT}">{esc(label)}</text>
-<text x="{x + 24}" y="{y + 202}" class="m" font-size="10" letter-spacing="1.5" fill="{col}">{esc(sub)}</text>
+<text x="{x + 24}" y="{y + 202}" class="m" font-size="10" letter-spacing="1.5" fill="{tc(col)}">{esc(sub)}</text>
 <polyline points="{pts}" stroke="{col}" stroke-width="1.8" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" class="sp" style="animation-delay:-{i * .7:.1f}s" opacity=".9"/>'''
     return doc(W, H, body, css)
 
@@ -418,7 +423,7 @@ def lemniscate(cx, cy, a, ys):
 
 def text_block(x, y, tag, title, lines, col, maxw, size=26):
     fit(title, 's6', size, 0, maxw, 'arsenal title')
-    out = (f'<text x="{x}" y="{y}" class="m" font-size="11" font-weight="700" letter-spacing="3" fill="{col}">{esc(tag)}</text>'
+    out = (f'<text x="{x}" y="{y}" class="m" font-size="11" font-weight="700" letter-spacing="3" fill="{tc(col)}">{esc(tag)}</text>'
            f'<text x="{x}" y="{y + 38}" class="s" font-size="{size}" font-weight="600" fill="url(#ink)">{esc(title)}</text>')
     for k, ln in enumerate(lines):
         fit(ln, 's4', 15.5, 0, maxw, 'arsenal desc')
@@ -651,7 +656,7 @@ def marquee():
         rows += f'<g class="row{i}">{pills}</g>'
     labels = ''.join(
         f'<circle cx="34" cy="{TOP + i * RH + 18}" r="4" fill="{col}" class="pulse" style="animation-delay:-{i * .3:.1f}s"/>'
-        f'<text x="48" y="{TOP + i * RH + 22}" class="m" font-size="11" font-weight="700" letter-spacing="2.5" fill="{col}">{esc(label)}</text>'
+        f'<text x="48" y="{TOP + i * RH + 22}" class="m" font-size="11" font-weight="700" letter-spacing="2.5" fill="{tc(col)}">{esc(label)}</text>'
         for i, (label, col, _) in enumerate(STACK))
     defs = (f'<clipPath id="mq"><rect width="{W}" height="{H}" rx="22"/></clipPath>'
             '<linearGradient id="fadeL" x1="0" x2="1"><stop offset=".7" stop-color="#0c0619"/><stop offset="1" stop-color="#0c0619" stop-opacity="0"/></linearGradient>'
@@ -689,7 +694,7 @@ def services():
         for k, ln in enumerate(lines):
             fit(ln, 's4', 15, 0, w - 44, 'services desc')
             body += f'<text x="{x + 24}" y="{180 + k * 23}" class="s" font-size="15" fill="{MUT}">{esc(ln)}</text>'
-        body += f'<text x="{x + 24}" y="{H - 24}" class="m" font-size="10.5" font-weight="700" letter-spacing="2" fill="{col}">DEPLOY →</text>'
+        body += f'<text x="{x + 24}" y="{H - 24}" class="m" font-size="10.5" font-weight="700" letter-spacing="2" fill="{tc(col)}">DEPLOY →</text>'
     return doc(W, H, body)
 
 
@@ -701,7 +706,7 @@ BUTTONS = [
      f'<circle cx="22" cy="22" r="11" stroke="{V}" stroke-width="2"/><ellipse cx="22" cy="22" rx="5" ry="11" stroke="{V}" stroke-width="2"/><path d="M11 22h22" stroke="{V}" stroke-width="2"/>'),
     ('linkedin', 'LINKEDIN', 'Farzeen Ali', '#2f8fff',
      '<rect x="10" y="10" width="24" height="24" rx="6" fill="#2f8fff"/><path d="M16 20v8M16 16.2v.1M20.5 28v-8M20.5 23.5c0-2 1.5-3.5 3.5-3.5s3 1.4 3 3.5V28" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>'),
-    ('email', 'EMAIL', 'techzeen10@gmail.com', M,
+    ('email', 'EMAIL', 'info@thetechzeen.com', M,
      f'<rect x="9" y="13" width="26" height="18" rx="4" stroke="{M}" stroke-width="2"/><path d="M10 15l12 9 12-9" stroke="{M}" stroke-width="2" stroke-linejoin="round"/>'),
 ]
 
@@ -746,7 +751,7 @@ def footer():
 <text x="600" y="164" text-anchor="middle" class="d" font-size="{s1:.1f}" font-weight="800" fill="url(#ink)">{esc(line1)}</text>
 <text x="600" y="204" text-anchor="middle" class="s" font-size="20" fill="{MUT}">One mission — make complex tech actually build things.</text>
 <text x="600" y="242" text-anchor="middle" class="m" font-size="12" font-weight="700" letter-spacing="3.5" fill="{C}">— FARZEEN ALI · MR. CONSISTENT · FOUNDER &amp; CEO, THE TECHZEEN</text>
-<text x="600" y="{H - 22}" text-anchor="middle" class="m" font-size="10" letter-spacing="3" fill="{DIM}">© THE TECHZEEN — ENGINEERED IN PAKISTAN</text>
+<text x="600" y="{H - 22}" text-anchor="middle" class="m" font-size="10" letter-spacing="3" fill="{MUT}">© THE TECHZEEN — ENGINEERED IN PAKISTAN</text>
 <rect width="{W}" height="{H}" filter="url(#grain)"/></g>
 {card(0, 0, W, H, 28, 1, 12, fill='none')}'''
     return doc(W, H, body, css, defs)
