@@ -21,10 +21,8 @@
 
 <br/><br/>
 
-<a href="https://www.youtube.com/@TheTechzeen"><img src="https://img.shields.io/youtube/channel/subscribers/UCl-HgHmS4p2OuluyW6TqkLQ?style=for-the-badge&logo=youtube&logoColor=white&color=ff2d55&labelColor=0a0614&label=SUBSCRIBERS" alt="YouTube subscribers"/></a>
-<a href="https://www.youtube.com/@TheTechzeen"><img src="https://img.shields.io/youtube/channel/views/UCl-HgHmS4p2OuluyW6TqkLQ?style=for-the-badge&logo=youtube&logoColor=white&color=8b3dff&labelColor=0a0614&label=CHANNEL%20VIEWS" alt="YouTube views"/></a>
-<a href="https://github.com/farzeen-ali?tab=followers"><img src="https://img.shields.io/github/followers/farzeen-ali?style=for-the-badge&logo=github&logoColor=white&color=ff3df2&labelColor=0a0614&label=FOLLOWERS" alt="GitHub followers"/></a>
-<img src="https://komarev.com/ghpvc/?username=farzeen-ali&style=for-the-badge&color=22e4ff&label=PROFILE+VIEWS" alt="Profile views"/>
+<a href="https://github.com/farzeen-ali?tab=followers"><img src="https://img.shields.io/github/followers/farzeen-ali?style=for-the-badge&logo=github&logoColor=white&color=8b3dff&labelColor=0a0614&label=FOLLOWERS" alt="GitHub followers"/></a>
+<img src="https://komarev.com/ghpvc/?username=farzeen-ali&style=for-the-badge&color=ff3df2&label=PROFILE+VIEWS" alt="Profile views"/>
 
 </div>
 
@@ -32,20 +30,7 @@
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-01.svg" alt="01 — Identity"/>
 
-<div align="center">
-
-### *"Most startups hire 4–5 specialists for what I do in one."*
-
-</div>
-
-I'm **Farzeen Ali** — **Founder & CEO of [The Techzeen](https://www.thetechzeen.com/)**, Pakistan's #1 tech YouTube channel — and a **Solutions Architect, DevSecOps Engineer & Tech Educator** building elite, security-first digital infrastructure, from a single HTML tag to distributed cloud systems.
-
-&nbsp;🏛️ &nbsp;**Founder & CEO** — The Techzeen<br/>
-&nbsp;🎓 &nbsp;**Program Manager & Faculty @ Denning** — mentoring engineers on **University of London** & **University of Greenwich** curricula<br/>
-&nbsp;🎥 &nbsp;**20+ full production courses** taught live to developers across Pakistan & beyond<br/>
-&nbsp;🔥 &nbsp;**1,000+ consecutive days** of daily technical content — no shortcuts, no reruns, zero skips
-
-<br/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/identity.svg" alt="Most startups hire 4–5 specialists for what I do in one. Farzeen Ali — Founder & CEO of The Techzeen, Program Manager & Faculty at Denning (University of London & University of Greenwich curricula), 20+ production courses taught live, 1,200+ day daily-content streak."/>
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/terminal.svg" alt="Animated terminal session — Farzeen Ali"/>
 
@@ -53,7 +38,7 @@ I'm **Farzeen Ali** — **Founder & CEO of [The Techzeen](https://www.thetechzee
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-02.svg" alt="02 — By the numbers"/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/stats.svg" alt="1,000+ day streak · 20+ courses · 4–5 specialists in one · #1 tech channel in Pakistan"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/stats.svg" alt="1,200+ day streak · 20+ courses · 4–5 specialists in one · #1 tech channel in Pakistan"/>
 
 <br/><br/>
 
@@ -91,18 +76,17 @@ I'm **Farzeen Ali** — **Founder & CEO of [The Techzeen](https://www.thetechzee
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-06.svg" alt="06 — Let's build"/>
 
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/services.svg" alt="Architect · Harden · Automate · Audit · Train — production architectures, DevSecOps hardening, AI automation, offensive security audits and team training"/>
+
 <div align="center">
-
-Founder, enterprise tech lead or fast-growing startup? If you need a heavy-hitting technical co-pilot to **build and secure your roadmap** — let's deploy together.
-
-| 🏗️ **Architect** | 🔐 **Harden** | 🤖 **Automate** | 🛡️ **Audit** | 🎓 **Train** |
-| :---: | :---: | :---: | :---: | :---: |
-| Production web architectures & native cross-platform apps | Enterprise DevSecOps pipelines, compliance & cloud hardening | Self-correcting AI workflows, multi-agent systems & RAG | Offensive pentesting, vuln assessments & red-team simulations | Team upskilling across full-stack, DevSecOps & AI |
-
-**📧 Business →** [techzeen10@gmail.com](mailto:techzeen10@gmail.com) &nbsp;·&nbsp; **📺 YouTube →** [@TheTechzeen](https://www.youtube.com/@TheTechzeen) &nbsp;·&nbsp; **🌐 Web →** [thetechzeen.com](https://www.thetechzeen.com/)
 
 <br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/footer.svg" alt="1,000+ days. Zero days off. — Farzeen Ali, Mr. Consistent"/>
+**Founder, enterprise tech lead or fast-growing startup?** Let's build and secure your roadmap together.<br/>
+**📧 [techzeen10@gmail.com](mailto:techzeen10@gmail.com)** &nbsp;·&nbsp; **📺 [@TheTechzeen](https://www.youtube.com/@TheTechzeen)** &nbsp;·&nbsp; **🌐 [thetechzeen.com](https://www.thetechzeen.com/)**
+
+<br/>
+
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/footer.svg" alt="1,200+ days. Zero days off. — Farzeen Ali, Mr. Consistent"/>
 
 </div>

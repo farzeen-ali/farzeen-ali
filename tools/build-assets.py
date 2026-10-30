@@ -1,25 +1,49 @@
 #!/usr/bin/env python3
 """Generates every animated SVG used by README.md.
 
-Edit the text/content below, then run:  python tools/build-assets.py
-All assets share one brand system (colors, fonts, motion) so the profile reads as one product.
+Edit the content below, then run:  python tools/build-assets.py   (needs: pip install fonttools brotli)
+
+All assets share one brand system — colors, motion and three embedded typefaces (subset per file,
+so they render identically on every OS):
+  TZ Display = Unbounded · TZ Sans = Space Grotesk · TZ Mono = JetBrains Mono   (fonts: tools/fonts, OFL)
 """
+import base64
 import html
+import io
 import math
 import os
 import random
+import re
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'assets')
+from fontTools.subset import Options, Subsetter
+from fontTools.ttLib import TTFont
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.join(HERE, '..', 'assets')
+FONT_DIR = os.path.join(HERE, 'fonts')
+
+STREAK = '1,200+'
 
 # ── Brand tokens ──────────────────────────────────────────────────────────────
 BODY = '#0a0614'
 LINE, V, M, C, G, A = '#2b1a4a', '#8b3dff', '#ff3df2', '#22e4ff', '#5cffb0', '#ffb547'
 TXT, MUT, DIM = '#f5efff', '#a596c4', '#6c5c8c'
-SANS = "'Segoe UI', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-MONO = "'JetBrains Mono', 'Cascadia Code', 'SF Mono', Consolas, Menlo, 'DejaVu Sans Mono', monospace"
+
+FONTS = {  # key: (family, weight, file)
+    'd8': ('TZ Display', 800, 'Unbounded-ExtraBold.ttf'),
+    'd5': ('TZ Display', 500, 'Unbounded-Medium.ttf'),
+    's4': ('TZ Sans', 400, 'SpaceGrotesk-Regular.ttf'),
+    's6': ('TZ Sans', 600, 'SpaceGrotesk-SemiBold.ttf'),
+    'm4': ('TZ Mono', 400, 'JetBrainsMono-Regular.ttf'),
+    'm7': ('TZ Mono', 700, 'JetBrainsMono-Bold.ttf'),
+}
+CLASS_FAMILY = {'d': 'TZ Display', 's': 'TZ Sans', 'm': 'TZ Mono'}
+FALLBACK = {'d': "'Segoe UI Black', 'Arial Black', sans-serif",
+            's': "'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+            'm': "Consolas, Menlo, 'DejaVu Sans Mono', monospace"}
 
 BASE_CSS = (
-    '.s{font-family:' + SANS + '}.m{font-family:' + MONO + '}'
+    ''.join(f".{k}{{font-family:'{CLASS_FAMILY[k]}',{FALLBACK[k]}}}" for k in 'dsm') +
     '@keyframes run{to{stroke-dashoffset:-1000}}'
     '@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}'
     '@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}'
@@ -27,9 +51,66 @@ BASE_CSS = (
 )
 
 COMMON_DEFS = f'''<linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{C}"/><stop offset=".5" stop-color="{V}"/><stop offset="1" stop-color="{M}"/></linearGradient>
+<linearGradient id="hot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{C}"/><stop offset=".45" stop-color="#b98cff"/><stop offset="1" stop-color="{M}"/></linearGradient>
 <linearGradient id="card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#140a29"/><stop offset="1" stop-color="#080411"/></linearGradient>
 <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cdb2ff"/></linearGradient>
-<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'''
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .07 0"/></filter>'''
+
+
+# ── Fonts: measuring + per-file subsetting ────────────────────────────────────
+_tt = {}
+
+
+def tt(k):
+    if k not in _tt:
+        _tt[k] = TTFont(os.path.join(FONT_DIR, FONTS[k][2]))
+    return _tt[k]
+
+
+def measure(text, k, size, ls=0.0):
+    f = tt(k)
+    cmap, hm, upm = f.getBestCmap(), f['hmtx'], f['head'].unitsPerEm
+    return sum(hm[cmap.get(ord(ch), cmap[32])][0] for ch in text) * size / upm + ls * len(text)
+
+
+def fit(text, k, size, ls, maxw, where):
+    w = measure(text, k, size, ls)
+    if w > maxw:
+        print(f'  ! overflow in {where}: "{text}" {w:.0f}px > {maxw:.0f}px')
+    return w
+
+
+def cap_height(k, size):
+    return tt(k)['OS/2'].sCapHeight * size / tt(k)['head'].unitsPerEm
+
+
+def font_faces(body):
+    used = set()
+    for cls in re.findall(r'class="([^"]*)"', body):
+        used.update(c for c in cls.split() if c in CLASS_FAMILY)
+    chars = set(' ')
+    for t in re.findall(r'>([^<>]+)<', body):
+        chars.update(html.unescape(t))
+    css = ''
+    for k, (fam, wt, file) in FONTS.items():
+        if not any(CLASS_FAMILY[c] == fam for c in used):
+            continue
+        opts = Options()
+        opts.flavor = 'woff2'
+        opts.layout_features = ['kern', 'liga', 'calt']
+        opts.name_IDs = []
+        opts.hinting = False
+        f = TTFont(os.path.join(FONT_DIR, file))
+        sub = Subsetter(opts)
+        sub.populate(text=''.join(chars))
+        sub.subset(f)
+        f.flavor = 'woff2'
+        buf = io.BytesIO()
+        f.save(buf)
+        css += (f"@font-face{{font-family:'{fam}';font-weight:{wt};"
+                f"src:url(data:font/woff2;base64,{base64.b64encode(buf.getvalue()).decode()}) format('woff2')}}")
+    return css
 
 
 def esc(s):
@@ -38,7 +119,7 @@ def esc(s):
 
 def doc(w, h, body, css='', defs=''):
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" fill="none">\n'
-            f'<style>{BASE_CSS}{css}</style>\n<defs>{COMMON_DEFS}{defs}</defs>\n{body}\n</svg>\n')
+            f'<style>{font_faces(body)}{BASE_CSS}{css}</style>\n<defs>{COMMON_DEFS}{defs}</defs>\n{body}\n</svg>\n')
 
 
 def write(name, content):
@@ -47,10 +128,11 @@ def write(name, content):
     print(f'  {name:<22} {len(content) / 1024:6.1f} KB')
 
 
-def card(x, y, w, h, rx=22, delay=0.0, dur=8):
+# ── Shared pieces ─────────────────────────────────────────────────────────────
+def card(x, y, w, h, rx=22, delay=0.0, dur=8, fill='url(#card)'):
     """Glass card with a comet of light orbiting its border."""
     r = f'x="{x + .5}" y="{y + .5}" width="{w - 1}" height="{h - 1}" rx="{rx}"'
-    return (f'<rect {r} fill="url(#card)" stroke="{LINE}"/>'
+    return (f'<rect {r} fill="{fill}" stroke="{LINE}"/>'
             f'<rect {r} pathLength="1000" stroke="url(#brand)" stroke-width="2" stroke-linecap="round" '
             f'stroke-dasharray="70 930" style="animation:run {dur}s linear -{delay:.2f}s infinite"/>')
 
@@ -58,21 +140,39 @@ def card(x, y, w, h, rx=22, delay=0.0, dur=8):
 def hexmark(cx, cy, r, label='FA'):
     pts = ' '.join(f'{cx + r * math.cos(math.radians(-90 + 60 * k)):.1f},{cy + r * math.sin(math.radians(-90 + 60 * k)):.1f}'
                    for k in range(6))
+    size = r * .6
     return (f'<circle cx="{cx}" cy="{cy}" r="{r * 1.38:.1f}" stroke="url(#brand)" stroke-width="1.2" stroke-dasharray="3 7" opacity=".7">'
             f'<animateTransform attributeName="transform" type="rotate" from="0 {cx} {cy}" to="360 {cx} {cy}" dur="14s" repeatCount="indefinite"/></circle>'
             f'<polygon points="{pts}" fill="#0f0820" stroke="url(#brand)" stroke-width="2"/>'
-            f'<text x="{cx}" y="{cy + r * .23:.1f}" text-anchor="middle" class="s" font-size="{r * .66:.0f}" font-weight="900" '
-            f'letter-spacing="1" fill="url(#ink)">{label}</text>')
+            f'<text x="{cx}" y="{cy + cap_height("d8", size) / 2:.1f}" text-anchor="middle" class="d" font-size="{size:.1f}" font-weight="800" fill="url(#ink)">{label}</text>')
+
+
+ICONS = {  # drawn in a 44×44 box
+    'flame': f'<path d="M22 7c4 6 10 9.5 10 17.5a10 10 0 0 1-20 0c0-5 3-7.5 5-10.5 1 3 2 4.5 4 4.5-1-4 0-8.5 1-11.5z" stroke="{A}" stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" values="1;.55;1;.8;1" dur="1.2s" repeatCount="indefinite"/></path>',
+    'play': f'<rect x="9" y="12" width="26" height="20" rx="5" stroke="{C}" stroke-width="2"/><path d="M19 17.5v9l7.5-4.5z" fill="{C}"/>',
+    'layers': f'<path d="M22 9l13 7-13 7-13-7z" stroke="{V}" stroke-width="2" stroke-linejoin="round"/><path d="M9 22l13 7 13-7M9 28l13 7 13-7" stroke="{M}" stroke-width="2" stroke-linejoin="round"/>',
+    'crown': f'<path d="M9 31l2-16 7 6 4-10 4 10 7-6 2 16z" stroke="{G}" stroke-width="2" stroke-linejoin="round"/><circle cx="22" cy="25" r="2" fill="{G}"/>',
+    'cap': f'<path d="M5 18l17-8 17 8-17 8z" stroke="{V}" stroke-width="2" stroke-linejoin="round"/><path d="M12 22v7c3 3 7 4 10 4s7-1 10-4v-7M37 19v9" stroke="{V}" stroke-width="2" stroke-linecap="round"/>',
+    'blueprint': f'<rect x="9" y="9" width="26" height="26" rx="4" stroke="{C}" stroke-width="2"/><path d="M9 18h26M18 18v17" stroke="{C}" stroke-width="2"/><rect x="22" y="22" width="9" height="9" rx="2" fill="{C}"><animate attributeName="opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/></rect>',
+    'shield': f'<path d="M22 7l13 5v9c0 8-6 13-13 16-7-3-13-8-13-16v-9z" stroke="{V}" stroke-width="2" stroke-linejoin="round"/><rect x="17" y="20" width="10" height="8" rx="2" fill="{V}"/><path d="M19 20v-3a3 3 0 0 1 6 0v3" stroke="{V}" stroke-width="2"/>',
+    'bolt': f'<path d="M24 6L12 25h9l-2 13 13-20h-9z" stroke="{M}" stroke-width="2" stroke-linejoin="round"><animate attributeName="fill" values="{M};none;none" dur="1.8s" repeatCount="indefinite"/></path>',
+    'target': f'<circle cx="22" cy="22" r="12" stroke="{G}" stroke-width="2"/><circle cx="22" cy="22" r="5" stroke="{G}" stroke-width="2"/><path d="M22 5v8M22 31v8M5 22h8M31 22h8" stroke="{G}" stroke-width="2"/><circle cx="22" cy="22" r="1.8" fill="{G}" class="pulse"/>',
+}
+
+
+def icon_tile(x, y, icon, col):
+    return (f'<g transform="translate({x} {y})"><rect width="44" height="44" rx="12" fill="{col}" fill-opacity=".1" '
+            f'stroke="{col}" stroke-opacity=".4"/>{ICONS[icon]}</g>')
 
 
 # ── 1. HERO ───────────────────────────────────────────────────────────────────
 def hero():
-    W, H, HZ = 1200, 560, 392
+    W, H, HZ = 1200, 600, 420
     random.seed(7)
     roles = ['Solutions Architect', 'DevSecOps Engineer', 'AI Automation Engineer',
              'Offensive Security Specialist', 'Cloud Architect · AWS · Azure · GCP',
-             'Tech Educator · 1,000+ Days Live']
-    LH, TY = 46, 340
+             f'Tech Educator · {STREAK} Days Live']
+    LH, TY = 46, 360
     n = len(roles)
     seg = 100 / n
     kf = []
@@ -80,6 +180,14 @@ def hero():
         kf.append(f'{i * seg:.3f}%{{transform:translateY({-i * LH}px)}}')
         kf.append(f'{(i + .8) * seg:.3f}%{{transform:translateY({-i * LH}px)}}')
     kf.append(f'100%{{transform:translateY({-n * LH}px)}}')
+    for r in roles:
+        fit(r, 's4', 27, 1, 560, 'hero ticker')
+
+    name, NLS = 'FARZEEN ALI', 4
+    NS = min(96.0, 1010 / (measure(name, 'd8', 1) + NLS * len(name) / 96))
+    NB = 290
+    ch = cap_height('d8', NS)
+    name_attrs = f'x="600" y="{NB}" text-anchor="middle" font-size="{NS:.1f}" font-weight="800" letter-spacing="{NLS}"'
 
     css = (
         '.tw{animation:tw 4s ease-in-out infinite}@keyframes tw{0%,100%{opacity:.1}50%{opacity:.9}}'
@@ -89,14 +197,16 @@ def hero():
         '.a2{animation:d2 17s ease-in-out infinite alternate}@keyframes d2{to{transform:translate(-180px,30px)}}'
         '.a3{animation:d3 11s ease-in-out infinite alternate}@keyframes d3{to{transform:translate(60px,60px)}}'
         '.g1{animation:g1 6s steps(1) infinite}.g2{animation:g2 6s steps(1) infinite}'
-        '@keyframes g1{0%,88%{transform:translate(0);opacity:0}89%{transform:translate(-7px,2px);opacity:.85}'
-        '91%{transform:translate(6px,-1px);opacity:.85}93%{transform:translate(-3px,0);opacity:.85}95%,100%{transform:translate(0);opacity:0}}'
-        '@keyframes g2{0%,88%{transform:translate(0);opacity:0}89%{transform:translate(7px,-2px);opacity:.85}'
-        '91%{transform:translate(-5px,2px);opacity:.85}93%{transform:translate(4px,0);opacity:.85}95%,100%{transform:translate(0);opacity:0}}'
+        '@keyframes g1{0%,88%{transform:translate(0);opacity:0}89%{transform:translate(-8px,2px);opacity:.9}'
+        '91%{transform:translate(7px,-1px);opacity:.9}93%{transform:translate(-3px,0);opacity:.9}95%,100%{transform:translate(0);opacity:0}}'
+        '@keyframes g2{0%,88%{transform:translate(0);opacity:0}89%{transform:translate(8px,-2px);opacity:.9}'
+        '91%{transform:translate(-6px,2px);opacity:.9}93%{transform:translate(4px,0);opacity:.9}95%,100%{transform:translate(0);opacity:0}}'
         '.tick{animation:tick 18s infinite}@keyframes tick{' + ''.join(kf) + '}'
-        '.scan{animation:scan 7s linear infinite}@keyframes scan{from{transform:translateY(-20px)}to{transform:translateY(580px)}}'
+        '.scan{animation:scan 7s linear infinite}@keyframes scan{from{transform:translateY(-20px)}to{transform:translateY(620px)}}'
         '.bob{animation:bob 4s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-6px)}}'
         '.halo{animation:halo 4s ease-in-out infinite}@keyframes halo{50%{opacity:.35}}'
+        '.e1,.e2,.e3{animation:ec 5s ease-in-out infinite}.e2{animation-delay:-.4s}.e3{animation-delay:-.8s}'
+        '@keyframes ec{50%{transform:translateY(-7px)}}'
     )
     defs = f'''<clipPath id="frame"><rect width="{W}" height="{H}" rx="28"/></clipPath>
 <radialGradient id="au1"><stop offset="0" stop-color="{V}" stop-opacity=".55"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
@@ -112,8 +222,8 @@ def hero():
 <linearGradient id="scanG" x1="0" x2="1"><stop offset="0" stop-color="{V}" stop-opacity="0"/><stop offset=".5" stop-color="#d9c2ff" stop-opacity=".55"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></linearGradient>
 <filter id="soft" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="22"/></filter>
 <clipPath id="tickClip"><rect x="0" y="{TY - 32}" width="{W}" height="44"/></clipPath>
-<clipPath id="sliceA"><rect y="170" width="{W}" height="42"/></clipPath>
-<clipPath id="sliceB"><rect y="222" width="{W}" height="40"/></clipPath>'''
+<clipPath id="sliceA"><rect y="{NB - ch - 4:.0f}" width="{W}" height="{ch / 2 + 4:.0f}"/></clipPath>
+<clipPath id="sliceB"><rect y="{NB - ch / 2 + 6:.0f}" width="{W}" height="{ch / 2:.0f}"/></clipPath>'''
 
     stars = ''.join(
         f'<circle cx="{random.uniform(20, 1180):.0f}" cy="{random.uniform(20, HZ - 20):.0f}" r="{random.choice([.7, 1, 1.2, 1.6])}" '
@@ -122,29 +232,33 @@ def hero():
     radial = ''.join(f'<line x1="600" y1="{HZ}" x2="{x}" y2="{H}"/>' for x in range(-3000, 4201, 200))
     horiz = ''.join(f'<line x1="0" y1="{HZ}" x2="{W}" y2="{HZ}" class="fl" style="animation-delay:-{i * .5}s"/>' for i in range(8))
     rings = ''.join(
-        f'<circle cx="600" cy="225" r="{r}" stroke="{col}" stroke-width="1" stroke-dasharray="{da}" opacity=".22">'
-        f'<animateTransform attributeName="transform" type="rotate" from="0 600 225" to="{sgn * 360} 600 225" dur="{d}s" repeatCount="indefinite"/></circle>'
-        for r, col, da, sgn, d in [(175, V, '2 10', 1, 40), (212, C, '60 18 4 18', -1, 60), (250, M, '1 6', 1, 90)])
-
-    name = 'FARZEEN ALI'
-    name_attrs = 'x="600" y="255" text-anchor="middle" font-size="104" font-weight="900" letter-spacing="10"'
+        f'<circle cx="600" cy="245" r="{r}" stroke="{col}" stroke-width="1" stroke-dasharray="{da}" opacity=".22">'
+        f'<animateTransform attributeName="transform" type="rotate" from="0 600 245" to="{sgn * 360} 600 245" dur="{d}s" repeatCount="indefinite"/></circle>'
+        for r, col, da, sgn, d in [(185, V, '2 10', 1, 40), (225, C, '60 18 4 18', -1, 60), (265, M, '1 6', 1, 90)])
+    echoes = ''.join(
+        f'<text {name_attrs} transform="translate(0 {-k * 13})" class="d" stroke="{col}" stroke-width="1.2" opacity="{op}"><tspan class="e{k}">{name}</tspan></text>'
+        for k, col, op in [(3, M, .18), (2, V, .32), (1, C, .5)])
     ticker = ''.join(
-        f'<text x="600" y="{TY + k * LH}" text-anchor="middle" class="s" font-size="27" font-weight="300" letter-spacing="1.5" fill="{TXT}">{esc(t)}</text>'
+        f'<text x="600" y="{TY + k * LH}" text-anchor="middle" class="s" font-size="27" letter-spacing="1" fill="{TXT}">{esc(t)}</text>'
         for k, t in enumerate(roles + roles[:1]))
 
     chips_src = [('FULL-STACK', C), ('DEVSECOPS', V), ('CLOUD', C), ('AI AGENTS', M), ('OFFSEC', G), ('WEB3', A)]
-    cw = [len(t) * 9.4 + 46 for t, _ in chips_src]
+    cw = [measure(t, 'm7', 12, 2) + 50 for t, _ in chips_src]
     gap = 16
     x = 600 - (sum(cw) + gap * (len(cw) - 1)) / 2
     chips = ''
     for i, ((t, col), w) in enumerate(zip(chips_src, cw)):
-        chips += (f'<g class="bob" style="animation-delay:-{i * .6:.1f}s"><rect x="{x:.1f}" y="440" width="{w:.1f}" height="36" rx="18" fill="#0c0618" fill-opacity=".85" stroke="{col}" stroke-opacity=".45"/>'
-                  f'<circle cx="{x + 20:.1f}" cy="458" r="4" fill="{col}" class="pulse" style="animation-delay:-{i * .3:.1f}s"/>'
-                  f'<text x="{x + 33:.1f}" y="462.5" class="m" font-size="12" font-weight="700" letter-spacing="2" fill="{TXT}">{t}</text></g>')
+        chips += (f'<g class="bob" style="animation-delay:-{i * .6:.1f}s"><rect x="{x:.1f}" y="478" width="{w:.1f}" height="36" rx="18" fill="#0c0618" fill-opacity=".85" stroke="{col}" stroke-opacity=".45"/>'
+                  f'<circle cx="{x + 21:.1f}" cy="496" r="4" fill="{col}" class="pulse" style="animation-delay:-{i * .3:.1f}s"/>'
+                  f'<text x="{x + 34:.1f}" y="500.5" class="m" font-size="12" font-weight="700" letter-spacing="2" fill="{TXT}">{t}</text></g>')
         x += w + gap
 
     corners = ''.join(f'<path d="{d}" stroke="{C}" stroke-width="1.5" opacity=".6"/>' for d in
                       ['M24 60V24H60', f'M{W - 60} 24H{W - 24}V60', f'M24 {H - 60}V{H - 24}H60', f'M{W - 60} {H - 24}H{W - 24}V{H - 60}'])
+    pill = 'FOUNDER &amp; CEO · THE TECHZEEN'
+    pw = measure('FOUNDER & CEO · THE TECHZEEN', 'm7', 12.5, 4) + 52
+    live = f'{STREAK} DAYS LIVE'
+    lw = measure(live, 'm4', 12, 3)
 
     body = f'''<g clip-path="url(#frame)">
 <rect width="{W}" height="{H}" fill="#06020d"/>
@@ -158,25 +272,26 @@ def hero():
 <rect x="0" y="{HZ - 1}" width="{W}" height="2" fill="url(#beam)" opacity=".9"/>
 <rect class="scan" x="0" y="0" width="{W}" height="2" fill="url(#scanG)"/>
 {corners}
-<g transform="translate(70 56)">{hexmark(0, 0, 15)}</g>
-<text x="104" y="61" class="m" font-size="13" font-weight="700" letter-spacing="4" fill="{TXT}">THE TECHZEEN</text>
-<circle cx="1000" cy="56" r="4.5" fill="{G}" class="pulse"/>
-<text x="1014" y="61" class="m" font-size="12" letter-spacing="3" fill="{MUT}">SYSTEM ONLINE</text>
-<g><rect x="410" y="118" width="380" height="34" rx="17" fill="{V}" fill-opacity=".12" stroke="url(#brand)"/>
-<text x="600" y="140" text-anchor="middle" class="m" font-size="12.5" font-weight="700" letter-spacing="4" fill="#e4d1ff">FOUNDER &amp; CEO · THE TECHZEEN</text></g>
-<g>
-<text {name_attrs} fill="{V}" filter="url(#soft)" opacity=".9" class="s halo">{name}</text>
-<g clip-path="url(#sliceA)"><text {name_attrs} fill="{C}" class="s g1">{name}</text></g>
-<g clip-path="url(#sliceB)"><text {name_attrs} fill="{M}" class="s g2">{name}</text></g>
-<text {name_attrs} fill="url(#shine)" class="s">{name}</text>
-</g>
-<g><rect x="380" y="282" width="440" height="2" fill="url(#beam)"/>
-<circle r="3.5" fill="#fff" filter="url(#glow)"><animateMotion path="M380 283H820" dur="3s" repeatCount="indefinite"/></circle>
-<path d="M240 330H330M870 330H960" stroke="url(#beam)" stroke-width="1.5"/>
-<g clip-path="url(#tickClip)"><g class="tick">{ticker}</g></g></g>
-<g>{chips}</g>
-<text x="40" y="{H - 34}" class="m" font-size="11" letter-spacing="3" fill="{DIM}">// BUILD · SECURE · AUTOMATE · TEACH</text>
-<text x="{W - 40}" y="{H - 34}" text-anchor="end" class="m" font-size="11" letter-spacing="3" fill="{DIM}">MODE: GOD ▲ 1,000+ DAYS · 0 SKIPS</text>
+<g transform="translate(72 60)">{hexmark(0, 0, 16)}</g>
+<text x="108" y="66" class="d" font-size="14" font-weight="500" letter-spacing="3" fill="{TXT}">THE TECHZEEN</text>
+<circle cx="{W - 48 - lw - 16:.1f}" cy="60" r="4.5" fill="{G}" class="pulse"/>
+<text x="{W - 48}" y="64.5" text-anchor="end" class="m" font-size="12" letter-spacing="3" fill="{MUT}">{live}</text>
+<rect x="{600 - pw / 2:.1f}" y="134" width="{pw:.1f}" height="36" rx="18" fill="{V}" fill-opacity=".12" stroke="url(#brand)"/>
+<circle cx="{600 - pw / 2 + 22:.1f}" cy="152" r="3.5" fill="{M}" class="pulse"/>
+<text x="{600 + 8}" y="156.5" text-anchor="middle" class="m" font-size="12.5" font-weight="700" letter-spacing="4" fill="#e4d1ff">{pill}</text>
+<text {name_attrs} fill="{V}" filter="url(#soft)" opacity=".9" class="d halo">{name}</text>
+{echoes}
+<g clip-path="url(#sliceA)"><text {name_attrs} fill="{C}" class="d g1">{name}</text></g>
+<g clip-path="url(#sliceB)"><text {name_attrs} fill="{M}" class="d g2">{name}</text></g>
+<text {name_attrs} fill="url(#shine)" class="d">{name}</text>
+<rect x="360" y="{NB + 24}" width="480" height="2" fill="url(#beam)"/>
+<circle r="3.5" fill="#fff" filter="url(#glow)"><animateMotion path="M360 {NB + 25}H840" dur="3s" repeatCount="indefinite"/></circle>
+<path d="M230 {TY - 10}H320M880 {TY - 10}H970" stroke="url(#beam)" stroke-width="1.5"/>
+<g clip-path="url(#tickClip)"><g class="tick">{ticker}</g></g>
+{chips}
+<text x="40" y="{H - 36}" class="m" font-size="11" letter-spacing="3" fill="{DIM}">// BUILD · SECURE · AUTOMATE · TEACH</text>
+<text x="{W - 40}" y="{H - 36}" text-anchor="end" class="m" font-size="11" letter-spacing="3" fill="{DIM}">MODE: GOD ▲ {STREAK} DAYS · 0 SKIPS</text>
+<rect width="{W}" height="{H}" filter="url(#grain)"/>
 </g>
 <rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="28" stroke="{LINE}" stroke-width="1.5"/>
 <rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="28" pathLength="1000" stroke="url(#brand)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="120 880" style="animation:run 9s linear infinite"/>'''
@@ -196,34 +311,75 @@ SECTIONS = [
 
 def header(num, title, sub, idx):
     W, H = 1200, 110
-    css = ('.sw{animation:sw 3.2s cubic-bezier(.6,0,.4,1) infinite}@keyframes sw{from{transform:translateX(0)}to{transform:translateX(420px)}}')
+    tw = fit(title, 'd8', 28, 3, 560, 'header')
+    bx = max(720, round(176 + tw + 60))
+    css = (f'.sw{{animation:sw 3.2s cubic-bezier(.6,0,.4,1) infinite}}@keyframes sw{{from{{transform:translateX(0)}}to{{transform:translateX({1130 - bx + 100}px)}}}}')
     defs = (f'<linearGradient id="hb" x1="0" x2="1"><stop offset="0" stop-color="{V}" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></linearGradient>'
             f'<pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="{V}" opacity=".18"/></pattern>'
-            f'<clipPath id="bc"><rect x="720" y="40" width="410" height="30"/></clipPath>')
+            f'<clipPath id="bc"><rect x="{bx}" y="40" width="{1130 - bx}" height="30"/></clipPath>')
     body = f'''{card(0, 0, W, H, 20, idx * 1.3, 10)}
 <rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="20" fill="url(#dots)"/>
-<g><text x="40" y="76" class="m" font-size="54" font-weight="800" fill="none" stroke="url(#brand)" stroke-width="1.4">{num}</text>
+<text x="36" y="76" class="d" font-size="50" font-weight="800" fill="none" stroke="url(#brand)" stroke-width="1.3">{num}</text>
 <rect x="148" y="28" width="2" height="54" fill="url(#brand)"/>
-<text x="176" y="62" class="s" font-size="30" font-weight="800" letter-spacing="5" fill="url(#ink)">{esc(title)}</text>
-<text x="178" y="88" class="m" font-size="13" letter-spacing="1" fill="{MUT}">{esc(sub)}</text></g>
-<rect x="720" y="54.5" width="410" height="1" fill="{LINE}"/>
-<g clip-path="url(#bc)"><rect class="sw" x="620" y="54" width="100" height="2" fill="url(#hb)" style="animation-delay:-{idx * .5}s"/></g>
-<circle cx="720" cy="55" r="3" fill="{V}"/>
+<text x="176" y="63" class="d" font-size="28" font-weight="800" letter-spacing="3" fill="url(#ink)">{esc(title)}</text>
+<text x="177" y="88" class="m" font-size="13" letter-spacing="1" fill="{MUT}">{esc(sub)}</text>
+<rect x="{bx}" y="54.5" width="{1130 - bx}" height="1" fill="{LINE}"/>
+<g clip-path="url(#bc)"><rect class="sw" x="{bx - 100}" y="54" width="100" height="2" fill="url(#hb)" style="animation-delay:-{idx * .5}s"/></g>
+<circle cx="{bx}" cy="55" r="3" fill="{V}"/>
 <g transform="translate(1152 55)"><polygon points="0,-12 10.4,-6 10.4,6 0,12 -10.4,6 -10.4,-6" stroke="url(#brand)" stroke-width="1.5" fill="#0f0820">
 <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></polygon>
 <circle r="3" fill="{M}" class="pulse"/></g>'''
     return doc(W, H, body, css, defs)
 
 
-# ── 3. STATS ──────────────────────────────────────────────────────────────────
-ICONS = {
-    'flame': f'<path d="M22 7c4 6 10 9.5 10 17.5a10 10 0 0 1-20 0c0-5 3-7.5 5-10.5 1 3 2 4.5 4 4.5-1-4 0-8.5 1-11.5z" stroke="{A}" stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" values="1;.55;1;.8;1" dur="1.2s" repeatCount="indefinite"/></path>',
-    'play': f'<rect x="9" y="12" width="26" height="20" rx="5" stroke="{C}" stroke-width="2"/><path d="M19 17.5v9l7.5-4.5z" fill="{C}"/>',
-    'layers': f'<path d="M22 9l13 7-13 7-13-7z" stroke="{V}" stroke-width="2" stroke-linejoin="round"/><path d="M9 22l13 7 13-7M9 28l13 7 13-7" stroke="{M}" stroke-width="2" stroke-linejoin="round"/>',
-    'crown': f'<path d="M9 31l2-16 7 6 4-10 4 10 7-6 2 16z" stroke="{G}" stroke-width="2" stroke-linejoin="round"/><circle cx="22" cy="25" r="2" fill="{G}"/>',
-}
+# ── 3. IDENTITY (bento) ───────────────────────────────────────────────────────
+ROLES = [
+    ('crown', G, 'Founder & CEO', "THE TECHZEEN · PK'S #1 TECH CHANNEL"),
+    ('cap', V, 'Program Manager & Faculty', 'DENNING · UOL & GREENWICH CURRICULA'),
+    ('play', C, '20+ Production Courses', 'TAUGHT LIVE · ZERO → PRODUCTION'),
+    ('flame', A, f'{STREAK} Day Streak', 'DAILY CONTENT · ZERO SKIPS'),
+]
+
+
+def identity():
+    W, H = 1200, 440
+    css = ('.ul{animation:ul 3.5s cubic-bezier(.7,0,.3,1) infinite}@keyframes ul{0%{transform:scaleX(0)}45%,80%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}'
+           '.eq{animation:eq 1.1s ease-in-out infinite alternate;transform-origin:bottom;transform-box:fill-box}@keyframes eq{from{transform:scaleY(.25)}to{transform:scaleY(1)}}')
+    body = card(0, 0, 740, H, 26, 0, 11)
+    body += f'<text x="690" y="200" text-anchor="end" class="d" font-size="230" font-weight="800" fill="{V}" opacity=".08">“</text>'
+    body += f'<text x="44" y="62" class="m" font-size="11.5" font-weight="700" letter-spacing="3.5" fill="{C}">◆ MANIFESTO</text>'
+    q = [('Most startups hire', 'url(#ink)'), ('4–5 specialists', 'url(#hot)'), ('for what I do in one.', 'url(#ink)')]
+    for k, (ln, fill) in enumerate(q):
+        fit(ln, 'd8', 38, 0, 650, 'identity quote')
+        body += f'<text x="44" y="{128 + k * 54}" class="d" font-size="38" font-weight="800" fill="{fill}">{esc(ln)}</text>'
+    uw = measure(q[1][0], 'd8', 38)
+    body += f'<rect class="ul" x="44" y="{128 + 54 + 14}" width="{uw:.0f}" height="4" rx="2" fill="url(#hot)" style="transform-origin:44px 0"/>'
+    bio = ['Solutions Architect, DevSecOps Engineer & Tech Educator —',
+           'building elite, security-first infrastructure, from a single',
+           'HTML tag to distributed cloud systems.']
+    for k, ln in enumerate(bio):
+        fit(ln, 's4', 17, 0, 650, 'identity bio')
+        body += f'<text x="44" y="{276 + k * 27}" class="s" font-size="17" fill="{MUT}">{esc(ln)}</text>'
+    body += f'<text x="44" y="{H - 40}" class="m" font-size="11.5" letter-spacing="3" fill="{DIM}">— FARZEEN ALI · MR. CONSISTENT</text>'
+    for k in range(7):
+        body += f'<rect class="eq" x="{640 + k * 9}" y="{H - 62}" width="5" height="26" rx="2" fill="url(#brand)" style="animation-delay:-{k * .23:.2f}s"/>'
+
+    rh, gap = (H - 3 * 16) / 4, 16
+    for k, (icon, col, title, sub) in enumerate(ROLES):
+        y = k * (rh + gap)
+        body += card(760, y, 440, rh, 20, 2 + k * 1.6, 9)
+        body += icon_tile(784, y + rh / 2 - 22, icon, col)
+        fit(title, 's6', 19, 0, 330, 'identity role')
+        fit(sub, 'm4', 10.5, 1.6, 330, 'identity role sub')
+        body += (f'<text x="846" y="{y + rh / 2 - 2:.1f}" class="s" font-size="19" font-weight="600" fill="{TXT}">{esc(title)}</text>'
+                 f'<text x="846" y="{y + rh / 2 + 20:.1f}" class="m" font-size="10.5" letter-spacing="1.6" fill="{col}">{esc(sub)}</text>'
+                 f'<text x="1176" y="{y + 28:.1f}" text-anchor="end" class="m" font-size="10" fill="{DIM}">0{k + 1}</text>')
+    return doc(W, H, body, css)
+
+
+# ── 4. STATS ──────────────────────────────────────────────────────────────────
 STATS = [
-    ('flame', '1,000+', 'Days Streak', 'ZERO SKIPS · DAILY CONTENT', A),
+    ('flame', STREAK, 'Days Streak', 'ZERO SKIPS · DAILY CONTENT', A),
     ('play', '20+', 'Production Courses', 'TAUGHT LIVE · START → SHIP', C),
     ('layers', '4–5', 'Specialists in One', 'STACK · SECURITY · CLOUD · AI', V),
     ('crown', '#1', 'Tech Channel in PK', 'THE TECHZEEN · YOUTUBE', G),
@@ -232,25 +388,25 @@ STATS = [
 
 def stats():
     W, H = 1200, 280
-    css = ('.sp{animation:sp 4s ease-in-out infinite}@keyframes sp{0%{stroke-dashoffset:100;opacity:1}55%{stroke-dashoffset:0;opacity:1}85%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}')
+    css = '.sp{animation:sp 4s ease-in-out infinite}@keyframes sp{0%{stroke-dashoffset:100;opacity:1}55%{stroke-dashoffset:0;opacity:1}85%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}'
     random.seed(3)
     body = ''
     for i, (icon, num, label, sub, col) in enumerate(STATS):
         x, y, w, h = i * 306, 10, 282, 260
+        fit(num, 'd8', 50, 0, w - 48, 'stats number')
         pts = ' '.join(f'{x + 24 + k * (w - 48) / 23:.1f},{y + 236 - random.uniform(0, 1) ** 1.6 * 18 - k * .6:.1f}' for k in range(24))
         body += f'''{card(x, y, w, h, 22, i * 1.7, 9)}
-<g transform="translate({x + 22} {y + 22})"><rect width="44" height="44" rx="12" fill="{col}" fill-opacity=".1" stroke="{col}" stroke-opacity=".4"/>{ICONS[icon]}</g>
+{icon_tile(x + 22, y + 22, icon, col)}
 <circle cx="{x + w - 70}" cy="{y + 44}" r="3.5" fill="{col}" class="pulse"/>
 <text x="{x + w - 60}" y="{y + 48}" class="m" font-size="10.5" letter-spacing="2.5" fill="{MUT}">LIVE</text>
-<g>
-<text x="{x + 24}" y="{y + 146}" class="s" font-size="60" font-weight="800" fill="url(#ink)" letter-spacing="-1">{esc(num)}</text>
-<text x="{x + 24}" y="{y + 178}" class="s" font-size="17" font-weight="600" fill="{TXT}">{esc(label)}</text>
-<text x="{x + 24}" y="{y + 202}" class="m" font-size="10" letter-spacing="1.5" fill="{col}">{esc(sub)}</text></g>
+<text x="{x + 24}" y="{y + 144}" class="d" font-size="50" font-weight="800" fill="url(#ink)">{esc(num)}</text>
+<text x="{x + 24}" y="{y + 178}" class="s" font-size="18" font-weight="600" fill="{TXT}">{esc(label)}</text>
+<text x="{x + 24}" y="{y + 202}" class="m" font-size="10" letter-spacing="1.5" fill="{col}">{esc(sub)}</text>
 <polyline points="{pts}" stroke="{col}" stroke-width="1.8" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" class="sp" style="animation-delay:-{i * .7:.1f}s" opacity=".9"/>'''
     return doc(W, H, body, css)
 
 
-# ── 4. ARSENAL (bento) ────────────────────────────────────────────────────────
+# ── 5. ARSENAL (bento) ────────────────────────────────────────────────────────
 def lemniscate(cx, cy, a, ys):
     pts = []
     for k in range(121):
@@ -260,24 +416,30 @@ def lemniscate(cx, cy, a, ys):
     return 'M' + ' L'.join(pts) + 'Z'
 
 
-def text_block(x, y, tag, title, lines, tags, col, size=24):
+def text_block(x, y, tag, title, lines, col, maxw, size=26):
+    fit(title, 's6', size, 0, maxw, 'arsenal title')
     out = (f'<text x="{x}" y="{y}" class="m" font-size="11" font-weight="700" letter-spacing="3" fill="{col}">{esc(tag)}</text>'
-           f'<text x="{x}" y="{y + 38}" class="s" font-size="{size}" font-weight="800" fill="url(#ink)">{esc(title)}</text>')
+           f'<text x="{x}" y="{y + 38}" class="s" font-size="{size}" font-weight="600" fill="url(#ink)">{esc(title)}</text>')
     for k, ln in enumerate(lines):
-        out += f'<text x="{x}" y="{y + 70 + k * 23}" class="s" font-size="15" fill="{MUT}">{esc(ln)}</text>'
-    return out, tags
+        fit(ln, 's4', 15.5, 0, maxw, 'arsenal desc')
+        out += f'<text x="{x}" y="{y + 70 + k * 23}" class="s" font-size="15.5" fill="{MUT}">{esc(ln)}</text>'
+    return out
+
+
+def tags_line(x, y, text):
+    return f'<text x="{x}" y="{y}" class="m" font-size="10.5" letter-spacing="2" fill="{C}">{esc(text)}</text>'
 
 
 def arsenal():
-    W, H = 1200, 640
+    W, H = 1200, 620
     random.seed(11)
     body = ''
 
     # A — AI agents: neural net with signal pulses
     body += card(0, 0, 590, 300, 24, 0, 10)
-    t, _ = text_block(34, 52, '01 · AI', 'AI Agentic Automation',
-                      ['Production LLM orchestration,', 'RAG pipelines & n8n workflows,', 'self-healing autonomous agents.'], '', M)
-    body += t + f'<text x="34" y="262" class="m" font-size="11" letter-spacing="2" fill="{C}">LLM · RAG · N8N · AGENTS</text>'
+    body += text_block(34, 52, '01 · AI', 'AI Agentic Automation',
+                       ['Production LLM orchestration,', 'RAG pipelines & n8n workflows,', 'self-healing autonomous agents.'], M, 300)
+    body += tags_line(34, 262, 'LLM · RAG · N8N · AGENTS')
     layers = [[(370, 95), (370, 150), (370, 205)], [(440, 70), (440, 123), (440, 177), (440, 230)], [(505, 105), (505, 195)], [(552, 150)]]
     for la, lb in zip(layers, layers[1:]):
         for p in la:
@@ -295,18 +457,17 @@ def arsenal():
 
     # B — DevSecOps: infinity CI/CD loop
     body += card(610, 0, 590, 300, 24, 3, 10)
-    t, _ = text_block(644, 52, '02 · DEVSECOPS', 'DevSecOps & Cloud',
-                      ['Zero-Trust cloud on AWS, Azure', '& GCP — declarative IaC with', 'security baked into every CI/CD.'], '', C)
-    body += t + f'<text x="644" y="262" class="m" font-size="11" letter-spacing="2" fill="{C}">K8S · TERRAFORM · VAULT · TRIVY</text>'
-    inf = lemniscate(1062, 150, 98, 1.6)
+    body += text_block(644, 52, '02 · DEVSECOPS', 'DevSecOps & Cloud',
+                       ['Zero-Trust cloud on AWS, Azure', '& GCP — declarative IaC with', 'security baked into every CI/CD.'], C, 290)
+    body += tags_line(644, 262, 'K8S · TERRAFORM · VAULT · TRIVY')
+    inf = lemniscate(1066, 150, 96, 1.6)
     body += (f'<path d="{inf}" stroke="{LINE}" stroke-width="14" stroke-linejoin="round"/>'
              f'<path d="{inf}" stroke="url(#brand)" stroke-width="2.5" opacity=".85"/>'
              f'<path d="{inf}" pathLength="1000" stroke="{M}" stroke-width="5" stroke-linecap="round" stroke-dasharray="110 890" filter="url(#glow)" style="animation:run 3.4s linear infinite"/>'
              f'<circle r="5" fill="#fff" filter="url(#glow)"><animateMotion path="{inf}" dur="3.4s" repeatCount="indefinite"/></circle>')
-    for lx, ly, lab in [(1000, 88, 'CODE'), (1000, 222, 'BUILD'), (1124, 88, 'DEPLOY'), (1124, 222, 'MONITOR'), (1062, 108, 'SCAN')]:
+    for lx, ly, lab in [(1004, 88, 'CODE'), (1004, 222, 'BUILD'), (1128, 88, 'DEPLOY'), (1128, 222, 'MONITOR'), (1066, 108, 'SCAN')]:
         body += f'<text x="{lx}" y="{ly}" text-anchor="middle" class="m" font-size="10" font-weight="700" letter-spacing="2" fill="{MUT}">{lab}</text>'
 
-    # Row 2
     sw, gy = 386, 320
     xs = [0, 407, 814]
 
@@ -324,9 +485,9 @@ def arsenal():
         body += (f'<circle cx="{bx:.1f}" cy="{by:.1f}" r="4" fill="{M}" filter="url(#glow)" opacity="0">'
                  f'<animate attributeName="opacity" values="1;0" dur="4s" begin="{ang / 90:.2f}s" repeatCount="indefinite"/></circle>')
     body += f'<path d="M{cx} {cy - 10}l8 3v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10v-6z" fill="#0f0820" stroke="{G}" stroke-width="1.6"/>'
-    t, _ = text_block(xs[0] + 30, gy + 166, '03 · OFFSEC', 'Offensive Security',
-                      ['Pentesting, vuln management,', 'SIEM/SOC ops & hardening.'], '', G, 22)
-    body += t + f'<text x="{xs[0] + 30}" y="{gy + 282}" class="m" font-size="10.5" letter-spacing="2" fill="{C}">NMAP · BURP · METASPLOIT · WAZUH</text>'
+    body += text_block(xs[0] + 30, gy + 166, '03 · OFFSEC', 'Offensive Security',
+                       ['Pentesting, vuln management,', 'SIEM/SOC ops & hardening.'], G, 326, 23)
+    body += tags_line(xs[0] + 30, gy + 280, 'NMAP · BURP · METASPLOIT · WAZUH')
 
     # D — Full-stack & mobile: browser + phone with live code
     body += card(xs[1], gy, sw, 300, 24, 6.5, 10)
@@ -336,17 +497,17 @@ def arsenal():
              + ''.join(f'<circle cx="{bx0 + 11 + k * 9}" cy="{by0 + 9}" r="2.6" fill="{c}"/>' for k, c in enumerate([M, A, G])))
     for k, (wd, c) in enumerate(zip([72, 104, 56, 88, 44], [V, C, M, V, G])):
         ind = 12 if k in (1, 2, 3) else 0
-        body += (f'<rect x="{bx0 + 12 + ind}" y="{by0 + 28 + k * 13}" width="0" height="6" rx="3" fill="{c}" opacity=".85">'
-                 f'<animate attributeName="width" values="0;{wd - ind};{wd - ind};0" keyTimes="0;.3;.85;1" dur="4s" begin="{k * .3:.1f}s" repeatCount="indefinite"/></rect>')
+        body += (f'<rect x="{bx0 + 12 + ind}" y="{by0 + 28 + k * 13}" width="{wd - ind}" height="6" rx="3" fill="{c}" opacity=".85">'
+                 f'<animate attributeName="width" values="{wd - ind};0;{wd - ind};{wd - ind}" keyTimes="0;.15;.45;1" dur="4s" begin="{k * .3:.1f}s" repeatCount="indefinite"/></rect>')
     px0 = bx0 + 156
     body += (f'<rect x="{px0}" y="{by0 - 2}" width="50" height="104" rx="11" fill="#0f0820" stroke="{V}" stroke-width="1.5"/>'
              f'<rect x="{px0 + 18}" y="{by0 + 4}" width="14" height="4" rx="2" fill="{LINE}"/>')
     for k in range(3):
         body += (f'<rect x="{px0 + 8}" y="{by0 + 16 + k * 26}" width="34" height="20" rx="5" fill="{[C, M, V][k]}" opacity=".25">'
                  f'<animate attributeName="opacity" values=".15;.7;.15" dur="2.4s" begin="{k * .8:.1f}s" repeatCount="indefinite"/></rect>')
-    t, _ = text_block(xs[1] + 30, gy + 166, '04 · FULL-STACK', 'Full-Stack & Mobile',
-                      ['High-throughput web & native', 'apps — Next.js, NestJS, RN.'], '', V, 22)
-    body += t + f'<text x="{xs[1] + 30}" y="{gy + 282}" class="m" font-size="10.5" letter-spacing="2" fill="{C}">NEXT.JS · NESTJS · REACT NATIVE</text>'
+    body += text_block(xs[1] + 30, gy + 166, '04 · FULL-STACK', 'Full-Stack & Mobile',
+                       ['High-throughput web & native', 'apps — Next.js, NestJS, RN.'], V, 326, 23)
+    body += tags_line(xs[1] + 30, gy + 280, 'NEXT.JS · NESTJS · REACT NATIVE')
 
     # E — Blockchain: chain of isometric blocks
     body += card(xs[2], gy, sw, 300, 24, 8, 10)
@@ -364,35 +525,36 @@ def arsenal():
                  f'<polygon points="{top}" fill="#3b1d70" stroke="{V}" stroke-width="1">'
                  f'<animate attributeName="fill" values="#3b1d70;{M};#3b1d70;#3b1d70" keyTimes="0;.1;.3;1" dur="3.2s" begin="{k * .8:.1f}s" repeatCount="indefinite"/></polygon>'
                  f'<text x="{x}" y="{cyb + 44}" text-anchor="middle" class="m" font-size="9" fill="{DIM}">#{k:02d}·0x{random.randrange(16 ** 3):03x}</text>')
-    t, _ = text_block(xs[2] + 30, gy + 166, '05 · WEB3', 'Blockchain Engineering',
-                      ['Solidity smart contracts &', 'decentralized systems.'], '', A, 22)
-    body += t + f'<text x="{xs[2] + 30}" y="{gy + 282}" class="m" font-size="10.5" letter-spacing="2" fill="{C}">SOLIDITY · WEB3 · EVM</text>'
+    body += text_block(xs[2] + 30, gy + 166, '05 · WEB3', 'Blockchain Engineering',
+                       ['Solidity smart contracts &', 'decentralized systems.'], A, 326, 23)
+    body += tags_line(xs[2] + 30, gy + 280, 'SOLIDITY · WEB3 · EVM')
     return doc(W, H, body)
 
 
-# ── 5. TERMINAL ───────────────────────────────────────────────────────────────
+# ── 6. TERMINAL ───────────────────────────────────────────────────────────────
 def terminal():
     W, H = 1200, 500
-    CW, X0, Y0, LH = 9.6, 40, 98, 34
+    X0, Y0, LH = 40, 98, 34
+    CW = measure('0', 'm4', 16)
     prompt = [('farzeen', M, 700), ('@', MUT, 400), ('techzeen', C, 700), (':', MUT, 400), ('~', V, 700), ('$ ', TXT, 400)]
     plen = sum(len(t) for t, _, _ in prompt)
+    ok = [('■ ', G, 700)]
     lines = [
         ('cmd', 'whoami'),
         ('out', [('Farzeen Ali', TXT, 700), (' — Founder & CEO @ ', MUT, 400), ('The Techzeen', M, 700)]),
         ('cmd', 'cat ./mission.txt'),
         ('out', [('Build. Secure. Automate. Teach. — every single day.', TXT, 400)]),
         ('cmd', 'techzeen --stats'),
-        ('out', [('streak ', MUT, 400), ('1,000+ days', A, 700), ('  ·  skips ', MUT, 400), ('0', G, 700),
+        ('out', [('streak ', MUT, 400), (f'{STREAK} days', A, 700), ('  ·  skips ', MUT, 400), ('0', G, 700),
                  ('  ·  courses ', MUT, 400), ('20+', C, 700), ('  ·  rank ', MUT, 400), ('#1 PK', M, 700)]),
         ('cmd', 'sudo deploy --mode=god'),
         ('bar', [('deploying ', MUT, 400), ('[' + '█' * 32 + ']', V, 400), (' 100%', G, 700)]),
-        ('out', [('✔ ', G, 700), ('full-stack   ', TXT, 400), ('✔ ', G, 700), ('devsecops   ', TXT, 400), ('✔ ', G, 700), ('cloud   ', TXT, 400),
-                 ('✔ ', G, 700), ('ai-agents   ', TXT, 400), ('✔ ', G, 700), ('offsec   ', TXT, 400), ('✔ ', G, 700), ('web3', TXT, 400)]),
+        ('out', ok + [('full-stack   ', TXT, 400)] + ok + [('devsecops   ', TXT, 400)] + ok + [('cloud   ', TXT, 400)]
+         + ok + [('ai-agents   ', TXT, 400)] + ok + [('offsec   ', TXT, 400)] + ok + [('web3', TXT, 400)]),
         ('out', [('▲ all systems online — shipping to production', C, 700)]),
         ('idle', ''),
     ]
 
-    # build the timeline (seconds)
     t, ev = .8, []
     for kind, content in lines:
         if kind == 'cmd':
@@ -451,11 +613,11 @@ def terminal():
 <circle cx="1110" cy="24" r="4" fill="{M}" class="pulse"/><text x="1122" y="28.5" class="m" font-size="11" letter-spacing="2" fill="{MUT}">LIVE</text>
 <g class="all">{body_lines}{covers}</g>
 </g>
-{card(0, 0, W, H, 18, 0, 12).replace('fill="url(#card)"', 'fill="none"')}'''
+{card(0, 0, W, H, 18, 0, 12, fill='none')}'''
     return doc(W, H, body, css, defs)
 
 
-# ── 6. TECH STACK MARQUEE ─────────────────────────────────────────────────────
+# ── 7. TECH STACK MARQUEE ─────────────────────────────────────────────────────
 STACK = [
     ('FRONTEND', C, ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Nuxt.js', 'Vue', 'Angular', 'Tailwind CSS', 'React Native', 'Expo']),
     ('BACKEND · DATA', V, ['Node.js', 'Express', 'NestJS', 'Microservices', 'GraphQL', 'REST', 'Prisma', 'Java', 'C++', 'PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Supabase', 'Appwrite', 'Firebase']),
@@ -471,11 +633,10 @@ def marquee():
     css, rows = '', ''
     for i, (label, col, items) in enumerate(STACK):
         y = TOP + i * RH
-        pills, x = '', 0.0
-        reps = []
+        pills, x, reps = '', 0.0, []
         while x < W + 200:
             for it in items:
-                w = len(it) * 7.8 + 42
+                w = measure(it, 'm4', 13) + 44
                 reps.append((x, it, w))
                 x += w + 12
         copy_w = x
@@ -499,11 +660,40 @@ def marquee():
 {rows}
 <rect width="340" height="{H}" fill="url(#fadeL)"/><rect x="{W - 160}" width="160" height="{H}" fill="url(#fadeR)"/>
 {labels}</g>
-{card(0, 0, W, H, 22, 2, 11).replace('fill="url(#card)"', 'fill="none"')}'''
+{card(0, 0, W, H, 22, 2, 11, fill='none')}'''
     return doc(W, H, body, css, defs)
 
 
-# ── 7. CONNECT BUTTONS ────────────────────────────────────────────────────────
+# ── 8. SERVICES ───────────────────────────────────────────────────────────────
+SERVICES = [
+    ('blueprint', C, 'ARCHITECT', ['Production web', 'architectures & native', 'cross-platform apps.']),
+    ('shield', V, 'HARDEN', ['DevSecOps pipelines,', 'automated compliance', '& cloud hardening.']),
+    ('bolt', M, 'AUTOMATE', ['Self-correcting AI', 'workflows, multi-agent', 'systems & RAG.']),
+    ('target', G, 'AUDIT', ['Offensive pentesting,', 'vuln assessments &', 'red-team simulations.']),
+    ('cap', A, 'TRAIN', ['Team upskilling across', 'full-stack, DevSecOps', '& AI engineering.']),
+]
+
+
+def services():
+    W, H = 1200, 290
+    w, gap = 228, 15
+    body = ''
+    for i, (icon, col, title, lines) in enumerate(SERVICES):
+        x = i * (w + gap)
+        body += card(x, 0, w, H, 22, i * 1.4, 9)
+        body += icon_tile(x + 24, 30, icon, col)
+        body += f'<text x="{x + w - 24}" y="56" text-anchor="end" class="m" font-size="11" fill="{DIM}">0{i + 1}</text>'
+        fit(title, 'd8', 19, 2, w - 48, 'services title')
+        body += f'<text x="{x + 24}" y="126" class="d" font-size="19" font-weight="800" letter-spacing="2" fill="url(#ink)">{title}</text>'
+        body += f'<rect x="{x + 24}" y="142" width="28" height="3" rx="1.5" fill="{col}"/>'
+        for k, ln in enumerate(lines):
+            fit(ln, 's4', 15, 0, w - 44, 'services desc')
+            body += f'<text x="{x + 24}" y="{180 + k * 23}" class="s" font-size="15" fill="{MUT}">{esc(ln)}</text>'
+        body += f'<text x="{x + 24}" y="{H - 24}" class="m" font-size="10.5" font-weight="700" letter-spacing="2" fill="{col}">DEPLOY →</text>'
+    return doc(W, H, body)
+
+
+# ── 9. CONNECT BUTTONS ────────────────────────────────────────────────────────
 BUTTONS = [
     ('youtube', 'YOUTUBE', '@TheTechzeen', '#ff2d55',
      '<rect x="9" y="13" width="26" height="18" rx="6" fill="#ff2d55"/><path d="M19.5 17.5v9l7.5-4.5z" fill="#fff"/>'),
@@ -518,19 +708,20 @@ BUTTONS = [
 
 def button(i, key, title, sub, col, icon):
     W, H = 290, 76
+    fit(sub, 'm4', 11.5, 0, 175, 'button sub')
     css = '.sh{animation:sh 4.5s ease-in-out infinite}@keyframes sh{0%,55%{transform:translateX(-120px) skewX(-20deg)}100%{transform:translateX(420px) skewX(-20deg)}}'
     defs = (f'<clipPath id="b"><rect width="{W}" height="{H}" rx="20"/></clipPath>'
             '<linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>')
     body = f'''<g clip-path="url(#b)">{card(0, 0, W, H, 20, i * 2, 7)}
 <g transform="translate(16 16)"><rect width="44" height="44" rx="12" fill="{col}" fill-opacity=".12" stroke="{col}" stroke-opacity=".45"/>{icon}</g>
-<text x="76" y="36" class="s" font-size="15" font-weight="800" letter-spacing="3" fill="{TXT}">{title}</text>
+<text x="76" y="37" class="d" font-size="14" font-weight="500" letter-spacing="2" fill="{TXT}">{title}</text>
 <text x="76" y="56" class="m" font-size="11.5" fill="{MUT}">{esc(sub)}</text>
 <path d="M258 30l10 8-10 8" stroke="{col}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><animateTransform attributeName="transform" type="translate" values="0 0;4 0;0 0" dur="1.6s" repeatCount="indefinite"/></path>
 <rect class="sh" x="0" y="-20" width="70" height="120" fill="url(#sg)" style="animation-delay:{i * .4:.1f}s"/></g>'''
     return doc(W, H, body, css, defs)
 
 
-# ── 8. FOOTER ─────────────────────────────────────────────────────────────────
+# ── 10. FOOTER ────────────────────────────────────────────────────────────────
 def footer():
     W, H = 1200, 360
 
@@ -540,6 +731,8 @@ def footer():
             d += f' L{x} {y + amp * math.sin(2 * math.pi * x / length + ph):.1f}'
         return d + f' L{2 * W} {H} L0 {H}Z'
 
+    line1 = f'{STREAK} days. Zero days off.'
+    s1 = min(44.0, 1000 / measure(line1, 'd8', 1))
     css = ('.w1{animation:wv 12s linear infinite}.w2{animation:wv 18s linear infinite reverse}.w3{animation:wv 9s linear infinite}'
            '@keyframes wv{from{transform:translateX(0)}to{transform:translateX(-1200px)}}')
     defs = (f'<clipPath id="ft"><rect width="{W}" height="{H}" rx="28"/></clipPath>'
@@ -550,11 +743,12 @@ def footer():
 <path class="w2" d="{wave(18, 400, 305, 1)}" fill="{M}" opacity=".14"/>
 <path class="w3" d="{wave(10, 300, 322, 2)}" fill="{C}" opacity=".12"/>
 <g transform="translate(600 62)">{hexmark(0, 0, 22)}</g>
-<g><text x="600" y="160" text-anchor="middle" class="s" font-size="44" font-weight="800" fill="url(#ink)">1,000+ days. Zero days off.</text></g>
-<g><text x="600" y="200" text-anchor="middle" class="s" font-size="19" fill="{MUT}">One mission — make complex tech actually build things.</text></g>
-<g><text x="600" y="240" text-anchor="middle" class="m" font-size="12" font-weight="700" letter-spacing="3.5" fill="{C}">— FARZEEN ALI · MR. CONSISTENT · FOUNDER &amp; CEO, THE TECHZEEN</text></g>
-<text x="600" y="{H - 22}" text-anchor="middle" class="m" font-size="10" letter-spacing="3" fill="{DIM}">© THE TECHZEEN — ENGINEERED IN PAKISTAN</text></g>
-{card(0, 0, W, H, 28, 1, 12).replace('fill="url(#card)"', 'fill="none"')}'''
+<text x="600" y="164" text-anchor="middle" class="d" font-size="{s1:.1f}" font-weight="800" fill="url(#ink)">{esc(line1)}</text>
+<text x="600" y="204" text-anchor="middle" class="s" font-size="20" fill="{MUT}">One mission — make complex tech actually build things.</text>
+<text x="600" y="242" text-anchor="middle" class="m" font-size="12" font-weight="700" letter-spacing="3.5" fill="{C}">— FARZEEN ALI · MR. CONSISTENT · FOUNDER &amp; CEO, THE TECHZEEN</text>
+<text x="600" y="{H - 22}" text-anchor="middle" class="m" font-size="10" letter-spacing="3" fill="{DIM}">© THE TECHZEEN — ENGINEERED IN PAKISTAN</text>
+<rect width="{W}" height="{H}" filter="url(#grain)"/></g>
+{card(0, 0, W, H, 28, 1, 12, fill='none')}'''
     return doc(W, H, body, css, defs)
 
 
@@ -564,10 +758,12 @@ if __name__ == '__main__':
     write('hero.svg', hero())
     for i, (num, title, sub) in enumerate(SECTIONS):
         write(f'header-{num}.svg', header(num, title, sub, i))
+    write('identity.svg', identity())
     write('stats.svg', stats())
     write('arsenal.svg', arsenal())
     write('terminal.svg', terminal())
     write('stack.svg', marquee())
+    write('services.svg', services())
     for i, b in enumerate(BUTTONS):
         write(f'btn-{b[0]}.svg', button(i, *b))
     write('footer.svg', footer())
