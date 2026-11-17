@@ -25,15 +25,15 @@ FONT_DIR = os.path.join(HERE, 'fonts')
 STREAK = '1,000+'
 
 # ── Brand tokens ──────────────────────────────────────────────────────────────
-# "Ember & Bone": warm ink, bone text, ember signature, amber second; glacier + lime only as signals.
-BODY = '#100e0c'
-LINE, V, M, C, G, A = '#2e2923', '#ff5a1f', '#ffb02e', '#9cc8d8', '#c9ec4b', '#e8cf9a'
-TXT, MUT, DIM = '#f4eee1', '#cbc1ad', '#9d927e'
+# Techzeen brand: signature purple #7e15f7 + electric lime accent, white type on purple-black. No rainbow gradients.
+BODY = '#0c0718'
+LINE, V, M, C, G, A = '#2d1d52', '#7e15f7', '#c6ff3d', '#b894ff', '#c6ff3d', '#ffd166'
+TXT, MUT, DIM = '#ffffff', '#cdc1ea', '#a092c8'
 
 
 def tc(col):
-    """Text-safe tint: lifts the ember slightly for small text on the dark cards."""
-    return '#ff7a45' if col == V else col
+    """Text-safe tint: brand purple is too deep for small text on the dark cards."""
+    return '#a970ff' if col == V else col
 
 FONTS = {  # key: (family, weight, file)
     'd8': ('TZ Display', 800, 'Unbounded-ExtraBold.ttf'),
@@ -56,10 +56,10 @@ BASE_CSS = (
     '.pulse{animation:pulse 1.6s ease-in-out infinite}'
 )
 
-COMMON_DEFS = f'''<linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{V}"/><stop offset="1" stop-color="{M}"/></linearGradient>
-<linearGradient id="hot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{V}"/><stop offset="1" stop-color="#ff7a2f"/></linearGradient>
-<linearGradient id="card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#191612"/><stop offset="1" stop-color="#0e0d0b"/></linearGradient>
-<linearGradient id="ink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f2e7"/><stop offset="1" stop-color="#e6dbc6"/></linearGradient>
+COMMON_DEFS = f'''<linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9b4dff"/><stop offset="1" stop-color="#c9a6ff"/></linearGradient>
+<linearGradient id="hot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{M}"/><stop offset="1" stop-color="{M}"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#170d2e"/><stop offset="1" stop-color="#0c0718"/></linearGradient>
+<linearGradient id="ink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f1eaff"/></linearGradient>
 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .07 0"/></filter>'''
 
@@ -149,7 +149,7 @@ def hexmark(cx, cy, r, label='FA'):
     size = r * .6
     return (f'<circle cx="{cx}" cy="{cy}" r="{r * 1.38:.1f}" stroke="url(#brand)" stroke-width="1.2" stroke-dasharray="3 7" opacity=".7">'
             f'<animateTransform attributeName="transform" type="rotate" from="0 {cx} {cy}" to="360 {cx} {cy}" dur="14s" repeatCount="indefinite"/></circle>'
-            f'<polygon points="{pts}" fill="#171410" stroke="url(#brand)" stroke-width="2"/>'
+            f'<polygon points="{pts}" fill="#170e30" stroke="url(#brand)" stroke-width="2"/>'
             f'<text x="{cx}" y="{cy + cap_height("d8", size) / 2:.1f}" text-anchor="middle" class="d" font-size="{size:.1f}" font-weight="800" fill="url(#ink)">{label}</text>')
 
 
@@ -215,17 +215,17 @@ def hero():
         '@keyframes ec{50%{transform:translateY(-7px)}}'
     )
     defs = f'''<clipPath id="frame"><rect width="{W}" height="{H}" rx="28"/></clipPath>
-<radialGradient id="au1"><stop offset="0" stop-color="{V}" stop-opacity=".30"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
-<radialGradient id="au2"><stop offset="0" stop-color="{M}" stop-opacity=".16"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></radialGradient>
-<radialGradient id="au3"><stop offset="0" stop-color="{C}" stop-opacity=".14"/><stop offset="1" stop-color="{C}" stop-opacity="0"/></radialGradient>
+<radialGradient id="au1"><stop offset="0" stop-color="{V}" stop-opacity=".65"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
+<radialGradient id="au2"><stop offset="0" stop-color="{M}" stop-opacity=".10"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></radialGradient>
+<radialGradient id="au3"><stop offset="0" stop-color="{V}" stop-opacity=".45"/><stop offset="1" stop-color="{C}" stop-opacity="0"/></radialGradient>
 <radialGradient id="hz"><stop offset="0" stop-color="{M}" stop-opacity=".8"/><stop offset=".4" stop-color="{V}" stop-opacity=".35"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
 <linearGradient id="floorFade" x1="0" y1="{HZ}" x2="0" y2="{H}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#000"/><stop offset=".35" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff"/></linearGradient>
 <mask id="floorMask"><rect y="{HZ}" width="{W}" height="{H - HZ}" fill="url(#floorFade)"/></mask>
 <linearGradient id="shine" x1="0" y1="0" x2="700" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
-<stop offset="0" stop-color="#f4eee1"/><stop offset=".38" stop-color="#f4eee1"/><stop offset=".5" stop-color="#ffb08a"/><stop offset=".62" stop-color="#f4eee1"/><stop offset="1" stop-color="#f4eee1"/>
+<stop offset="0" stop-color="#ffffff"/><stop offset=".4" stop-color="#ffffff"/><stop offset=".5" stop-color="#e6ffa8"/><stop offset=".6" stop-color="#ffffff"/><stop offset="1" stop-color="#ffffff"/>
 <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="700 0" dur="5s" repeatCount="indefinite"/></linearGradient>
 <linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="{C}" stop-opacity="0"/><stop offset=".5" stop-color="{C}"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></linearGradient>
-<linearGradient id="scanG" x1="0" x2="1"><stop offset="0" stop-color="{V}" stop-opacity="0"/><stop offset=".5" stop-color="#ffd2b0" stop-opacity=".35"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></linearGradient>
+<linearGradient id="scanG" x1="0" x2="1"><stop offset="0" stop-color="{V}" stop-opacity="0"/><stop offset=".5" stop-color="#d9c2ff" stop-opacity=".45"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></linearGradient>
 <filter id="soft" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="22"/></filter>
 <clipPath id="tickClip"><rect x="0" y="{TY - 32}" width="{W}" height="44"/></clipPath>
 <clipPath id="sliceA"><rect y="{NB - ch - 4:.0f}" width="{W}" height="{ch / 2 + 4:.0f}"/></clipPath>
@@ -256,7 +256,7 @@ def hero():
     x = 600 - (sum(cw) + gap * (len(cw) - 1)) / 2
     chips = ''
     for i, ((t, col), w) in enumerate(zip(chips_src, cw)):
-        chips += (f'<g class="bob" style="animation-delay:-{i * .6:.1f}s"><rect x="{x:.1f}" y="478" width="{w:.1f}" height="36" rx="18" fill="#13110e" fill-opacity=".85" stroke="{col}" stroke-opacity=".45"/>'
+        chips += (f'<g class="bob" style="animation-delay:-{i * .6:.1f}s"><rect x="{x:.1f}" y="478" width="{w:.1f}" height="36" rx="18" fill="#140b28" fill-opacity=".85" stroke="{col}" stroke-opacity=".45"/>'
                   f'<circle cx="{x + 21:.1f}" cy="496" r="4" fill="{col}" class="pulse" style="animation-delay:-{i * .3:.1f}s"/>'
                   f'<text x="{x + 34:.1f}" y="500.5" class="m" font-size="12" font-weight="700" letter-spacing="2" fill="{TXT}">{t}</text></g>')
         x += w + gap
@@ -269,14 +269,14 @@ def hero():
     lw = measure(live, 'm4', 12, 3)
 
     body = f'''<g clip-path="url(#frame)">
-<rect width="{W}" height="{H}" fill="#0b0a08"/>
+<rect width="{W}" height="{H}" fill="#0a0515"/>
 <ellipse class="a1" cx="260" cy="120" rx="420" ry="230" fill="url(#au1)"/>
 <ellipse class="a2" cx="980" cy="150" rx="420" ry="220" fill="url(#au2)"/>
 <ellipse class="a3" cx="620" cy="30" rx="320" ry="140" fill="url(#au3)"/>
 {stars}
 {rings}
 <ellipse cx="600" cy="{HZ}" rx="620" ry="70" fill="url(#hz)" class="halo"/>
-<g mask="url(#floorMask)" stroke="{A}" stroke-width="1" opacity=".38">{radial}{horiz}</g>
+<g mask="url(#floorMask)" stroke="{V}" stroke-width="1.2" opacity=".85">{radial}{horiz}</g>
 <rect x="0" y="{HZ - 1}" width="{W}" height="2" fill="url(#beam)" opacity=".9"/>
 <rect class="scan" x="0" y="0" width="{W}" height="2" fill="url(#scanG)"/>
 {corners}
@@ -287,7 +287,7 @@ def hero():
 <rect x="{600 - pw / 2:.1f}" y="134" width="{pw:.1f}" height="36" rx="18" fill="{V}" fill-opacity=".12" stroke="url(#brand)"/>
 <circle cx="{600 - pw / 2 + 22:.1f}" cy="152" r="3.5" fill="{M}" class="pulse"/>
 <text x="{600 + 8}" y="156.5" text-anchor="middle" class="m" font-size="12.5" font-weight="700" letter-spacing="4" fill="{TXT}">{pill}</text>
-<text {name_attrs} fill="{V}" filter="url(#soft)" opacity=".45" class="d halo">{name}</text>
+<text {name_attrs} fill="{V}" filter="url(#soft)" opacity=".9" class="d halo">{name}</text>
 {echoes}
 <g clip-path="url(#sliceA)"><text {name_attrs} fill="{C}" class="d g1">{name}</text></g>
 <g clip-path="url(#sliceB)"><text {name_attrs} fill="{M}" class="d g2">{name}</text></g>
@@ -334,7 +334,7 @@ def header(num, title, sub, idx):
 <rect x="{bx}" y="54.5" width="{1130 - bx}" height="1" fill="{LINE}"/>
 <g clip-path="url(#bc)"><rect class="sw" x="{bx - 100}" y="54" width="100" height="2" fill="url(#hb)" style="animation-delay:-{idx * .5}s"/></g>
 <circle cx="{bx}" cy="55" r="3" fill="{V}"/>
-<g transform="translate(1152 55)"><polygon points="0,-12 10.4,-6 10.4,6 0,12 -10.4,6 -10.4,-6" stroke="url(#brand)" stroke-width="1.5" fill="#171410">
+<g transform="translate(1152 55)"><polygon points="0,-12 10.4,-6 10.4,6 0,12 -10.4,6 -10.4,-6" stroke="url(#brand)" stroke-width="1.5" fill="#170e30">
 <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></polygon>
 <circle r="3" fill="{M}" class="pulse"/></g>'''
     return doc(W, H, body, css, defs)
@@ -460,7 +460,7 @@ def arsenal():
                  f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="-{k * .34:.2f}s" repeatCount="indefinite"/></circle>')
     for l in layers:
         for (px, py) in l:
-            body += (f'<circle cx="{px}" cy="{py}" r="8" fill="#171410" stroke="{V}" stroke-width="1.5"/>'
+            body += (f'<circle cx="{px}" cy="{py}" r="8" fill="#170e30" stroke="{V}" stroke-width="1.5"/>'
                      f'<circle cx="{px}" cy="{py}" r="3" fill="{M}"><animate attributeName="r" values="2;4.2;2" dur="{random.uniform(1.4, 2.6):.1f}s" repeatCount="indefinite"/></circle>')
 
     # B — DevSecOps: infinity CI/CD loop
@@ -492,7 +492,7 @@ def arsenal():
         bx, by = cx + rr * math.cos(math.radians(ang)), cy + rr * math.sin(math.radians(ang))
         body += (f'<circle cx="{bx:.1f}" cy="{by:.1f}" r="4" fill="{M}" filter="url(#glow)" opacity="0">'
                  f'<animate attributeName="opacity" values="1;0" dur="4s" begin="{ang / 90:.2f}s" repeatCount="indefinite"/></circle>')
-    body += f'<path d="M{cx} {cy - 10}l8 3v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10v-6z" fill="#171410" stroke="{G}" stroke-width="1.6"/>'
+    body += f'<path d="M{cx} {cy - 10}l8 3v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10v-6z" fill="#170e30" stroke="{G}" stroke-width="1.6"/>'
     body += text_block(xs[0] + 30, gy + 166, '03 · OFFSEC', 'Offensive Security',
                        ['Pentesting, vuln management,', 'SIEM/SOC ops & hardening.'], G, 326, 23)
     body += tags_line(xs[0] + 30, gy + 280, 'NMAP · BURP · METASPLOIT · WAZUH')
@@ -500,7 +500,7 @@ def arsenal():
     # D — Full-stack & mobile: browser + phone with live code
     body += card(xs[1], gy, sw, 300, 24, 6.5, 10)
     bx0, by0 = xs[1] + 92, gy + 28
-    body += (f'<rect x="{bx0}" y="{by0}" width="140" height="100" rx="9" fill="#171410" stroke="{LINE}" stroke-width="1.5"/>'
+    body += (f'<rect x="{bx0}" y="{by0}" width="140" height="100" rx="9" fill="#170e30" stroke="{LINE}" stroke-width="1.5"/>'
              f'<path d="M{bx0} {by0 + 18}h140" stroke="{LINE}"/>'
              + ''.join(f'<circle cx="{bx0 + 11 + k * 9}" cy="{by0 + 9}" r="2.6" fill="{c}"/>' for k, c in enumerate([M, A, G])))
     for k, (wd, c) in enumerate(zip([72, 104, 56, 88, 44], [V, C, M, V, G])):
@@ -508,7 +508,7 @@ def arsenal():
         body += (f'<rect x="{bx0 + 12 + ind}" y="{by0 + 28 + k * 13}" width="{wd - ind}" height="6" rx="3" fill="{c}" opacity=".85">'
                  f'<animate attributeName="width" values="{wd - ind};0;{wd - ind};{wd - ind}" keyTimes="0;.15;.45;1" dur="4s" begin="{k * .3:.1f}s" repeatCount="indefinite"/></rect>')
     px0 = bx0 + 156
-    body += (f'<rect x="{px0}" y="{by0 - 2}" width="50" height="104" rx="11" fill="#171410" stroke="{V}" stroke-width="1.5"/>'
+    body += (f'<rect x="{px0}" y="{by0 - 2}" width="50" height="104" rx="11" fill="#170e30" stroke="{V}" stroke-width="1.5"/>'
              f'<rect x="{px0 + 18}" y="{by0 + 4}" width="14" height="4" rx="2" fill="{LINE}"/>')
     for k in range(3):
         body += (f'<rect x="{px0 + 8}" y="{by0 + 16 + k * 26}" width="34" height="20" rx="5" fill="{[C, M, V][k]}" opacity=".25">'
@@ -528,10 +528,10 @@ def arsenal():
         top = f'{x},{cyb - s} {x + s * .87:.1f},{cyb - s / 2} {x},{cyb} {x - s * .87:.1f},{cyb - s / 2}'
         left = f'{x - s * .87:.1f},{cyb - s / 2} {x},{cyb} {x},{cyb + s} {x - s * .87:.1f},{cyb + s / 2}'
         right = f'{x},{cyb} {x + s * .87:.1f},{cyb - s / 2} {x + s * .87:.1f},{cyb + s / 2} {x},{cyb + s}'
-        body += (f'<polygon points="{left}" fill="#26170e" stroke="{V}" stroke-width="1"/>'
-                 f'<polygon points="{right}" fill="#3a2214" stroke="{V}" stroke-width="1"/>'
-                 f'<polygon points="{top}" fill="#4a2a17" stroke="{V}" stroke-width="1">'
-                 f'<animate attributeName="fill" values="#4a2a17;{M};#4a2a17;#4a2a17" keyTimes="0;.1;.3;1" dur="3.2s" begin="{k * .8:.1f}s" repeatCount="indefinite"/></polygon>'
+        body += (f'<polygon points="{left}" fill="#260d55" stroke="{V}" stroke-width="1"/>'
+                 f'<polygon points="{right}" fill="#3d1580" stroke="{V}" stroke-width="1"/>'
+                 f'<polygon points="{top}" fill="#5a1fb8" stroke="{V}" stroke-width="1">'
+                 f'<animate attributeName="fill" values="#5a1fb8;{M};#5a1fb8;#5a1fb8" keyTimes="0;.1;.3;1" dur="3.2s" begin="{k * .8:.1f}s" repeatCount="indefinite"/></polygon>'
                  f'<text x="{x}" y="{cyb + 44}" text-anchor="middle" class="m" font-size="9" fill="{DIM}">#{k:02d}·0x{random.randrange(16 ** 3):03x}</text>')
     body += text_block(xs[2] + 30, gy + 166, '05 · WEB3', 'Blockchain Engineering',
                        ['Solidity smart contracts &', 'decentralized systems.'], A, 326, 23)
@@ -615,7 +615,7 @@ def terminal():
     defs = f'<clipPath id="win"><rect width="{W}" height="{H}" rx="18"/></clipPath>'
     body = f'''<g clip-path="url(#win)">
 <rect width="{W}" height="{H}" fill="{BODY}"/>
-<rect width="{W}" height="48" fill="#171410"/><path d="M0 48.5H{W}" stroke="{LINE}"/>
+<rect width="{W}" height="48" fill="#170e30"/><path d="M0 48.5H{W}" stroke="{LINE}"/>
 <circle cx="28" cy="24" r="6.5" fill="#ff5f57"/><circle cx="50" cy="24" r="6.5" fill="#febc2e"/><circle cx="72" cy="24" r="6.5" fill="#28c840"/>
 <text x="600" y="29" text-anchor="middle" class="m" font-size="13" fill="{MUT}">farzeen@techzeen: ~ — zsh — 120×32</text>
 <circle cx="1110" cy="24" r="4" fill="{M}" class="pulse"/><text x="1122" y="28.5" class="m" font-size="11" letter-spacing="2" fill="{MUT}">LIVE</text>
@@ -650,7 +650,7 @@ def marquee():
         copy_w = x
         for off in (0, copy_w):
             for px, it, w in reps:
-                pills += (f'<rect x="{px + off:.1f}" y="{y}" width="{w:.1f}" height="36" rx="18" fill="#171410" stroke="{col}" stroke-opacity=".28"/>'
+                pills += (f'<rect x="{px + off:.1f}" y="{y}" width="{w:.1f}" height="36" rx="18" fill="#170e30" stroke="{col}" stroke-opacity=".28"/>'
                           f'<circle cx="{px + off + 18:.1f}" cy="{y + 18}" r="3.5" fill="{col}"/>'
                           f'<text x="{px + off + 30:.1f}" y="{y + 22.5}" class="m" font-size="13" fill="{TXT}">{esc(it)}</text>')
         dur = copy_w / 38
@@ -662,9 +662,9 @@ def marquee():
         f'<text x="48" y="{TOP + i * RH + 22}" class="m" font-size="11" font-weight="700" letter-spacing="2.5" fill="{tc(col)}">{esc(label)}</text>'
         for i, (label, col, _) in enumerate(STACK))
     defs = (f'<clipPath id="mq"><rect width="{W}" height="{H}" rx="22"/></clipPath>'
-            '<linearGradient id="fadeL" x1="0" x2="1"><stop offset=".7" stop-color="#0f0d0b"/><stop offset="1" stop-color="#0f0d0b" stop-opacity="0"/></linearGradient>'
-            '<linearGradient id="fadeR" x1="0" x2="1"><stop offset="0" stop-color="#0f0d0b" stop-opacity="0"/><stop offset="1" stop-color="#0f0d0b"/></linearGradient>')
-    body = f'''<g clip-path="url(#mq)"><rect width="{W}" height="{H}" fill="#0f0d0b"/>
+            '<linearGradient id="fadeL" x1="0" x2="1"><stop offset=".7" stop-color="#0e0820"/><stop offset="1" stop-color="#0e0820" stop-opacity="0"/></linearGradient>'
+            '<linearGradient id="fadeR" x1="0" x2="1"><stop offset="0" stop-color="#0e0820" stop-opacity="0"/><stop offset="1" stop-color="#0e0820"/></linearGradient>')
+    body = f'''<g clip-path="url(#mq)"><rect width="{W}" height="{H}" fill="#0e0820"/>
 {rows}
 <rect width="340" height="{H}" fill="url(#fadeL)"/><rect x="{W - 160}" width="160" height="{H}" fill="url(#fadeR)"/>
 {labels}</g>
@@ -744,11 +744,11 @@ def footer():
     css = ('.w1{animation:wv 12s linear infinite}.w2{animation:wv 18s linear infinite reverse}.w3{animation:wv 9s linear infinite}'
            '@keyframes wv{from{transform:translateX(0)}to{transform:translateX(-1200px)}}')
     defs = (f'<clipPath id="ft"><rect width="{W}" height="{H}" rx="28"/></clipPath>'
-            f'<radialGradient id="fg" cx=".5" cy="1"><stop offset="0" stop-color="{V}" stop-opacity=".28"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>')
-    body = f'''<g clip-path="url(#ft)"><rect width="{W}" height="{H}" fill="#0b0a08"/>
+            f'<radialGradient id="fg" cx=".5" cy="1"><stop offset="0" stop-color="{V}" stop-opacity=".55"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>')
+    body = f'''<g clip-path="url(#ft)"><rect width="{W}" height="{H}" fill="#0a0515"/>
 <ellipse cx="600" cy="{H}" rx="700" ry="260" fill="url(#fg)"/>
 <path class="w1" d="{wave(14, 600, 290, 0)}" fill="{V}" opacity=".22"/>
-<path class="w2" d="{wave(18, 400, 305, 1)}" fill="{M}" opacity=".14"/>
+<path class="w2" d="{wave(18, 400, 305, 1)}" fill="{C}" opacity=".16"/>
 <path class="w3" d="{wave(10, 300, 322, 2)}" fill="{C}" opacity=".12"/>
 <g transform="translate(600 62)">{hexmark(0, 0, 22)}</g>
 <text x="600" y="164" text-anchor="middle" class="d" font-size="{s1:.1f}" font-weight="800" fill="url(#ink)">{esc(line1)}</text>
