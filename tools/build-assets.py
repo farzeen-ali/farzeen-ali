@@ -5,7 +5,8 @@ Edit the content below, then run:  python tools/build-assets.py   (needs: pip in
 
 All assets share one brand system — colors, motion and three embedded typefaces (subset per file,
 so they render identically on every OS):
-  TZ Display = Unbounded · TZ Sans = Space Grotesk · TZ Mono = JetBrains Mono   (fonts: tools/fonts, OFL)
+  TZ Display = Bricolage Grotesque · TZ Sans = Geist · TZ Mono = Geist Mono · TZ Serif = Instrument Serif
+  — the same typefaces and palette as thetechzeen.com   (fonts: tools/fonts, OFL)
 """
 import base64
 import html
@@ -25,41 +26,43 @@ FONT_DIR = os.path.join(HERE, 'fonts')
 STREAK = '1,000+'
 
 # ── Brand tokens ──────────────────────────────────────────────────────────────
-# Techzeen brand: signature purple #7e15f7 + electric lime accent, white type on purple-black. No rainbow gradients.
-BODY = '#0c0718'
-LINE, V, M, C, G, A = '#2d1d52', '#7e15f7', '#c6ff3d', '#b894ff', '#c6ff3d', '#ffd166'
-TXT, MUT, DIM = '#ffffff', '#cdc1ea', '#a092c8'
+# thetechzeen.com palette: ink #05060a, brand cobalt #2b47ff (+300/200 tints), emerald + amber as signals.
+BODY = '#0a0c13'
+LINE, V, M, C, G, A = '#1f2435', '#2b47ff', '#6077ff', '#96a6ff', '#00d294', '#fcbb00'
+TXT, MUT, DIM = '#ffffff', '#c2c9de', '#8f99b8'
 
 
 def tc(col):
-    """Text-safe tint: brand purple is too deep for small text on the dark cards."""
-    return '#a970ff' if col == V else col
+    """Text-safe tint: brand cobalt is too deep for small text on the dark cards."""
+    return {V: '#7d8fff', M: '#8c9cff'}.get(col, col)
 
 FONTS = {  # key: (family, weight, file)
-    'd8': ('TZ Display', 800, 'Unbounded-ExtraBold.ttf'),
-    'd5': ('TZ Display', 500, 'Unbounded-Medium.ttf'),
-    's4': ('TZ Sans', 400, 'SpaceGrotesk-Regular.ttf'),
-    's6': ('TZ Sans', 600, 'SpaceGrotesk-SemiBold.ttf'),
-    'm4': ('TZ Mono', 400, 'JetBrainsMono-Regular.ttf'),
-    'm7': ('TZ Mono', 700, 'JetBrainsMono-Bold.ttf'),
+    'd8': ('TZ Display', 800, 'BricolageGrotesque-ExtraBold.ttf'),
+    'd5': ('TZ Display', 600, 'BricolageGrotesque-SemiBold.ttf'),
+    's4': ('TZ Sans', 400, 'Geist-Regular.ttf'),
+    's6': ('TZ Sans', 600, 'Geist-SemiBold.ttf'),
+    'm4': ('TZ Mono', 400, 'GeistMono-Regular.ttf'),
+    'm7': ('TZ Mono', 700, 'GeistMono-Bold.ttf'),
+    'i4': ('TZ Serif', 400, 'InstrumentSerif-Italic.ttf'),
 }
-CLASS_FAMILY = {'d': 'TZ Display', 's': 'TZ Sans', 'm': 'TZ Mono'}
+CLASS_FAMILY = {'d': 'TZ Display', 's': 'TZ Sans', 'm': 'TZ Mono', 'i': 'TZ Serif'}
 FALLBACK = {'d': "'Segoe UI Black', 'Arial Black', sans-serif",
             's': "'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
-            'm': "Consolas, Menlo, 'DejaVu Sans Mono', monospace"}
+            'm': "Consolas, Menlo, 'DejaVu Sans Mono', monospace",
+            'i': "Georgia, 'Times New Roman', serif"}
 
 BASE_CSS = (
-    ''.join(f".{k}{{font-family:'{CLASS_FAMILY[k]}',{FALLBACK[k]}}}" for k in 'dsm') +
+    ''.join(f".{k}{{font-family:'{CLASS_FAMILY[k]}',{FALLBACK[k]}}}" for k in 'dsmi') +
     '@keyframes run{to{stroke-dashoffset:-1000}}'
     '@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}'
     '@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}'
     '.pulse{animation:pulse 1.6s ease-in-out infinite}'
 )
 
-COMMON_DEFS = f'''<linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9b4dff"/><stop offset="1" stop-color="#c9a6ff"/></linearGradient>
-<linearGradient id="hot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{M}"/><stop offset="1" stop-color="{M}"/></linearGradient>
-<linearGradient id="card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#170d2e"/><stop offset="1" stop-color="#0c0718"/></linearGradient>
-<linearGradient id="ink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f1eaff"/></linearGradient>
+COMMON_DEFS = f'''<linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{V}"/><stop offset="1" stop-color="{C}"/></linearGradient>
+<linearGradient id="hot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{V}"/><stop offset="1" stop-color="{V}"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12151f"/><stop offset="1" stop-color="#0a0b11"/></linearGradient>
+<linearGradient id="ink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9edff"/></linearGradient>
 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .07 0"/></filter>'''
 
@@ -107,6 +110,7 @@ def font_faces(body):
         opts.layout_features = ['kern', 'liga', 'calt']
         opts.name_IDs = []
         opts.hinting = False
+        opts.drop_tables += ['meta']
         f = TTFont(os.path.join(FONT_DIR, file))
         sub = Subsetter(opts)
         sub.populate(text=''.join(chars))
@@ -143,14 +147,12 @@ def card(x, y, w, h, rx=22, delay=0.0, dur=8, fill='url(#card)'):
             f'stroke-dasharray="70 930" style="animation:run {dur}s linear -{delay:.2f}s infinite"/>')
 
 
-def hexmark(cx, cy, r, label='FA'):
-    pts = ' '.join(f'{cx + r * math.cos(math.radians(-90 + 60 * k)):.1f},{cy + r * math.sin(math.radians(-90 + 60 * k)):.1f}'
-                   for k in range(6))
-    size = r * .6
-    return (f'<circle cx="{cx}" cy="{cy}" r="{r * 1.38:.1f}" stroke="url(#brand)" stroke-width="1.2" stroke-dasharray="3 7" opacity=".7">'
+def hexmark(cx, cy, r):
+    """The Techzeen </> badge from the website."""
+    return (f'<circle cx="{cx}" cy="{cy}" r="{r * 1.4:.1f}" stroke="{C}" stroke-width="1.2" stroke-dasharray="3 7" opacity=".6">'
             f'<animateTransform attributeName="transform" type="rotate" from="0 {cx} {cy}" to="360 {cx} {cy}" dur="14s" repeatCount="indefinite"/></circle>'
-            f'<polygon points="{pts}" fill="#170e30" stroke="url(#brand)" stroke-width="2"/>'
-            f'<text x="{cx}" y="{cy + cap_height("d8", size) / 2:.1f}" text-anchor="middle" class="d" font-size="{size:.1f}" font-weight="800" fill="url(#ink)">{label}</text>')
+            f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{V}"/>'
+            f'<text x="{cx}" y="{cy + r * .25:.1f}" text-anchor="middle" class="m" font-size="{r * .7:.1f}" font-weight="700" fill="{TXT}">&lt;/&gt;</text>')
 
 
 ICONS = {  # drawn in a 44×44 box
@@ -173,132 +175,118 @@ def icon_tile(x, y, icon, col):
 
 # ── 1. HERO ───────────────────────────────────────────────────────────────────
 def hero():
-    W, H, HZ = 1200, 600, 420
-    random.seed(7)
-    roles = ['Solutions Architect', 'DevSecOps Engineer', 'AI Automation Engineer',
-             'Offensive Security Specialist', 'Cloud Architect · AWS · Azure · GCP',
-             f'Tech Educator · {STREAK} Days Live']
-    LH, TY = 46, 360
+    """Mirrors thetechzeen.com: white headline over a cobalt block, spinning badge, tilted marquee bands."""
+    W, H = 1200, 600
+    roles = ['SOLUTIONS ARCHITECT', 'DEVSECOPS ENGINEER', 'AI AUTOMATION ENGINEER',
+             'AGENTIC AI ENGINEER', 'CLOUD ARCHITECT', 'TECH EDUCATOR']
+    name, NLS = 'FARZEEN ALI', -2
+    NS = min(136.0, (860 - NLS * len(name)) / measure(name, 'd8', 1))
+    NW = measure(name, 'd8', NS, NLS)
+    NB = 300
+    BX, BY, BW, BH = 600 - NW / 2 - 10, NB + 18, NW + 20, 104
+    RS = min(54.0, (BW - 90) / max(measure(r, 'd8', 1) for r in roles))
+    RY = BY + BH / 2 + cap_height('d8', RS) / 2
     n = len(roles)
     seg = 100 / n
     kf = []
     for i in range(n):
-        kf.append(f'{i * seg:.3f}%{{transform:translateY({-i * LH}px)}}')
-        kf.append(f'{(i + .8) * seg:.3f}%{{transform:translateY({-i * LH}px)}}')
-    kf.append(f'100%{{transform:translateY({-n * LH}px)}}')
-    for r in roles:
-        fit(r, 's4', 27, 1, 560, 'hero ticker')
+        kf.append(f'{i * seg:.3f}%{{transform:translateY({-i * BH}px)}}')
+        kf.append(f'{(i + .8) * seg:.3f}%{{transform:translateY({-i * BH}px)}}')
+    kf.append(f'100%{{transform:translateY({-n * BH}px)}}')
 
-    name, NLS = 'FARZEEN ALI', 4
-    NS = min(96.0, 1010 / (measure(name, 'd8', 1) + NLS * len(name) / 96))
-    NB = 290
-    ch = cap_height('d8', NS)
-    name_attrs = f'x="600" y="{NB}" text-anchor="middle" font-size="{NS:.1f}" font-weight="800" letter-spacing="{NLS}"'
+    # tilted marquee bands (content mirrors the site's band)
+    band = [f'{STREAK} DAYS NON-STOP STREAK', 'FULL STACK • DEVOPS • AI AUTOMATION', '28K+ TECH COMMUNITY',
+            'AGENTIC AI • LANGCHAIN • LANGGRAPH', 'DEVSECOPS • CLOUD • CYBER SECURITY']
+
+    def band_row(y, fg, sep_col, size):
+        items, x = [], 0.0
+        while x < 1700:
+            for t in band:
+                items.append((x, t, fg))
+                x += measure(t, 'd8', size, -.5) + 26
+                items.append((x, '</>', sep_col))
+                x += measure('</>', 'm7', size * .7) + 26
+        cw = x
+        out = ''
+        for off in (0, cw):
+            for px, t, col in items:
+                cls, fs, ls = ('m', size * .7, 0) if t == '</>' else ('d', size, -.5)
+                out += (f'<text x="{px + off - 100:.1f}" y="{y}" class="{cls}" font-size="{fs:.1f}" font-weight="800" '
+                        f'letter-spacing="{ls}" fill="{col}">{esc(t)}</text>')
+        return out, cw
+
+    rowA, cwA = band_row(560, '#05060a', V, 22)
+    rowB, cwB = band_row(584, TXT, '#cdd5ff', 22)
+
+    nav = ['IDENTITY', 'NUMBERS', 'ARSENAL', 'STACK', 'BUILD']
+    nav_svg, x = '', W - 48
+    for i in range(len(nav) - 1, -1, -1):
+        lw = measure(nav[i], 'm7', 11, 1.2)
+        x -= lw
+        col = M if i == 0 else TXT
+        nav_svg = (f'<text x="{x - 20:.1f}" y="62" class="m" font-size="9" fill="{DIM}">0{i + 1}</text>'
+                   f'<text x="{x:.1f}" y="62" class="m" font-size="11" font-weight="700" letter-spacing="1.2" fill="{col}">{nav[i]}</text>'
+                   + (f'<rect x="{x - 20:.1f}" y="72" width="{lw + 20:.1f}" height="2" rx="1" fill="{V}"/>' if i == 0 else '') + nav_svg)
+        x -= 48
+
+    sub1 = [('Founder & CEO of ', MUT, 400), ('The Techzeen', TXT, 600), (' — building and teaching production-grade', MUT, 400)]
+    sub2 = [('Full-Stack, DevOps, AI Automation & Cyber Security', C, 600), (', every single day.', MUT, 400)]
+    for s in (sub1, sub2):
+        fit(''.join(t for t, _, _ in s), 's4', 17, 0, 900, 'hero subline')
+
+    def line(segs, y):
+        return (f'<text x="600" y="{y}" text-anchor="middle" class="s" font-size="17">' +
+                ''.join(f'<tspan fill="{c}" font-weight="{w}">{esc(t)}</tspan>' for t, c, w in segs) + '</text>')
+
+    pill = f"{STREAK} DAYS  ·  ZERO SKIPS  ·  PK'S #1 TECH CHANNEL"
+    pw = measure(pill, 'm4', 11, 1.5) + 58
+    BCX, BCY, BR = 1092, 196, 52
+    ring = f'M{BCX - 40},{BCY} a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0'
 
     css = (
-        '.tw{animation:tw 4s ease-in-out infinite}@keyframes tw{0%,100%{opacity:.1}50%{opacity:.9}}'
-        '.fl{animation:fl 4s cubic-bezier(.55,0,1,.45) infinite}'
-        f'@keyframes fl{{0%{{transform:translateY(0);opacity:0}}20%{{opacity:1}}100%{{transform:translateY({H - HZ}px);opacity:1}}}}'
-        '.a1{animation:d1 14s ease-in-out infinite alternate}@keyframes d1{to{transform:translate(160px,50px)}}'
-        '.a2{animation:d2 17s ease-in-out infinite alternate}@keyframes d2{to{transform:translate(-180px,30px)}}'
-        '.a3{animation:d3 11s ease-in-out infinite alternate}@keyframes d3{to{transform:translate(60px,60px)}}'
-        '.g1{animation:g1 6s steps(1) infinite}.g2{animation:g2 6s steps(1) infinite}'
-        '@keyframes g1{0%,88%{transform:translate(0);opacity:0}89%{transform:translate(-8px,2px);opacity:.9}'
-        '91%{transform:translate(7px,-1px);opacity:.9}93%{transform:translate(-3px,0);opacity:.9}95%,100%{transform:translate(0);opacity:0}}'
-        '@keyframes g2{0%,88%{transform:translate(0);opacity:0}89%{transform:translate(8px,-2px);opacity:.9}'
-        '91%{transform:translate(-6px,2px);opacity:.9}93%{transform:translate(4px,0);opacity:.9}95%,100%{transform:translate(0);opacity:0}}'
-        '.tick{animation:tick 18s infinite}@keyframes tick{' + ''.join(kf) + '}'
-        '.scan{animation:scan 7s linear infinite}@keyframes scan{from{transform:translateY(-20px)}to{transform:translateY(620px)}}'
-        '.bob{animation:bob 4s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-6px)}}'
-        '.halo{animation:halo 4s ease-in-out infinite}@keyframes halo{50%{opacity:.35}}'
-        '.e1,.e2,.e3{animation:ec 5s ease-in-out infinite}.e2{animation-delay:-.4s}.e3{animation-delay:-.8s}'
-        '@keyframes ec{50%{transform:translateY(-7px)}}'
+        '.tick{animation:tick 18s cubic-bezier(.7,0,.3,1) infinite}@keyframes tick{' + ''.join(kf) + '}'
+        f'.bA{{animation:bA {cwA / 70:.1f}s linear infinite}}@keyframes bA{{to{{transform:translateX({-cwA:.1f}px)}}}}'
+        f'.bB{{animation:bB {cwB / 60:.1f}s linear infinite}}@keyframes bB{{from{{transform:translateX({-cwB:.1f}px)}}to{{transform:translateX(0)}}}}'
+        '.d0{animation:d0 9s steps(1) infinite}.d1{animation:d1 9s steps(1) infinite}.d2{animation:d2 9s steps(1) infinite}'
+        '@keyframes d0{0%{fill:#2b47ff}33.33%,100%{fill:#2a3045}}'
+        '@keyframes d1{0%{fill:#2a3045}33.33%{fill:#2b47ff}66.66%,100%{fill:#2a3045}}'
+        '@keyframes d2{0%,66.65%{fill:#2a3045}66.66%,100%{fill:#2b47ff}}'
+        '.glow{animation:glow 5s ease-in-out infinite}@keyframes glow{50%{opacity:.55}}'
     )
     defs = f'''<clipPath id="frame"><rect width="{W}" height="{H}" rx="28"/></clipPath>
-<radialGradient id="au1"><stop offset="0" stop-color="{V}" stop-opacity=".65"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
-<radialGradient id="au2"><stop offset="0" stop-color="{M}" stop-opacity=".10"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></radialGradient>
-<radialGradient id="au3"><stop offset="0" stop-color="{V}" stop-opacity=".45"/><stop offset="1" stop-color="{C}" stop-opacity="0"/></radialGradient>
-<radialGradient id="hz"><stop offset="0" stop-color="{M}" stop-opacity=".8"/><stop offset=".4" stop-color="{V}" stop-opacity=".35"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
-<linearGradient id="floorFade" x1="0" y1="{HZ}" x2="0" y2="{H}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#000"/><stop offset=".35" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff"/></linearGradient>
-<mask id="floorMask"><rect y="{HZ}" width="{W}" height="{H - HZ}" fill="url(#floorFade)"/></mask>
-<linearGradient id="shine" x1="0" y1="0" x2="700" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
-<stop offset="0" stop-color="#ffffff"/><stop offset=".4" stop-color="#ffffff"/><stop offset=".5" stop-color="#e6ffa8"/><stop offset=".6" stop-color="#ffffff"/><stop offset="1" stop-color="#ffffff"/>
-<animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="700 0" dur="5s" repeatCount="indefinite"/></linearGradient>
-<linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="{C}" stop-opacity="0"/><stop offset=".5" stop-color="{C}"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></linearGradient>
-<linearGradient id="scanG" x1="0" x2="1"><stop offset="0" stop-color="{V}" stop-opacity="0"/><stop offset=".5" stop-color="#d9c2ff" stop-opacity=".45"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></linearGradient>
-<filter id="soft" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="22"/></filter>
-<clipPath id="tickClip"><rect x="0" y="{TY - 32}" width="{W}" height="44"/></clipPath>
-<clipPath id="sliceA"><rect y="{NB - ch - 4:.0f}" width="{W}" height="{ch / 2 + 4:.0f}"/></clipPath>
-<clipPath id="sliceB"><rect y="{NB - ch / 2 + 6:.0f}" width="{W}" height="{ch / 2:.0f}"/></clipPath>'''
+<clipPath id="blk"><rect x="{BX:.1f}" y="{BY}" width="{BW:.1f}" height="{BH}" rx="16"/></clipPath>
+<radialGradient id="hglow"><stop offset="0" stop-color="{V}" stop-opacity=".42"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
+<path id="ring" d="{ring}"/>'''
 
-    stars = ''.join(
-        f'<circle cx="{random.uniform(20, 1180):.0f}" cy="{random.uniform(20, HZ - 20):.0f}" r="{random.choice([.7, 1, 1.2, 1.6])}" '
-        f'fill="#fff" class="tw" style="animation-delay:-{random.uniform(0, 5):.1f}s;animation-duration:{random.uniform(2.5, 6):.1f}s"/>'
-        for _ in range(80))
-    radial = ''.join(f'<line x1="600" y1="{HZ}" x2="{x}" y2="{H}"/>' for x in range(-3000, 4201, 200))
-    horiz = ''.join(f'<line x1="0" y1="{HZ}" x2="{W}" y2="{HZ}" class="fl" style="animation-delay:-{i * .5}s"/>' for i in range(8))
-    rings = ''.join(
-        f'<circle cx="600" cy="245" r="{r}" stroke="{col}" stroke-width="1" stroke-dasharray="{da}" opacity=".22">'
-        f'<animateTransform attributeName="transform" type="rotate" from="0 600 245" to="{sgn * 360} 600 245" dur="{d}s" repeatCount="indefinite"/></circle>'
-        for r, col, da, sgn, d in [(185, V, '2 10', 1, 40), (225, C, '60 18 4 18', -1, 60), (265, M, '1 6', 1, 90)])
-    echoes = ''.join(
-        f'<text {name_attrs} transform="translate(0 {-k * 13})" class="d" stroke="{col}" stroke-width="1.2" opacity="{op}"><tspan class="e{k}">{name}</tspan></text>'
-        for k, col, op in [(3, M, .18), (2, V, .32), (1, C, .5)])
     ticker = ''.join(
-        f'<text x="600" y="{TY + k * LH}" text-anchor="middle" class="s" font-size="27" letter-spacing="1" fill="{TXT}">{esc(t)}</text>'
+        f'<text x="600" y="{RY + k * BH:.1f}" text-anchor="middle" class="d" font-size="{RS:.1f}" font-weight="800" letter-spacing="-1" fill="{TXT}">{t}</text>'
         for k, t in enumerate(roles + roles[:1]))
-
-    chips_src = [('AGENTIC AI', M), ('AI ENGINEERING', C), ('DEVSECOPS', V), ('DEVOPS', C), ('CLOUD', V), ('FULL-STACK', G), ('OFFSEC', A)]
-    cw = [measure(t, 'm7', 12, 2) + 50 for t, _ in chips_src]
-    gap = 12
-    if sum(cw) + gap * (len(cw) - 1) > 1120:
-        print('  ! overflow in hero chips')
-    x = 600 - (sum(cw) + gap * (len(cw) - 1)) / 2
-    chips = ''
-    for i, ((t, col), w) in enumerate(zip(chips_src, cw)):
-        chips += (f'<g class="bob" style="animation-delay:-{i * .6:.1f}s"><rect x="{x:.1f}" y="478" width="{w:.1f}" height="36" rx="18" fill="#140b28" fill-opacity=".85" stroke="{col}" stroke-opacity=".45"/>'
-                  f'<circle cx="{x + 21:.1f}" cy="496" r="4" fill="{col}" class="pulse" style="animation-delay:-{i * .3:.1f}s"/>'
-                  f'<text x="{x + 34:.1f}" y="500.5" class="m" font-size="12" font-weight="700" letter-spacing="2" fill="{TXT}">{t}</text></g>')
-        x += w + gap
-
-    corners = ''.join(f'<path d="{d}" stroke="{C}" stroke-width="1.5" opacity=".6"/>' for d in
-                      ['M24 60V24H60', f'M{W - 60} 24H{W - 24}V60', f'M24 {H - 60}V{H - 24}H60', f'M{W - 60} {H - 24}H{W - 24}V{H - 60}'])
-    pill = 'FOUNDER &amp; CEO · THE TECHZEEN'
-    pw = measure('FOUNDER & CEO · THE TECHZEEN', 'm7', 12.5, 4) + 52
-    live = f'{STREAK} DAYS LIVE'
-    lw = measure(live, 'm4', 12, 3)
+    grid = ''.join(f'<line x1="{x}" y1="0" x2="{x}" y2="{H}" stroke="#ffffff" stroke-opacity=".05"/>' for x in (200, 400, 600, 800, 1000))
 
     body = f'''<g clip-path="url(#frame)">
-<rect width="{W}" height="{H}" fill="#0a0515"/>
-<ellipse class="a1" cx="260" cy="120" rx="420" ry="230" fill="url(#au1)"/>
-<ellipse class="a2" cx="980" cy="150" rx="420" ry="220" fill="url(#au2)"/>
-<ellipse class="a3" cx="620" cy="30" rx="320" ry="140" fill="url(#au3)"/>
-{stars}
-{rings}
-<ellipse cx="600" cy="{HZ}" rx="620" ry="70" fill="url(#hz)" class="halo"/>
-<g mask="url(#floorMask)" stroke="{V}" stroke-width="1.2" opacity=".85">{radial}{horiz}</g>
-<rect x="0" y="{HZ - 1}" width="{W}" height="2" fill="url(#beam)" opacity=".9"/>
-<rect class="scan" x="0" y="0" width="{W}" height="2" fill="url(#scanG)"/>
-{corners}
-<g transform="translate(72 60)">{hexmark(0, 0, 16)}</g>
-<text x="108" y="66" class="d" font-size="14" font-weight="500" letter-spacing="3" fill="{TXT}">THE TECHZEEN</text>
-<circle cx="{W - 48 - lw - 16:.1f}" cy="60" r="4.5" fill="{G}" class="pulse"/>
-<text x="{W - 48}" y="64.5" text-anchor="end" class="m" font-size="12" letter-spacing="3" fill="{MUT}">{live}</text>
-<rect x="{600 - pw / 2:.1f}" y="134" width="{pw:.1f}" height="36" rx="18" fill="{V}" fill-opacity=".12" stroke="url(#brand)"/>
-<circle cx="{600 - pw / 2 + 22:.1f}" cy="152" r="3.5" fill="{M}" class="pulse"/>
-<text x="{600 + 8}" y="156.5" text-anchor="middle" class="m" font-size="12.5" font-weight="700" letter-spacing="4" fill="{TXT}">{pill}</text>
-<text {name_attrs} fill="{V}" filter="url(#soft)" opacity=".9" class="d halo">{name}</text>
-{echoes}
-<g clip-path="url(#sliceA)"><text {name_attrs} fill="{C}" class="d g1">{name}</text></g>
-<g clip-path="url(#sliceB)"><text {name_attrs} fill="{M}" class="d g2">{name}</text></g>
-<text {name_attrs} fill="url(#shine)" class="d">{name}</text>
-<rect x="360" y="{NB + 24}" width="480" height="2" fill="url(#beam)"/>
-<circle r="3.5" fill="#fff" filter="url(#glow)"><animateMotion path="M360 {NB + 25}H840" dur="3s" repeatCount="indefinite"/></circle>
-<path d="M230 {TY - 10}H320M880 {TY - 10}H970" stroke="url(#beam)" stroke-width="1.5"/>
-<g clip-path="url(#tickClip)"><g class="tick">{ticker}</g></g>
-{chips}
-<text x="40" y="{H - 36}" class="m" font-size="11" letter-spacing="3" fill="{MUT}">// BUILD · SECURE · AUTOMATE · TEACH</text>
-<text x="{W - 40}" y="{H - 36}" text-anchor="end" class="m" font-size="11" letter-spacing="3" fill="{MUT}">{STREAK} DAYS · 0 SKIPS</text>
+<rect width="{W}" height="{H}" fill="#05060a"/>
+{grid}
+<ellipse class="glow" cx="600" cy="{BY + 20}" rx="560" ry="230" fill="url(#hglow)"/>
+<text x="48" y="66" class="d" font-size="26" font-weight="800" letter-spacing="-.5"><tspan fill="{V}">&lt;/&gt;</tspan><tspan fill="{TXT}">TechZeen</tspan></text>
+{nav_svg}
+<circle cx="54" cy="108" r="3" fill="{V}"/>
+<text x="66" y="112" class="m" font-size="10.5" letter-spacing="3" fill="{MUT}">THE TECHZEEN</text>
+<text x="{W - 48}" y="112" text-anchor="end" class="m" font-size="10.5" letter-spacing="3" fill="{MUT}">FARZEEN ALI — FOUNDER &amp; CEO</text>
+<rect x="{600 - pw / 2:.1f}" y="140" width="{pw:.1f}" height="38" rx="19" fill="#10131d" stroke="#232838"/>
+<circle cx="{600 - pw / 2 + 24:.1f}" cy="159" r="4" fill="{G}" class="pulse"/>
+<text x="{600 + 10}" y="163" text-anchor="middle" class="m" font-size="11" letter-spacing="1.5" fill="{TXT}">{esc(pill)}</text>
+<rect class="d0" x="574" y="190" width="14" height="3" rx="1.5" fill="{V}"/><rect class="d1" x="593" y="190" width="14" height="3" rx="1.5" fill="#2a3045"/><rect class="d2" x="612" y="190" width="14" height="3" rx="1.5" fill="#2a3045"/>
+<text x="600" y="{NB}" text-anchor="middle" class="d" font-size="{NS:.1f}" font-weight="800" letter-spacing="{NLS}" fill="{TXT}">{name}</text>
+<rect x="{BX:.1f}" y="{BY}" width="{BW:.1f}" height="{BH}" rx="16" fill="{V}"/>
+<g clip-path="url(#blk)"><g class="tick">{ticker}</g></g>
+{line(sub1, BY + BH + 48)}
+{line(sub2, BY + BH + 74)}
+<g transform="translate({BCX} {BCY})"><circle r="{BR}" fill="{V}"/></g>
+<g><animateTransform attributeName="transform" type="rotate" from="0 {BCX} {BCY}" to="360 {BCX} {BCY}" dur="18s" repeatCount="indefinite"/>
+<text class="m" font-size="8.6" font-weight="700" fill="{TXT}"><textPath href="#ring" textLength="249" lengthAdjust="spacing">THE TECHZEEN • {STREAK} DAYS NON-STOP • </textPath></text></g>
+<text x="{BCX}" y="{BCY + 6}" text-anchor="middle" class="m" font-size="17" font-weight="700" fill="{TXT}">&lt;/&gt;</text>
+<g transform="rotate(-2.2 600 553)"><rect x="-100" y="530" width="1400" height="44" fill="#eef1ff"/><g class="bA">{rowA}</g></g>
+<g transform="rotate(1.6 600 578)"><rect x="-100" y="556" width="1400" height="44" fill="{V}"/><g class="bB">{rowB}</g></g>
 <rect width="{W}" height="{H}" filter="url(#grain)"/>
 </g>
 <rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="28" stroke="{LINE}" stroke-width="1.5"/>
@@ -334,7 +322,7 @@ def header(num, title, sub, idx):
 <rect x="{bx}" y="54.5" width="{1130 - bx}" height="1" fill="{LINE}"/>
 <g clip-path="url(#bc)"><rect class="sw" x="{bx - 100}" y="54" width="100" height="2" fill="url(#hb)" style="animation-delay:-{idx * .5}s"/></g>
 <circle cx="{bx}" cy="55" r="3" fill="{V}"/>
-<g transform="translate(1152 55)"><polygon points="0,-12 10.4,-6 10.4,6 0,12 -10.4,6 -10.4,-6" stroke="url(#brand)" stroke-width="1.5" fill="#170e30">
+<g transform="translate(1152 55)"><polygon points="0,-12 10.4,-6 10.4,6 0,12 -10.4,6 -10.4,-6" stroke="url(#brand)" stroke-width="1.5" fill="#12151f">
 <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/></polygon>
 <circle r="3" fill="{M}" class="pulse"/></g>'''
     return doc(W, H, body, css, defs)
@@ -355,13 +343,14 @@ def identity():
            '.eq{animation:eq 1.1s ease-in-out infinite alternate;transform-origin:bottom;transform-box:fill-box}@keyframes eq{from{transform:scaleY(.25)}to{transform:scaleY(1)}}')
     body = card(0, 0, 740, H, 26, 0, 11)
     body += f'<text x="690" y="200" text-anchor="end" class="d" font-size="230" font-weight="800" fill="{V}" opacity=".08">“</text>'
-    body += f'<text x="44" y="62" class="m" font-size="11.5" font-weight="700" letter-spacing="3.5" fill="{C}">◆ MANIFESTO</text>'
-    q = [('Most startups hire', 'url(#ink)'), ('4–5 specialists', 'url(#hot)'), ('for what I do in one.', 'url(#ink)')]
-    for k, (ln, fill) in enumerate(q):
-        fit(ln, 'd8', 38, 0, 650, 'identity quote')
-        body += f'<text x="44" y="{128 + k * 54}" class="d" font-size="38" font-weight="800" fill="{fill}">{esc(ln)}</text>'
-    uw = measure(q[1][0], 'd8', 38)
-    body += f'<rect class="ul" x="44" y="{128 + 54 + 14}" width="{uw:.0f}" height="4" rx="2" fill="url(#hot)" style="transform-origin:44px 0"/>'
+    body += f'<text x="44" y="62" class="m" font-size="11.5" font-weight="700" letter-spacing="3.5" fill="{C}">● MANIFESTO</text>'
+    uw = measure('4–5 specialists', 'd8', 44, -1)
+    fit('Most startups hire', 'd8', 44, -1, 650, 'identity quote')
+    body += f'<rect x="36" y="{182 - 42}" width="{uw + 26:.0f}" height="56" rx="12" fill="{V}"/>'
+    body += f'<text x="44" y="128" class="d" font-size="44" font-weight="800" letter-spacing="-1" fill="{TXT}">Most startups hire</text>'
+    body += f'<text x="49" y="182" class="d" font-size="44" font-weight="800" letter-spacing="-1" fill="{TXT}">4–5 specialists</text>'
+    body += (f'<text x="44" y="236" class="d" font-size="44" font-weight="800" letter-spacing="-1" fill="{TXT}">for what I do '
+             f'<tspan class="i" font-size="54" font-weight="400" letter-spacing="0" fill="{C}">in one.</tspan></text>')
     bio = ['Solutions Architect, DevSecOps Engineer & Tech Educator —',
            'building elite, security-first infrastructure, from a single',
            'HTML tag to distributed cloud systems.']
@@ -460,7 +449,7 @@ def arsenal():
                  f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="-{k * .34:.2f}s" repeatCount="indefinite"/></circle>')
     for l in layers:
         for (px, py) in l:
-            body += (f'<circle cx="{px}" cy="{py}" r="8" fill="#170e30" stroke="{V}" stroke-width="1.5"/>'
+            body += (f'<circle cx="{px}" cy="{py}" r="8" fill="#12151f" stroke="{V}" stroke-width="1.5"/>'
                      f'<circle cx="{px}" cy="{py}" r="3" fill="{M}"><animate attributeName="r" values="2;4.2;2" dur="{random.uniform(1.4, 2.6):.1f}s" repeatCount="indefinite"/></circle>')
 
     # B — DevSecOps: infinity CI/CD loop
@@ -492,7 +481,7 @@ def arsenal():
         bx, by = cx + rr * math.cos(math.radians(ang)), cy + rr * math.sin(math.radians(ang))
         body += (f'<circle cx="{bx:.1f}" cy="{by:.1f}" r="4" fill="{M}" filter="url(#glow)" opacity="0">'
                  f'<animate attributeName="opacity" values="1;0" dur="4s" begin="{ang / 90:.2f}s" repeatCount="indefinite"/></circle>')
-    body += f'<path d="M{cx} {cy - 10}l8 3v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10v-6z" fill="#170e30" stroke="{G}" stroke-width="1.6"/>'
+    body += f'<path d="M{cx} {cy - 10}l8 3v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10v-6z" fill="#12151f" stroke="{G}" stroke-width="1.6"/>'
     body += text_block(xs[0] + 30, gy + 166, '03 · OFFSEC', 'Offensive Security',
                        ['Pentesting, vuln management,', 'SIEM/SOC ops & hardening.'], G, 326, 23)
     body += tags_line(xs[0] + 30, gy + 280, 'NMAP · BURP · METASPLOIT · WAZUH')
@@ -500,7 +489,7 @@ def arsenal():
     # D — Full-stack & mobile: browser + phone with live code
     body += card(xs[1], gy, sw, 300, 24, 6.5, 10)
     bx0, by0 = xs[1] + 92, gy + 28
-    body += (f'<rect x="{bx0}" y="{by0}" width="140" height="100" rx="9" fill="#170e30" stroke="{LINE}" stroke-width="1.5"/>'
+    body += (f'<rect x="{bx0}" y="{by0}" width="140" height="100" rx="9" fill="#12151f" stroke="{LINE}" stroke-width="1.5"/>'
              f'<path d="M{bx0} {by0 + 18}h140" stroke="{LINE}"/>'
              + ''.join(f'<circle cx="{bx0 + 11 + k * 9}" cy="{by0 + 9}" r="2.6" fill="{c}"/>' for k, c in enumerate([M, A, G])))
     for k, (wd, c) in enumerate(zip([72, 104, 56, 88, 44], [V, C, M, V, G])):
@@ -508,7 +497,7 @@ def arsenal():
         body += (f'<rect x="{bx0 + 12 + ind}" y="{by0 + 28 + k * 13}" width="{wd - ind}" height="6" rx="3" fill="{c}" opacity=".85">'
                  f'<animate attributeName="width" values="{wd - ind};0;{wd - ind};{wd - ind}" keyTimes="0;.15;.45;1" dur="4s" begin="{k * .3:.1f}s" repeatCount="indefinite"/></rect>')
     px0 = bx0 + 156
-    body += (f'<rect x="{px0}" y="{by0 - 2}" width="50" height="104" rx="11" fill="#170e30" stroke="{V}" stroke-width="1.5"/>'
+    body += (f'<rect x="{px0}" y="{by0 - 2}" width="50" height="104" rx="11" fill="#12151f" stroke="{V}" stroke-width="1.5"/>'
              f'<rect x="{px0 + 18}" y="{by0 + 4}" width="14" height="4" rx="2" fill="{LINE}"/>')
     for k in range(3):
         body += (f'<rect x="{px0 + 8}" y="{by0 + 16 + k * 26}" width="34" height="20" rx="5" fill="{[C, M, V][k]}" opacity=".25">'
@@ -528,10 +517,10 @@ def arsenal():
         top = f'{x},{cyb - s} {x + s * .87:.1f},{cyb - s / 2} {x},{cyb} {x - s * .87:.1f},{cyb - s / 2}'
         left = f'{x - s * .87:.1f},{cyb - s / 2} {x},{cyb} {x},{cyb + s} {x - s * .87:.1f},{cyb + s / 2}'
         right = f'{x},{cyb} {x + s * .87:.1f},{cyb - s / 2} {x + s * .87:.1f},{cyb + s / 2} {x},{cyb + s}'
-        body += (f'<polygon points="{left}" fill="#260d55" stroke="{V}" stroke-width="1"/>'
-                 f'<polygon points="{right}" fill="#3d1580" stroke="{V}" stroke-width="1"/>'
-                 f'<polygon points="{top}" fill="#5a1fb8" stroke="{V}" stroke-width="1">'
-                 f'<animate attributeName="fill" values="#5a1fb8;{M};#5a1fb8;#5a1fb8" keyTimes="0;.1;.3;1" dur="3.2s" begin="{k * .8:.1f}s" repeatCount="indefinite"/></polygon>'
+        body += (f'<polygon points="{left}" fill="#0a1248" stroke="{V}" stroke-width="1"/>'
+                 f'<polygon points="{right}" fill="#2239e0" stroke="{V}" stroke-width="1"/>'
+                 f'<polygon points="{top}" fill="#3a55ff" stroke="{V}" stroke-width="1">'
+                 f'<animate attributeName="fill" values="#3a55ff;{M};#3a55ff;#3a55ff" keyTimes="0;.1;.3;1" dur="3.2s" begin="{k * .8:.1f}s" repeatCount="indefinite"/></polygon>'
                  f'<text x="{x}" y="{cyb + 44}" text-anchor="middle" class="m" font-size="9" fill="{DIM}">#{k:02d}·0x{random.randrange(16 ** 3):03x}</text>')
     body += text_block(xs[2] + 30, gy + 166, '05 · WEB3', 'Blockchain Engineering',
                        ['Solidity smart contracts &', 'decentralized systems.'], A, 326, 23)
@@ -546,7 +535,7 @@ def terminal():
     CW = measure('0', 'm4', 16)
     prompt = [('farzeen', M, 700), ('@', MUT, 400), ('techzeen', C, 700), (':', MUT, 400), ('~', V, 700), ('$ ', TXT, 400)]
     plen = sum(len(t) for t, _, _ in prompt)
-    ok = [('■ ', G, 700)]
+    ok = [('● ', G, 700)]
     lines = [
         ('cmd', 'whoami'),
         ('out', [('Farzeen Ali', TXT, 700), (' — Founder & CEO @ ', MUT, 400), ('The Techzeen', M, 700)]),
@@ -615,7 +604,7 @@ def terminal():
     defs = f'<clipPath id="win"><rect width="{W}" height="{H}" rx="18"/></clipPath>'
     body = f'''<g clip-path="url(#win)">
 <rect width="{W}" height="{H}" fill="{BODY}"/>
-<rect width="{W}" height="48" fill="#170e30"/><path d="M0 48.5H{W}" stroke="{LINE}"/>
+<rect width="{W}" height="48" fill="#12151f"/><path d="M0 48.5H{W}" stroke="{LINE}"/>
 <circle cx="28" cy="24" r="6.5" fill="#ff5f57"/><circle cx="50" cy="24" r="6.5" fill="#febc2e"/><circle cx="72" cy="24" r="6.5" fill="#28c840"/>
 <text x="600" y="29" text-anchor="middle" class="m" font-size="13" fill="{MUT}">farzeen@techzeen: ~ — zsh — 120×32</text>
 <circle cx="1110" cy="24" r="4" fill="{M}" class="pulse"/><text x="1122" y="28.5" class="m" font-size="11" letter-spacing="2" fill="{MUT}">LIVE</text>
@@ -650,7 +639,7 @@ def marquee():
         copy_w = x
         for off in (0, copy_w):
             for px, it, w in reps:
-                pills += (f'<rect x="{px + off:.1f}" y="{y}" width="{w:.1f}" height="36" rx="18" fill="#170e30" stroke="{col}" stroke-opacity=".28"/>'
+                pills += (f'<rect x="{px + off:.1f}" y="{y}" width="{w:.1f}" height="36" rx="18" fill="#12151f" stroke="{col}" stroke-opacity=".28"/>'
                           f'<circle cx="{px + off + 18:.1f}" cy="{y + 18}" r="3.5" fill="{col}"/>'
                           f'<text x="{px + off + 30:.1f}" y="{y + 22.5}" class="m" font-size="13" fill="{TXT}">{esc(it)}</text>')
         dur = copy_w / 38
@@ -662,9 +651,9 @@ def marquee():
         f'<text x="48" y="{TOP + i * RH + 22}" class="m" font-size="11" font-weight="700" letter-spacing="2.5" fill="{tc(col)}">{esc(label)}</text>'
         for i, (label, col, _) in enumerate(STACK))
     defs = (f'<clipPath id="mq"><rect width="{W}" height="{H}" rx="22"/></clipPath>'
-            '<linearGradient id="fadeL" x1="0" x2="1"><stop offset=".7" stop-color="#0e0820"/><stop offset="1" stop-color="#0e0820" stop-opacity="0"/></linearGradient>'
-            '<linearGradient id="fadeR" x1="0" x2="1"><stop offset="0" stop-color="#0e0820" stop-opacity="0"/><stop offset="1" stop-color="#0e0820"/></linearGradient>')
-    body = f'''<g clip-path="url(#mq)"><rect width="{W}" height="{H}" fill="#0e0820"/>
+            '<linearGradient id="fadeL" x1="0" x2="1"><stop offset=".7" stop-color="#0a0c13"/><stop offset="1" stop-color="#0a0c13" stop-opacity="0"/></linearGradient>'
+            '<linearGradient id="fadeR" x1="0" x2="1"><stop offset="0" stop-color="#0a0c13" stop-opacity="0"/><stop offset="1" stop-color="#0a0c13"/></linearGradient>')
+    body = f'''<g clip-path="url(#mq)"><rect width="{W}" height="{H}" fill="#0a0c13"/>
 {rows}
 <rect width="340" height="{H}" fill="url(#fadeL)"/><rect x="{W - 160}" width="160" height="{H}" fill="url(#fadeR)"/>
 {labels}</g>
@@ -740,18 +729,18 @@ def footer():
         return d + f' L{2 * W} {H} L0 {H}Z'
 
     line1 = f'{STREAK} days. Zero days off.'
-    s1 = min(44.0, 1000 / measure(line1, 'd8', 1))
+    s1 = min(56.0, 1000 / measure(line1, 'd8', 1))
     css = ('.w1{animation:wv 12s linear infinite}.w2{animation:wv 18s linear infinite reverse}.w3{animation:wv 9s linear infinite}'
            '@keyframes wv{from{transform:translateX(0)}to{transform:translateX(-1200px)}}')
     defs = (f'<clipPath id="ft"><rect width="{W}" height="{H}" rx="28"/></clipPath>'
             f'<radialGradient id="fg" cx=".5" cy="1"><stop offset="0" stop-color="{V}" stop-opacity=".55"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>')
-    body = f'''<g clip-path="url(#ft)"><rect width="{W}" height="{H}" fill="#0a0515"/>
+    body = f'''<g clip-path="url(#ft)"><rect width="{W}" height="{H}" fill="#05060a"/>
 <ellipse cx="600" cy="{H}" rx="700" ry="260" fill="url(#fg)"/>
 <path class="w1" d="{wave(14, 600, 290, 0)}" fill="{V}" opacity=".22"/>
 <path class="w2" d="{wave(18, 400, 305, 1)}" fill="{C}" opacity=".16"/>
 <path class="w3" d="{wave(10, 300, 322, 2)}" fill="{C}" opacity=".12"/>
-<g transform="translate(600 62)">{hexmark(0, 0, 22)}</g>
-<text x="600" y="164" text-anchor="middle" class="d" font-size="{s1:.1f}" font-weight="800" fill="url(#ink)">{esc(line1)}</text>
+<g transform="translate(600 62)">{hexmark(0, 0, 24)}</g>
+<text x="600" y="164" text-anchor="middle" class="d" font-size="{s1:.1f}" font-weight="800" letter-spacing="-1" fill="{TXT}">{STREAK} days. <tspan class="i" font-size="{s1 * 1.15:.1f}" font-weight="400" letter-spacing="0" fill="{C}">Zero days off.</tspan></text>
 <text x="600" y="204" text-anchor="middle" class="s" font-size="20" fill="{MUT}">One mission — make complex tech actually build things.</text>
 <text x="600" y="242" text-anchor="middle" class="m" font-size="12" font-weight="700" letter-spacing="3.5" fill="{C}">— FARZEEN ALI · MR. CONSISTENT · FOUNDER &amp; CEO, THE TECHZEEN</text>
 <text x="600" y="{H - 22}" text-anchor="middle" class="m" font-size="10" letter-spacing="3" fill="{MUT}">© THE TECHZEEN — ENGINEERED IN PAKISTAN</text>
