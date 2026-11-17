@@ -175,88 +175,95 @@ def icon_tile(x, y, icon, col):
 
 # ── 1. HERO ───────────────────────────────────────────────────────────────────
 def hero():
-    """Editorial hero: stacked name, every role visible with a moving highlight, stats strip. No gimmicks."""
-    W, H = 1200, 620
-    LX, RX = 56, 772           # left column x, right column x
-    RW = W - 56 - RX           # right column width
+    """Editorial hero: one-line name, titles underneath, role cards with a moving highlight, stats strip."""
+    W, H = 1200, 586
+    LX = 56
+    CW_ = W - 2 * LX
 
-    # name, fitted to the left column
+    # name on one line, fitted to the full width
     NLS = -.035
-    NS = min(170.0, 650 / (measure('FARZEEN', 'd8', 1) + NLS * 7))
+    NS = min(158.0, (CW_ - 60) / (measure('FARZEEN ALI', 'd8', 1) + NLS * 11))
     ls = NS * NLS
-    l1y = 108 + cap_height('d8', NS)
-    l2y = l1y + NS * .9
-    ali_w = measure('ALI', 'd8', NS, ls)
     capH = cap_height('d8', NS)
+    NB = 112 + capH
+    far_w = measure('FARZEEN ', 'd8', NS, ls)
+    full_w = measure('FARZEEN ALI', 'd8', NS, ls)
 
-    tagline = 'Building, securing & teaching tech — every single day.'
-    fit(tagline, 'i4', 30, 0, 690, 'hero tagline')
+    # titles line: Founder & CEO, The Techzeen · Mr. Consistent · Solutions Architect
+    t1, t2, t3 = 'Founder & CEO, The Techzeen', 'Mr. Consistent', 'Solutions Architect'
+    dot = '  ·  '
+    w1 = measure(t1, 's6', 30)
+    wd = measure(dot, 's6', 30)
+    w2 = measure(t2, 'i4', 38)
+    w3 = measure(t3, 's6', 30)
+    if w1 + wd + w2 + wd + w3 > CW_:
+        print('  ! overflow in hero titles line')
+    TY = NB + 66
 
-    roles = [
-        ('Founder & CEO', 'THE TECHZEEN'),
-        ('Solutions Architect', 'ENTERPRISE'),
-        ('DevSecOps & Cloud', 'AWS · AZURE · GCP'),
-        ('AI Automation Engineer', 'AGENTIC AI'),
-        ('Program Manager & Faculty', 'DENNING'),
-    ]
-    RY0, RH = 150, 60
+    roles = [('Founder & CEO', 'THE TECHZEEN', 'crown', G), ('Solutions Architect', 'ENTERPRISE SYSTEMS', 'blueprint', C),
+             ('DevSecOps & Cloud', 'AWS · AZURE · GCP', 'shield', M), ('AI Automation', 'AGENTIC AI · RAG · N8N', 'bolt', A)]
+    RY, RH, GAP = TY + 50, 92, 16
+    RCW = (CW_ - GAP * (len(roles) - 1)) / len(roles)
     n = len(roles)
     kf = []
     for i in range(n):
-        kf.append(f'{i * 100 / n:.3f}%{{transform:translateY({i * RH}px)}}')
-        kf.append(f'{(i + .82) * 100 / n:.3f}%{{transform:translateY({i * RH}px)}}')
-    kf.append(f'100%{{transform:translateY(0)}}')
-    rows = ''
-    for i, (title, org) in enumerate(roles):
-        y = RY0 + i * RH
-        fit(title, 's6', 20, 0, RW - 70, 'hero role')
-        rows += (f'<line x1="{RX}" y1="{y + RH}" x2="{W - 56}" y2="{y + RH}" stroke="{LINE}"/>'
-                 f'<text x="{RX + 14}" y="{y + 26}" class="m" font-size="10.5" fill="{MUT}">0{i + 1}</text>'
-                 f'<text x="{RX + 44}" y="{y + 27}" class="s" font-size="20" font-weight="600" fill="{TXT}">{esc(title)}</text>'
-                 f'<text x="{RX + 44}" y="{y + 45}" class="m" font-size="10" letter-spacing="1.5" fill="{MUT}">{esc(org)}</text>'
-                 f'<text x="{W - 72}" y="{y + 34}" text-anchor="end" class="m" font-size="14" fill="{MUT}">→</text>')
+        kf.append(f'{i * 100 / n:.3f}%{{transform:translateX({i * (RCW + GAP):.1f}px)}}')
+        kf.append(f'{(i + .82) * 100 / n:.3f}%{{transform:translateX({i * (RCW + GAP):.1f}px)}}')
+    kf.append('100%{transform:translateX(0)}')
+    cards, cardbg = '', ''
+    for i, (title, sub, icon, col) in enumerate(roles):
+        x = LX + i * (RCW + GAP)
+        fit(title, 's6', 18, 0, RCW - 84, 'hero role card')
+        fit(sub, 'm4', 10, 1.5, RCW - 84, 'hero role card sub')
+        cardbg += f'<rect x="{x:.1f}" y="{RY}" width="{RCW:.1f}" height="{RH}" rx="16" fill="#0e1120" fill-opacity=".85" stroke="#2a3150"/>'
+        cards += (f'{icon_tile(round(x + 18), RY + 24, icon, col)}'
+                  f'<text x="{x + 76:.1f}" y="{RY + 44}" class="s" font-size="18" font-weight="600" fill="{TXT}">{esc(title)}</text>'
+                  f'<text x="{x + 76:.1f}" y="{RY + 64}" class="m" font-size="10" letter-spacing="1.5" fill="{MUT}">{esc(sub)}</text>'
+                  )
 
-    stats_ = [(STREAK, 'DAYS NON-STOP'), ('28K+', 'TECH COMMUNITY'), ('20+', 'PRODUCTION COURSES'), ('#1', 'TECH CHANNEL IN PK')]
-    SY = 500
-    cw = (W - 2 * LX) / len(stats_)
-    strip = f'<line x1="{LX}" y1="{SY}" x2="{W - LX}" y2="{SY}" stroke="{LINE}"/>'
+    stats_ = [(STREAK, 'DAYS NON-STOP'), ('20+', 'PRODUCTION COURSES'), ('4–5', 'SPECIALISTS IN ONE'), ('#1', 'TECH CHANNEL IN PK')]
+    SY = RY + RH + 34
+    sw = CW_ / len(stats_)
+    strip = f'<line x1="{LX}" y1="{SY}" x2="{W - LX}" y2="{SY}" stroke="#2a3150"/>'
     for i, (num, lab) in enumerate(stats_):
-        x = LX + i * cw
+        x = LX + i * sw
         if i:
-            strip += f'<line x1="{x:.1f}" y1="{SY + 22}" x2="{x:.1f}" y2="{H - 30}" stroke="{LINE}"/>'
+            strip += f'<line x1="{x:.1f}" y1="{SY + 20}" x2="{x:.1f}" y2="{H - 28}" stroke="#2a3150"/>'
         tx = x + (0 if i == 0 else 28)
-        strip += (f'<text x="{tx:.1f}" y="{SY + 64}" class="d" font-size="42" font-weight="800" letter-spacing="-1.5" fill="{TXT}">{esc(num)}</text>'
-                  f'<text x="{tx:.1f}" y="{SY + 90}" class="m" font-size="10.5" letter-spacing="2" fill="{MUT}">{lab}</text>')
+        strip += (f'<text x="{tx:.1f}" y="{SY + 58}" class="d" font-size="40" font-weight="800" letter-spacing="-1.5" fill="{TXT}">{esc(num)}</text>'
+                  f'<text x="{tx:.1f}" y="{SY + 82}" class="m" font-size="10.5" letter-spacing="2" fill="{MUT}">{lab}</text>')
 
-    css = ('.hl{animation:hl 15s cubic-bezier(.7,0,.3,1) infinite}@keyframes hl{' + ''.join(kf) + '}'
+    css = ('.hl{animation:hl 12s cubic-bezier(.7,0,.3,1) infinite}@keyframes hl{' + ''.join(kf) + '}'
            '.cur{animation:blink 1.1s steps(1) infinite}'
-           '.spot{animation:spot 12s ease-in-out infinite alternate}@keyframes spot{to{transform:translate(-120px,40px)}}')
+           '.spot{animation:spot 12s ease-in-out infinite alternate}@keyframes spot{to{transform:translate(-160px,30px)}}'
+           '.ng{animation:ng 5s ease-in-out infinite}@keyframes ng{50%{opacity:.35}}')
     defs = f'''<clipPath id="frame"><rect width="{W}" height="{H}" rx="28"/></clipPath>
-<radialGradient id="spotG"><stop offset="0" stop-color="{V}" stop-opacity=".55"/><stop offset=".5" stop-color="{V}" stop-opacity=".14"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
-<radialGradient id="spot2"><stop offset="0" stop-color="{M}" stop-opacity=".18"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></radialGradient>
-<pattern id="hdots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#ffffff" opacity=".07"/></pattern>
-<linearGradient id="hlG" x1="0" x2="1"><stop offset="0" stop-color="{V}"/><stop offset="1" stop-color="{V}" stop-opacity=".55"/></linearGradient>'''
+<radialGradient id="spotG"><stop offset="0" stop-color="{V}" stop-opacity=".75"/><stop offset=".5" stop-color="{V}" stop-opacity=".2"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
+<radialGradient id="spot2"><stop offset="0" stop-color="{M}" stop-opacity=".28"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></radialGradient>
+<pattern id="hdots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#ffffff" opacity=".08"/></pattern>
+<linearGradient id="hlG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{V}"/><stop offset="1" stop-color="#1d33c9"/></linearGradient>
+<filter id="nglow" x="-10%" y="-40%" width="120%" height="180%"><feGaussianBlur stdDeviation="26"/></filter>'''
 
+    name = (f'<tspan fill="{TXT}">FARZEEN </tspan><tspan fill="{V}">ALI</tspan>')
     body = f'''<g clip-path="url(#frame)">
 <rect width="{W}" height="{H}" fill="#05060a"/>
-<ellipse class="spot" cx="980" cy="110" rx="560" ry="380" fill="url(#spotG)"/>
-<ellipse cx="120" cy="560" rx="420" ry="220" fill="url(#spot2)"/>
+<ellipse class="spot" cx="900" cy="150" rx="620" ry="400" fill="url(#spotG)"/>
+<ellipse cx="160" cy="600" rx="480" ry="240" fill="url(#spot2)"/>
 <rect width="{W}" height="{H}" fill="url(#hdots)"/>
-<text x="{LX}" y="66" class="d" font-size="22" font-weight="800" letter-spacing="-.5"><tspan fill="{tc(V)}">&lt;/&gt;</tspan><tspan fill="{TXT}"> TheTechzeen</tspan></text>
-<circle cx="{W - 56 - measure('AVAILABLE FOR COLLABORATIONS', 'm7', 10.5, 2) - 16:.1f}" cy="60" r="4" fill="{G}" class="pulse"/>
-<text x="{W - 56}" y="64" text-anchor="end" class="m" font-size="10.5" font-weight="700" letter-spacing="2" fill="{TXT}">AVAILABLE FOR COLLABORATIONS</text>
-<text x="{LX - 4}" y="{l1y:.1f}" class="d" font-size="{NS:.1f}" font-weight="800" letter-spacing="{ls:.2f}" fill="{TXT}">FARZEEN</text>
-<text x="{LX - 4}" y="{l2y:.1f}" class="d" font-size="{NS:.1f}" font-weight="800" letter-spacing="{ls:.2f}" fill="{V}">ALI</text>
-<rect class="cur" x="{LX + ali_w + 6:.1f}" y="{l2y - NS * .085:.1f}" width="{NS * .42:.1f}" height="{NS * .085:.1f}" fill="{TXT}"/>
-<text x="{LX}" y="{l2y + 62:.1f}" class="i" font-size="30" fill="{C}">{esc(tagline)}</text>
-<text x="{RX}" y="{RY0 - 22}" class="m" font-size="10.5" font-weight="700" letter-spacing="3" fill="{tc(V)}">● ROLES</text>
-<line x1="{RX}" y1="{RY0}" x2="{W - 56}" y2="{RY0}" stroke="{LINE}"/>
-<rect class="hl" x="{RX}" y="{RY0 + 1}" width="{RW}" height="{RH - 1}" rx="10" fill="url(#hlG)"/>
-{rows}
+<text x="{LX}" y="64" class="d" font-size="22" font-weight="800" letter-spacing="-.5"><tspan fill="{tc(V)}">&lt;/&gt;</tspan><tspan fill="{TXT}"> TheTechzeen</tspan></text>
+<circle cx="{W - 56 - measure('AVAILABLE FOR COLLABORATIONS', 'm7', 10.5, 2) - 16:.1f}" cy="58" r="4" fill="{G}" class="pulse"/>
+<text x="{W - 56}" y="62" text-anchor="end" class="m" font-size="10.5" font-weight="700" letter-spacing="2" fill="{TXT}">AVAILABLE FOR COLLABORATIONS</text>
+<text class="ng" x="{LX - 4}" y="{NB:.1f}" font-size="{NS:.1f}" font-weight="800" letter-spacing="{ls:.2f}" fill="{V}" filter="url(#nglow)" opacity=".6"><tspan class="d">FARZEEN ALI</tspan></text>
+<text x="{LX - 4}" y="{NB:.1f}" class="d" font-size="{NS:.1f}" font-weight="800" letter-spacing="{ls:.2f}">{name}</text>
+<rect class="cur" x="{LX + full_w + 4:.1f}" y="{NB - NS * .085:.1f}" width="{NS * .36:.1f}" height="{NS * .085:.1f}" fill="{TXT}"/>
+<text x="{LX}" y="{TY:.1f}" class="s" font-size="30" font-weight="600" fill="{TXT}">{esc(t1)}<tspan fill="{DIM}">{dot}</tspan><tspan class="i" font-size="38" font-weight="400" fill="{C}">{t2}</tspan><tspan fill="{DIM}">{dot}</tspan>{esc(t3)}</text>
+{cardbg}
+<rect class="hl" x="{LX}" y="{RY}" width="{RCW:.1f}" height="{RH}" rx="16" fill="url(#hlG)"/>
+{cards}
 {strip}
 <rect width="{W}" height="{H}" filter="url(#grain)"/>
 </g>
-<rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="28" stroke="{LINE}" stroke-width="1.5"/>
+<rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="28" stroke="#2a3150" stroke-width="1.5"/>
 <rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="28" pathLength="1000" stroke="url(#brand)" stroke-width="2" stroke-linecap="round" stroke-dasharray="90 910" style="animation:run 12s linear infinite"/>'''
     return doc(W, H, body, css, defs)
 
@@ -336,7 +343,7 @@ def identity():
         body += icon_tile(784, y + rh / 2 - 22, icon, col)
         fit(title, 's6', 19, 0, 330, 'identity role')
         fit(sub, 'm4', 10.5, 1.6, 330, 'identity role sub')
-        body += (f'<text x="846" y="{y + rh / 2 - 2:.1f}" class="s" font-size="19" font-weight="600" fill="{TXT}">{esc(title)}</text>'
+        body += (f'<text x="846" y="{y + rh / 2 - 2:.1f}" class="s" font-size="18" font-weight="600" fill="{TXT}">{esc(title)}</text>'
                  f'<text x="846" y="{y + rh / 2 + 20:.1f}" class="m" font-size="10.5" letter-spacing="1.6" fill="{tc(col)}">{esc(sub)}</text>'
                  f'<text x="1176" y="{y + 28:.1f}" text-anchor="end" class="m" font-size="10" fill="{DIM}">0{k + 1}</text>')
     return doc(W, H, body, css)
