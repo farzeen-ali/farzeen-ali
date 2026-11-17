@@ -21,8 +21,8 @@
 
 <br/><br/>
 
-<a href="https://github.com/farzeen-ali?tab=followers"><img src="https://img.shields.io/github/followers/farzeen-ali?style=for-the-badge&logo=github&logoColor=white&color=8b3dff&labelColor=0a0614&label=FOLLOWERS" alt="GitHub followers"/></a>
-<img src="https://komarev.com/ghpvc/?username=farzeen-ali&style=for-the-badge&color=ff3df2&label=PROFILE+VIEWS" alt="Profile views"/>
+<a href="https://github.com/farzeen-ali?tab=followers"><img src="https://img.shields.io/github/followers/farzeen-ali?style=for-the-badge&logo=github&logoColor=white&color=2b47ff&labelColor=05060a&label=FOLLOWERS" alt="GitHub followers"/></a>
+<img src="https://komarev.com/ghpvc/?username=farzeen-ali&style=for-the-badge&color=2b47ff&label=PROFILE+VIEWS" alt="Profile views"/>
 
 </div>
 
@@ -42,13 +42,19 @@
 
 <br/><br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-03.svg" alt="03 — Arsenal"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-03.svg" alt="03 — The streak"/>
+
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/streak.svg" alt="1,000+ days of daily content drawn as 1,000 lit squares — zero skips"/>
+
+<br/><br/>
+
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-04.svg" alt="04 — Arsenal"/>
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/arsenal.svg" alt="Core domains: AI Agentic Automation, DevSecOps & Cloud, Offensive Security, Full-Stack & Mobile, Blockchain Engineering"/>
 
 <br/><br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-04.svg" alt="04 — Tech stack"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-05.svg" alt="05 — Tech stack"/>
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/stack.svg" alt="Tech stack: React, Next.js, NestJS, Node.js, AWS, Azure, GCP, Docker, Kubernetes, Terraform, Kali Linux, Metasploit, LLMs, RAG, n8n, Solidity and more"/>
 
@@ -61,7 +67,7 @@
 
 <br/><br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-05.svg" alt="05 — Live grid"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-06.svg" alt="06 — Live grid"/>
 
 <div align="center">
 <br/>
@@ -74,7 +80,7 @@
 
 <br/><br/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-06.svg" alt="06 — Let's build"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-07.svg" alt="07 — Let's build"/>
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/services.svg" alt="Architect · Harden · Automate · Audit · Train — production architectures, DevSecOps hardening, AI automation, offensive security audits and team training"/>
 

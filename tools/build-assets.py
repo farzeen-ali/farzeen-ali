@@ -175,118 +175,156 @@ def icon_tile(x, y, icon, col):
 
 # ── 1. HERO ───────────────────────────────────────────────────────────────────
 def hero():
-    """Mirrors thetechzeen.com: white headline over a cobalt block, spinning badge, tilted marquee bands."""
-    W, H = 1200, 600
-    roles = ['SOLUTIONS ARCHITECT', 'DEVSECOPS ENGINEER', 'AI AUTOMATION ENGINEER',
-             'AGENTIC AI ENGINEER', 'CLOUD ARCHITECT', 'TECH EDUCATOR']
-    name, NLS = 'FARZEEN ALI', -2
-    NS = min(136.0, (860 - NLS * len(name)) / measure(name, 'd8', 1))
-    NW = measure(name, 'd8', NS, NLS)
-    NB = 300
-    BX, BY, BW, BH = 600 - NW / 2 - 10, NB + 18, NW + 20, 104
-    RS = min(54.0, (BW - 90) / max(measure(r, 'd8', 1) for r in roles))
-    RY = BY + BH / 2 + cap_height('d8', RS) / 2
+    W, H, HZ = 1200, 600, 420
+    random.seed(7)
+    roles = ['Solutions Architect', 'DevSecOps Engineer', 'AI Automation Engineer',
+             'Offensive Security Specialist', 'Cloud Architect · AWS · Azure · GCP',
+             f'Tech Educator · {STREAK} Days Live']
+    LH, TY = 46, 360
     n = len(roles)
     seg = 100 / n
     kf = []
     for i in range(n):
-        kf.append(f'{i * seg:.3f}%{{transform:translateY({-i * BH}px)}}')
-        kf.append(f'{(i + .8) * seg:.3f}%{{transform:translateY({-i * BH}px)}}')
-    kf.append(f'100%{{transform:translateY({-n * BH}px)}}')
+        kf.append(f'{i * seg:.3f}%{{transform:translateY({-i * LH}px)}}')
+        kf.append(f'{(i + .8) * seg:.3f}%{{transform:translateY({-i * LH}px)}}')
+    kf.append(f'100%{{transform:translateY({-n * LH}px)}}')
+    for r in roles:
+        fit(r, 's4', 27, 1, 560, 'hero ticker')
 
-    # tilted marquee bands (content mirrors the site's band)
-    band = [f'{STREAK} DAYS NON-STOP STREAK', 'FULL STACK • DEVOPS • AI AUTOMATION', '28K+ TECH COMMUNITY',
-            'AGENTIC AI • LANGCHAIN • LANGGRAPH', 'DEVSECOPS • CLOUD • CYBER SECURITY']
-
-    def band_row(y, fg, sep_col, size):
-        items, x = [], 0.0
-        while x < 1700:
-            for t in band:
-                items.append((x, t, fg))
-                x += measure(t, 'd8', size, -.5) + 26
-                items.append((x, '</>', sep_col))
-                x += measure('</>', 'm7', size * .7) + 26
-        cw = x
-        out = ''
-        for off in (0, cw):
-            for px, t, col in items:
-                cls, fs, ls = ('m', size * .7, 0) if t == '</>' else ('d', size, -.5)
-                out += (f'<text x="{px + off - 100:.1f}" y="{y}" class="{cls}" font-size="{fs:.1f}" font-weight="800" '
-                        f'letter-spacing="{ls}" fill="{col}">{esc(t)}</text>')
-        return out, cw
-
-    rowA, cwA = band_row(560, '#05060a', V, 22)
-    rowB, cwB = band_row(584, TXT, '#cdd5ff', 22)
-
-    nav = ['IDENTITY', 'NUMBERS', 'ARSENAL', 'STACK', 'BUILD']
-    nav_svg, x = '', W - 48
-    for i in range(len(nav) - 1, -1, -1):
-        lw = measure(nav[i], 'm7', 11, 1.2)
-        x -= lw
-        col = M if i == 0 else TXT
-        nav_svg = (f'<text x="{x - 20:.1f}" y="62" class="m" font-size="9" fill="{DIM}">0{i + 1}</text>'
-                   f'<text x="{x:.1f}" y="62" class="m" font-size="11" font-weight="700" letter-spacing="1.2" fill="{col}">{nav[i]}</text>'
-                   + (f'<rect x="{x - 20:.1f}" y="72" width="{lw + 20:.1f}" height="2" rx="1" fill="{V}"/>' if i == 0 else '') + nav_svg)
-        x -= 48
-
-    sub1 = [('Founder & CEO of ', MUT, 400), ('The Techzeen', TXT, 600), (' — building and teaching production-grade', MUT, 400)]
-    sub2 = [('Full-Stack, DevOps, AI Automation & Cyber Security', C, 600), (', every single day.', MUT, 400)]
-    for s in (sub1, sub2):
-        fit(''.join(t for t, _, _ in s), 's4', 17, 0, 900, 'hero subline')
-
-    def line(segs, y):
-        return (f'<text x="600" y="{y}" text-anchor="middle" class="s" font-size="17">' +
-                ''.join(f'<tspan fill="{c}" font-weight="{w}">{esc(t)}</tspan>' for t, c, w in segs) + '</text>')
-
-    pill = f"{STREAK} DAYS  ·  ZERO SKIPS  ·  PK'S #1 TECH CHANNEL"
-    pw = measure(pill, 'm4', 11, 1.5) + 58
-    BCX, BCY, BR = 1092, 196, 52
-    ring = f'M{BCX - 40},{BCY} a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0'
+    name, NLS = 'FARZEEN ALI', 4
+    NS = min(116.0, 1010 / (measure(name, 'd8', 1) + NLS * len(name) / 96))
+    NB = 290
+    ch = cap_height('d8', NS)
+    name_attrs = f'x="600" y="{NB}" text-anchor="middle" font-size="{NS:.1f}" font-weight="800" letter-spacing="{NLS}"'
 
     css = (
-        '.tick{animation:tick 18s cubic-bezier(.7,0,.3,1) infinite}@keyframes tick{' + ''.join(kf) + '}'
-        f'.bA{{animation:bA {cwA / 70:.1f}s linear infinite}}@keyframes bA{{to{{transform:translateX({-cwA:.1f}px)}}}}'
-        f'.bB{{animation:bB {cwB / 60:.1f}s linear infinite}}@keyframes bB{{from{{transform:translateX({-cwB:.1f}px)}}to{{transform:translateX(0)}}}}'
-        '.d0{animation:d0 9s steps(1) infinite}.d1{animation:d1 9s steps(1) infinite}.d2{animation:d2 9s steps(1) infinite}'
-        '@keyframes d0{0%{fill:#2b47ff}33.33%,100%{fill:#2a3045}}'
-        '@keyframes d1{0%{fill:#2a3045}33.33%{fill:#2b47ff}66.66%,100%{fill:#2a3045}}'
-        '@keyframes d2{0%,66.65%{fill:#2a3045}66.66%,100%{fill:#2b47ff}}'
-        '.glow{animation:glow 5s ease-in-out infinite}@keyframes glow{50%{opacity:.55}}'
+        '.tw{animation:tw 4s ease-in-out infinite}@keyframes tw{0%,100%{opacity:.1}50%{opacity:.9}}'
+        '.fl{animation:fl 4s cubic-bezier(.55,0,1,.45) infinite}'
+        f'@keyframes fl{{0%{{transform:translateY(0);opacity:0}}20%{{opacity:1}}100%{{transform:translateY({H - HZ}px);opacity:1}}}}'
+        '.a1{animation:d1 14s ease-in-out infinite alternate}@keyframes d1{to{transform:translate(160px,50px)}}'
+        '.a2{animation:d2 17s ease-in-out infinite alternate}@keyframes d2{to{transform:translate(-180px,30px)}}'
+        '.a3{animation:d3 11s ease-in-out infinite alternate}@keyframes d3{to{transform:translate(60px,60px)}}'
+        '.g1{animation:g1 6s steps(1) infinite}.g2{animation:g2 6s steps(1) infinite}'
+        '@keyframes g1{0%,88%{transform:translate(0);opacity:0}89%{transform:translate(-8px,2px);opacity:.9}'
+        '91%{transform:translate(7px,-1px);opacity:.9}93%{transform:translate(-3px,0);opacity:.9}95%,100%{transform:translate(0);opacity:0}}'
+        '@keyframes g2{0%,88%{transform:translate(0);opacity:0}89%{transform:translate(8px,-2px);opacity:.9}'
+        '91%{transform:translate(-6px,2px);opacity:.9}93%{transform:translate(4px,0);opacity:.9}95%,100%{transform:translate(0);opacity:0}}'
+        '.tick{animation:tick 18s infinite}@keyframes tick{' + ''.join(kf) + '}'
+        '.scan{animation:scan 7s linear infinite}@keyframes scan{from{transform:translateY(-20px)}to{transform:translateY(620px)}}'
+        '.bob{animation:bob 4s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-6px)}}'
+        '.halo{animation:halo 4s ease-in-out infinite}@keyframes halo{50%{opacity:.35}}'
+        '.e1,.e2,.e3{animation:ec 5s ease-in-out infinite}.e2{animation-delay:-.4s}.e3{animation-delay:-.8s}'
+        '@keyframes ec{50%{transform:translateY(-7px)}}'
     )
     defs = f'''<clipPath id="frame"><rect width="{W}" height="{H}" rx="28"/></clipPath>
-<clipPath id="blk"><rect x="{BX:.1f}" y="{BY}" width="{BW:.1f}" height="{BH}" rx="16"/></clipPath>
-<radialGradient id="hglow"><stop offset="0" stop-color="{V}" stop-opacity=".42"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
-<path id="ring" d="{ring}"/>'''
+<radialGradient id="au1"><stop offset="0" stop-color="{V}" stop-opacity=".55"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
+<radialGradient id="au2"><stop offset="0" stop-color="{M}" stop-opacity=".38"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></radialGradient>
+<radialGradient id="au3"><stop offset="0" stop-color="{C}" stop-opacity=".28"/><stop offset="1" stop-color="{C}" stop-opacity="0"/></radialGradient>
+<radialGradient id="hz"><stop offset="0" stop-color="{M}" stop-opacity=".8"/><stop offset=".4" stop-color="{V}" stop-opacity=".35"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
+<linearGradient id="floorFade" x1="0" y1="{HZ}" x2="0" y2="{H}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#000"/><stop offset=".35" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="floorMask"><rect y="{HZ}" width="{W}" height="{H - HZ}" fill="url(#floorFade)"/></mask>
+<linearGradient id="shine" x1="0" y1="0" x2="700" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
+<stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#dfe5ff"/><stop offset=".5" stop-color="#96a6ff"/><stop offset=".7" stop-color="#dfe5ff"/><stop offset="1" stop-color="#ffffff"/>
+<animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="700 0" dur="5s" repeatCount="indefinite"/></linearGradient>
+<linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="{C}" stop-opacity="0"/><stop offset=".5" stop-color="{C}"/><stop offset="1" stop-color="{M}" stop-opacity="0"/></linearGradient>
+<linearGradient id="scanG" x1="0" x2="1"><stop offset="0" stop-color="{V}" stop-opacity="0"/><stop offset=".5" stop-color="#cdd5ff" stop-opacity=".55"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></linearGradient>
+<filter id="soft" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="22"/></filter>
+<clipPath id="sky"><rect width="{W}" height="{HZ}"/></clipPath>
+<radialGradient id="pl" cx=".5" cy=".15" r=".8"><stop offset="0" stop-color="{V}" stop-opacity=".5"/><stop offset=".6" stop-color="{V}" stop-opacity=".12"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></radialGradient>
+<linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{C}"/><stop offset=".45" stop-color="{V}" stop-opacity=".3"/><stop offset="1" stop-color="{V}" stop-opacity="0"/></linearGradient>
+<clipPath id="tickClip"><rect x="0" y="{TY - 32}" width="{W}" height="44"/></clipPath>
+<clipPath id="sliceA"><rect y="{NB - ch - 4:.0f}" width="{W}" height="{ch / 2 + 4:.0f}"/></clipPath>
+<clipPath id="sliceB"><rect y="{NB - ch / 2 + 6:.0f}" width="{W}" height="{ch / 2:.0f}"/></clipPath>'''
 
+    stars = ''.join(
+        f'<circle cx="{random.uniform(20, 1180):.0f}" cy="{random.uniform(20, HZ - 20):.0f}" r="{random.choice([.7, 1, 1.2, 1.6])}" '
+        f'fill="#fff" class="tw" style="animation-delay:-{random.uniform(0, 5):.1f}s;animation-duration:{random.uniform(2.5, 6):.1f}s"/>'
+        for _ in range(80))
+    radial = ''.join(f'<line x1="600" y1="{HZ}" x2="{x}" y2="{H}"/>' for x in range(-3000, 4201, 200))
+    horiz = ''.join(f'<line x1="0" y1="{HZ}" x2="{W}" y2="{HZ}" class="fl" style="animation-delay:-{i * .5}s"/>' for i in range(8))
+    rings = ''.join(
+        f'<circle cx="600" cy="245" r="{r}" stroke="{col}" stroke-width="1" stroke-dasharray="{da}" opacity=".22">'
+        f'<animateTransform attributeName="transform" type="rotate" from="0 600 245" to="{sgn * 360} 600 245" dur="{d}s" repeatCount="indefinite"/></circle>'
+        for r, col, da, sgn, d in [(185, V, '2 10', 1, 40), (225, C, '60 18 4 18', -1, 60), (265, M, '1 6', 1, 90)])
+    echoes = ''.join(
+        f'<text {name_attrs} transform="translate(0 {-k * 13})" class="d" stroke="{col}" stroke-width="1.2" opacity="{op}"><tspan class="e{k}">{name}</tspan></text>'
+        for k, col, op in [(3, M, .18), (2, V, .32), (1, C, .5)])
     ticker = ''.join(
-        f'<text x="600" y="{RY + k * BH:.1f}" text-anchor="middle" class="d" font-size="{RS:.1f}" font-weight="800" letter-spacing="-1" fill="{TXT}">{t}</text>'
+        f'<text x="600" y="{TY + k * LH}" text-anchor="middle" class="s" font-size="27" letter-spacing="1" fill="{TXT}">{esc(t)}</text>'
         for k, t in enumerate(roles + roles[:1]))
-    grid = ''.join(f'<line x1="{x}" y1="0" x2="{x}" y2="{H}" stroke="#ffffff" stroke-opacity=".05"/>' for x in (200, 400, 600, 800, 1000))
+
+    chips_src = [('AGENTIC AI', M), ('AI ENGINEERING', C), ('DEVSECOPS', V), ('DEVOPS', C), ('CLOUD', V), ('FULL-STACK', G), ('OFFSEC', A)]
+    cw = [measure(t, 'm7', 12, 2) + 50 for t, _ in chips_src]
+    gap = 12
+    if sum(cw) + gap * (len(cw) - 1) > 1120:
+        print('  ! overflow in hero chips')
+    x = 600 - (sum(cw) + gap * (len(cw) - 1)) / 2
+    chips = ''
+    for i, ((t, col), w) in enumerate(zip(chips_src, cw)):
+        chips += (f'<g class="bob" style="animation-delay:-{i * .6:.1f}s"><rect x="{x:.1f}" y="478" width="{w:.1f}" height="36" rx="18" fill="#10131d" fill-opacity=".85" stroke="{col}" stroke-opacity=".45"/>'
+                  f'<circle cx="{x + 21:.1f}" cy="496" r="4" fill="{col}" class="pulse" style="animation-delay:-{i * .3:.1f}s"/>'
+                  f'<text x="{x + 34:.1f}" y="500.5" class="m" font-size="12" font-weight="700" letter-spacing="2" fill="{TXT}">{t}</text></g>')
+        x += w + gap
+
+    corners = ''.join(f'<path d="{d}" stroke="{C}" stroke-width="1.5" opacity=".6"/>' for d in
+                      ['M24 60V24H60', f'M{W - 60} 24H{W - 24}V60', f'M24 {H - 60}V{H - 24}H60', f'M{W - 60} {H - 24}H{W - 24}V{H - 60}'])
+    pill = 'FOUNDER &amp; CEO · THE TECHZEEN'
+    pw = measure('FOUNDER & CEO · THE TECHZEEN', 'm7', 12.5, 4) + 52
+    live = f'{STREAK} DAYS LIVE'
+    lw = measure(live, 'm4', 12, 3)
+
+    # wireframe planet rising over the horizon: latitude rings + rotating meridians
+    PR, PCY = 330, HZ + 120
+    lat = ''.join(
+        f'<ellipse cx="600" cy="{PCY - PR * math.sin(math.radians(a)):.1f}" rx="{PR * math.cos(math.radians(a)):.1f}" '
+        f'ry="{PR * math.cos(math.radians(a)) * .16:.1f}" stroke="{C}" stroke-opacity=".2"/>' for a in (12, 26, 40, 54, 68))
+    mer = ''
+    for k in range(6):
+        vals = ';'.join(f'{PR * abs(math.sin(math.radians(k * 30 + t * 15))):.1f}' for t in range(25))
+        mer += (f'<ellipse cx="600" cy="{PCY}" rx="{PR * abs(math.sin(math.radians(k * 30))):.1f}" ry="{PR}" stroke="{C}" stroke-opacity=".24">'
+                f'<animate attributeName="rx" values="{vals}" dur="36s" repeatCount="indefinite"/></ellipse>')
+    orbit = 'M130 300a470 78 0 1 0 940 0a470 78 0 1 0 -940 0'
+    planet = f'''<g clip-path="url(#sky)">
+<circle cx="600" cy="{PCY}" r="{PR}" fill="url(#pl)"/>
+{lat}{mer}
+<circle cx="600" cy="{PCY}" r="{PR}" stroke="url(#rim)" stroke-width="2.5"/>
+<circle cx="600" cy="{PCY}" r="{PR + 10}" stroke="{V}" stroke-width="14" opacity=".25" filter="url(#soft)"/>
+</g>
+<g transform="rotate(-7 600 300)"><path d="{orbit}" stroke="{C}" stroke-opacity=".28" stroke-dasharray="2 8"/>
+<circle r="4" fill="#fff" filter="url(#glow)"><animateMotion path="{orbit}" dur="14s" repeatCount="indefinite"/></circle>
+<circle r="2.5" fill="{C}"><animateMotion path="{orbit}" dur="14s" begin="-7s" repeatCount="indefinite"/></circle></g>'''
 
     body = f'''<g clip-path="url(#frame)">
 <rect width="{W}" height="{H}" fill="#05060a"/>
-{grid}
-<ellipse class="glow" cx="600" cy="{BY + 20}" rx="560" ry="230" fill="url(#hglow)"/>
-<text x="48" y="66" class="d" font-size="26" font-weight="800" letter-spacing="-.5"><tspan fill="{V}">&lt;/&gt;</tspan><tspan fill="{TXT}">TechZeen</tspan></text>
-{nav_svg}
-<circle cx="54" cy="108" r="3" fill="{V}"/>
-<text x="66" y="112" class="m" font-size="10.5" letter-spacing="3" fill="{MUT}">THE TECHZEEN</text>
-<text x="{W - 48}" y="112" text-anchor="end" class="m" font-size="10.5" letter-spacing="3" fill="{MUT}">FARZEEN ALI — FOUNDER &amp; CEO</text>
-<rect x="{600 - pw / 2:.1f}" y="140" width="{pw:.1f}" height="38" rx="19" fill="#10131d" stroke="#232838"/>
-<circle cx="{600 - pw / 2 + 24:.1f}" cy="159" r="4" fill="{G}" class="pulse"/>
-<text x="{600 + 10}" y="163" text-anchor="middle" class="m" font-size="11" letter-spacing="1.5" fill="{TXT}">{esc(pill)}</text>
-<rect class="d0" x="574" y="190" width="14" height="3" rx="1.5" fill="{V}"/><rect class="d1" x="593" y="190" width="14" height="3" rx="1.5" fill="#2a3045"/><rect class="d2" x="612" y="190" width="14" height="3" rx="1.5" fill="#2a3045"/>
-<text x="600" y="{NB}" text-anchor="middle" class="d" font-size="{NS:.1f}" font-weight="800" letter-spacing="{NLS}" fill="{TXT}">{name}</text>
-<rect x="{BX:.1f}" y="{BY}" width="{BW:.1f}" height="{BH}" rx="16" fill="{V}"/>
-<g clip-path="url(#blk)"><g class="tick">{ticker}</g></g>
-{line(sub1, BY + BH + 48)}
-{line(sub2, BY + BH + 74)}
-<g transform="translate({BCX} {BCY})"><circle r="{BR}" fill="{V}"/></g>
-<g><animateTransform attributeName="transform" type="rotate" from="0 {BCX} {BCY}" to="360 {BCX} {BCY}" dur="18s" repeatCount="indefinite"/>
-<text class="m" font-size="8.6" font-weight="700" fill="{TXT}"><textPath href="#ring" textLength="249" lengthAdjust="spacing">THE TECHZEEN • {STREAK} DAYS NON-STOP • </textPath></text></g>
-<text x="{BCX}" y="{BCY + 6}" text-anchor="middle" class="m" font-size="17" font-weight="700" fill="{TXT}">&lt;/&gt;</text>
-<g transform="rotate(-2.2 600 553)"><rect x="-100" y="530" width="1400" height="44" fill="#eef1ff"/><g class="bA">{rowA}</g></g>
-<g transform="rotate(1.6 600 578)"><rect x="-100" y="556" width="1400" height="44" fill="{V}"/><g class="bB">{rowB}</g></g>
+<ellipse class="a1" cx="260" cy="120" rx="420" ry="230" fill="url(#au1)"/>
+<ellipse class="a2" cx="980" cy="150" rx="420" ry="220" fill="url(#au2)"/>
+<ellipse class="a3" cx="620" cy="30" rx="320" ry="140" fill="url(#au3)"/>
+{stars}
+{planet}
+<ellipse cx="600" cy="{HZ}" rx="620" ry="70" fill="url(#hz)" class="halo"/>
+<g mask="url(#floorMask)" stroke="{V}" stroke-width="1.2" opacity=".75">{radial}{horiz}</g>
+<rect x="0" y="{HZ - 1}" width="{W}" height="2" fill="url(#beam)" opacity=".9"/>
+<rect class="scan" x="0" y="0" width="{W}" height="2" fill="url(#scanG)"/>
+{corners}
+<g transform="translate(72 60)">{hexmark(0, 0, 16)}</g>
+<text x="108" y="66" class="d" font-size="14" font-weight="500" letter-spacing="3" fill="{TXT}">THE TECHZEEN</text>
+<circle cx="{W - 48 - lw - 16:.1f}" cy="60" r="4.5" fill="{G}" class="pulse"/>
+<text x="{W - 48}" y="64.5" text-anchor="end" class="m" font-size="12" letter-spacing="3" fill="{MUT}">{live}</text>
+<rect x="{600 - pw / 2:.1f}" y="134" width="{pw:.1f}" height="36" rx="18" fill="{V}" fill-opacity=".12" stroke="url(#brand)"/>
+<circle cx="{600 - pw / 2 + 22:.1f}" cy="152" r="3.5" fill="{M}" class="pulse"/>
+<text x="{600 + 8}" y="156.5" text-anchor="middle" class="m" font-size="12.5" font-weight="700" letter-spacing="4" fill="#dfe5ff">{pill}</text>
+<text {name_attrs} fill="{V}" filter="url(#soft)" opacity=".9" class="d halo">{name}</text>
+{echoes}
+<g clip-path="url(#sliceA)"><text {name_attrs} fill="{C}" class="d g1">{name}</text></g>
+<g clip-path="url(#sliceB)"><text {name_attrs} fill="{M}" class="d g2">{name}</text></g>
+<text {name_attrs} fill="url(#shine)" class="d">{name}</text>
+<rect x="360" y="{NB + 24}" width="480" height="2" fill="url(#beam)"/>
+<circle r="3.5" fill="#fff" filter="url(#glow)"><animateMotion path="M360 {NB + 25}H840" dur="3s" repeatCount="indefinite"/></circle>
+<path d="M230 {TY - 10}H320M880 {TY - 10}H970" stroke="url(#beam)" stroke-width="1.5"/>
+<g clip-path="url(#tickClip)"><g class="tick">{ticker}</g></g>
+{chips}
+<text x="40" y="{H - 36}" class="m" font-size="11" letter-spacing="3" fill="{MUT}">// BUILD · SECURE · AUTOMATE · TEACH</text>
+<text x="{W - 40}" y="{H - 36}" text-anchor="end" class="m" font-size="11" letter-spacing="3" fill="{MUT}">{STREAK} DAYS · 0 SKIPS</text>
 <rect width="{W}" height="{H}" filter="url(#grain)"/>
 </g>
 <rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="28" stroke="{LINE}" stroke-width="1.5"/>
@@ -298,10 +336,11 @@ def hero():
 SECTIONS = [
     ('01', 'IDENTITY', "// who's behind the terminal"),
     ('02', 'BY THE NUMBERS', '// consistency, quantified'),
-    ('03', 'ARSENAL', '// five domains · one engineer'),
-    ('04', 'TECH STACK', '// the tools of the trade'),
-    ('05', 'LIVE GRID', '// every commit, devoured'),
-    ('06', "LET'S BUILD", '// your roadmap, deployed'),
+    ('03', 'THE STREAK', '// one square per day · zero blanks'),
+    ('04', 'ARSENAL', '// five domains · one engineer'),
+    ('05', 'TECH STACK', '// the tools of the trade'),
+    ('06', 'LIVE GRID', '// every commit, devoured'),
+    ('07', "LET'S BUILD", '// your roadmap, deployed'),
 ]
 
 
@@ -401,6 +440,47 @@ def stats():
 <text x="{x + 24}" y="{y + 202}" class="m" font-size="10" letter-spacing="1.5" fill="{tc(col)}">{esc(sub)}</text>
 <polyline points="{pts}" stroke="{col}" stroke-width="1.8" stroke-linejoin="round" pathLength="100" stroke-dasharray="100" class="sp" style="animation-delay:-{i * .7:.1f}s" opacity=".9"/>'''
     return doc(W, H, body, css)
+
+
+# ── 4b. THE STREAK ────────────────────────────────────────────────────────────
+def streak():
+    """1,000 days drawn as 1,000 lit squares — no blanks — with a wave of light sweeping through."""
+    W, H = 1200, 380
+    COLS, ROWS, CELL, GAP = 100, 10, 9.5, 1.8
+    X0, Y0 = (W - (COLS * (CELL + GAP) - GAP)) / 2, 150
+    random.seed(21)
+    shades = ['#1b2a9e', '#2239e0', '#2b47ff', '#6077ff', '#96a6ff']
+    css = ('.wv{animation:wv 6s ease-in-out infinite}@keyframes wv{0%,30%,100%{opacity:.5}12%{opacity:1}}'
+           f'.scan{{animation:scan 6s ease-in-out infinite}}@keyframes scan{{0%{{transform:translateX(0);opacity:0}}5%{{opacity:1}}50%{{transform:translateX({COLS * (CELL + GAP):.0f}px);opacity:1}}55%,100%{{transform:translateX({COLS * (CELL + GAP):.0f}px);opacity:0}}}}'
+           '.ring{animation:ring 1.8s ease-out infinite;transform-box:fill-box;transform-origin:center}@keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(3.2);opacity:0}}')
+    defs = (f'<linearGradient id="beamV" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>'
+            f'<clipPath id="gridc"><rect x="{X0}" y="{Y0}" width="{COLS * (CELL + GAP)}" height="{ROWS * (CELL + GAP)}"/></clipPath>')
+    cols = ''
+    for c in range(COLS):
+        cells = ''.join(f'<rect x="{X0 + c * (CELL + GAP):.1f}" y="{Y0 + r * (CELL + GAP):.1f}" width="{CELL}" height="{CELL}" rx="2" '
+                        f'fill="{random.choices(shades, weights=[2, 4, 5, 3, 1])[0]}"/>' for r in range(ROWS))
+        cols += f'<g class="wv" style="animation-delay:{c * .03:.2f}s">{cells}</g>'
+    lx, ly = X0 + (COLS - 1) * (CELL + GAP) + CELL / 2, Y0 + (ROWS - 1) * (CELL + GAP) + CELL / 2
+    gw = COLS * (CELL + GAP) - GAP
+    ticks = ''.join(
+        f'<text x="{X0 + gw * f:.1f}" y="{Y0 + ROWS * (CELL + GAP) + 26:.1f}" text-anchor="{an}" class="m" font-size="10.5" letter-spacing="2" fill="{DIM}">{t}</text>'
+        for f, t, an in [(0, 'DAY 001', 'start'), (.365, 'YEAR 01', 'middle'), (.73, 'YEAR 02', 'middle'), (1, f'DAY {STREAK} · TODAY', 'end')])
+    t1 = f'{STREAK} days.'
+    w1 = measure(t1, 'd8', 40, -1)
+    body = f'''{card(0, 0, W, H, 26, 1, 12)}
+<text x="{X0}" y="58" class="m" font-size="11.5" font-weight="700" letter-spacing="3.5" fill="{C}">● THE STREAK</text>
+<text x="{X0}" y="108" class="d" font-size="40" font-weight="800" letter-spacing="-1" fill="{TXT}">{esc(t1)}</text>
+<text x="{X0 + w1 + 14:.1f}" y="108" class="i" font-size="46" fill="{C}">Every single one shipped.</text>
+<text x="{W - X0}" y="64" text-anchor="end" class="m" font-size="10.5" letter-spacing="2" fill="{DIM}">SKIPS</text>
+<text x="{W - X0}" y="108" text-anchor="end" class="d" font-size="40" font-weight="800" fill="{G}">0</text>
+{cols}
+<g clip-path="url(#gridc)"><rect class="scan" x="{X0 - 40}" y="{Y0 - 4}" width="40" height="{ROWS * (CELL + GAP) + 8}" fill="url(#beamV)"/></g>
+<circle class="ring" cx="{lx:.1f}" cy="{ly:.1f}" r="5" stroke="#fff" stroke-width="1.5"/>
+<rect x="{lx - CELL / 2:.1f}" y="{ly - CELL / 2:.1f}" width="{CELL}" height="{CELL}" rx="2" fill="#fff"/>
+{ticks}
+<text x="{X0}" y="{H - 34}" class="m" font-size="11" letter-spacing="2.5" fill="{MUT}">1 SQUARE = 1 DAY OF CONTENT  ·  0 RERUNS  ·  0 SHORTCUTS</text>
+<text x="{W - X0}" y="{H - 34}" text-anchor="end" class="m" font-size="11" letter-spacing="2.5" fill="{tc(V)}">STILL GOING →</text>'''
+    return doc(W, H, body, css, defs)
 
 
 # ── 5. ARSENAL (bento) ────────────────────────────────────────────────────────
@@ -757,6 +837,7 @@ if __name__ == '__main__':
         write(f'header-{num}.svg', header(num, title, sub, i))
     write('identity.svg', identity())
     write('stats.svg', stats())
+    write('streak.svg', streak())
     write('arsenal.svg', arsenal())
     write('terminal.svg', terminal())
     write('stack.svg', marquee())
