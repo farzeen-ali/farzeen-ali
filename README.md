@@ -10,89 +10,41 @@
 
 <div align="center">
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/hero.svg" alt="Farzeen Ali — Founder & CEO of The Techzeen"/>
+<a href="https://www.thetechzeen.com/"><img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/hero.svg" alt="Farzeen Ali — Mr. Consistent. Founder & CEO of The Techzeen, Solutions Architect, DevSecOps & Cloud, AI Automation"/></a>
 
-<br/><br/>
-
-<a href="https://www.youtube.com/@TheTechzeen"><img width="24%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-youtube.svg" alt="YouTube — The Techzeen"/></a>
-<a href="https://www.thetechzeen.com/"><img width="24%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-website.svg" alt="Website — thetechzeen.com"/></a>
-<a href="https://www.linkedin.com/in/farzeen-ali-533479204"><img width="24%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-linkedin.svg" alt="LinkedIn — Farzeen Ali"/></a>
-<a href="mailto:info@thetechzeen.com"><img width="24%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-email.svg" alt="Email — info@thetechzeen.com"/></a>
-
-<br/><br/>
+<a href="https://www.youtube.com/@TheTechzeen"><img width="49%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-youtube.svg" alt="YouTube — The Techzeen"/></a>
+<a href="https://www.thetechzeen.com/"><img width="49%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-website.svg" alt="Website — thetechzeen.com"/></a>
+<a href="https://www.linkedin.com/in/farzeen-ali-533479204"><img width="49%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-linkedin.svg" alt="LinkedIn — Farzeen Ali"/></a>
+<a href="mailto:info@thetechzeen.com"><img width="49%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/btn-email.svg" alt="Email — info@thetechzeen.com"/></a>
 
 <a href="https://github.com/farzeen-ali?tab=followers"><img src="https://img.shields.io/github/followers/farzeen-ali?style=for-the-badge&logo=github&logoColor=white&color=2b47ff&labelColor=05060a&label=FOLLOWERS" alt="GitHub followers"/></a>
 <img src="https://komarev.com/ghpvc/?username=farzeen-ali&style=for-the-badge&color=2b47ff&label=PROFILE+VIEWS" alt="Profile views"/>
 
-</div>
-
-<br/>
-
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-01.svg" alt="01 — Identity"/>
-
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/identity.svg" alt="Most startups hire 4–5 specialists for what I do in one. Farzeen Ali — Founder & CEO of The Techzeen, Program Manager & Faculty at Denning (University of London & University of Greenwich curricula), 20+ production courses taught live, 1,000+ day daily-content streak."/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/about.svg" alt="Most startups hire 4–5 specialists for what I do in one. Solutions Architect, DevSecOps Engineer & Tech Educator — Founder & CEO of The Techzeen, Faculty at Denning, 20+ courses taught live."/>
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/terminal.svg" alt="Animated terminal session — Farzeen Ali"/>
 
-<br/><br/>
-
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-02.svg" alt="02 — By the numbers"/>
-
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/stats.svg" alt="1,000+ day streak · 20+ courses · 4–5 specialists in one · #1 tech channel in Pakistan"/>
-
-<br/><br/>
-
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-03.svg" alt="03 — The streak"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/numbers.svg" alt="1,000+ days non-stop · 20+ production courses · 4–5 specialists in one · #1 tech channel in Pakistan"/>
 
 <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/streak.svg" alt="1,000+ days of daily content drawn as 1,000 lit squares — zero skips"/>
 
-<br/><br/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/arsenal.svg" alt="Five domains: AI Agentic Automation, DevSecOps & Cloud, Offensive Security, Full-Stack & Mobile, Blockchain Engineering"/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-04.svg" alt="04 — Arsenal"/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/stack.svg" alt="Tech stack: React, Next.js, NestJS, FastAPI, AWS, Azure, GCP, Docker, Kubernetes, Terraform, Kali Linux, Metasploit, LangChain, LangGraph, RAG, n8n, Solidity and more"/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/arsenal.svg" alt="Core domains: AI Agentic Automation, DevSecOps & Cloud, Offensive Security, Full-Stack & Mobile, Blockchain Engineering"/>
+<img src="https://skillicons.dev/icons?i=ts,react,nextjs,vue,tailwind,nodejs,nestjs,fastapi,graphql,postgres,mongodb,redis,firebase,supabase&perline=7" alt="Frontend, backend and data stack"/>
+<img src="https://skillicons.dev/icons?i=aws,azure,gcp,docker,kubernetes,terraform,ansible,jenkins,githubactions,gitlab,kali,linux,grafana,prometheus&perline=7" alt="Cloud, DevSecOps and security stack"/>
 
-<br/><br/>
+<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/grid-header.svg" alt="06 — Live grid: every commit, devoured"/>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-05.svg" alt="05 — Tech stack"/>
-
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/stack.svg" alt="Tech stack: React, Next.js, NestJS, Node.js, AWS, Azure, GCP, Docker, Kubernetes, Terraform, Kali Linux, Metasploit, LLMs, RAG, n8n, Solidity and more"/>
-
-<div align="center">
-<br/>
-<img src="https://skillicons.dev/icons?i=ts,react,nextjs,vue,tailwind,nodejs,nestjs,fastapi,graphql,prisma,postgres,mongodb,redis,supabase,firebase&perline=15" alt="Frontend, backend and data stack"/>
-<br/>
-<img src="https://skillicons.dev/icons?i=aws,azure,gcp,docker,kubernetes,terraform,ansible,jenkins,githubactions,gitlab,kali,linux,grafana,prometheus&perline=14" alt="Cloud, DevSecOps and security stack"/>
-</div>
-
-<br/><br/>
-
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-06.svg" alt="06 — Live grid"/>
-
-<div align="center">
-<br/>
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/output/snake-techzeen-dark.svg"/>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/output/snake-techzeen-light.svg"/>
   <img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/output/snake-techzeen-dark.svg" alt="Snake eating Farzeen Ali's GitHub contribution grid"/>
 </picture>
-</div>
 
-<br/><br/>
+<a href="mailto:info@thetechzeen.com"><img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/build.svg" alt="Let's build something that actually ships — Architect · Harden · Automate · Audit · Train. info@thetechzeen.com"/></a>
 
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/header-07.svg" alt="07 — Let's build"/>
-
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/services.svg" alt="Architect · Harden · Automate · Audit · Train — production architectures, DevSecOps hardening, AI automation, offensive security audits and team training"/>
-
-<div align="center">
-
-<br/>
-
-**Founder, enterprise tech lead or fast-growing startup?** Let's build and secure your roadmap together.<br/>
-**📧 [info@thetechzeen.com](mailto:info@thetechzeen.com)** &nbsp;·&nbsp; **📺 [@TheTechzeen](https://www.youtube.com/@TheTechzeen)** &nbsp;·&nbsp; **🌐 [thetechzeen.com](https://www.thetechzeen.com/)**
-
-<br/>
-
-<img width="100%" src="https://raw.githubusercontent.com/farzeen-ali/farzeen-ali/main/assets/footer.svg" alt="1,000+ days. Zero days off. — Farzeen Ali, Mr. Consistent"/>
+**[info@thetechzeen.com](mailto:info@thetechzeen.com)** &nbsp;·&nbsp; **[@TheTechzeen](https://www.youtube.com/@TheTechzeen)** &nbsp;·&nbsp; **[thetechzeen.com](https://www.thetechzeen.com/)**
 
 </div>
